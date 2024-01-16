@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+
+
+/************************************************************* GENERAL */
+main {
+    display: flex;
+    flex-direction: row;
+    height: 94vh;
+}
+
+h1 {
+    font-family: 'Titan One', sans-serif;
+    font-size: 5rem;
+}
+
+p {
+    font-family: 'Rokkit', Serif;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/************************************************************* LEFT */
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+    height: 94vh;
+    border-right: 2px black solid;
+}
+
+.explore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+.exploreButton {
+    background-color: black;
+    color: white;
+    font-family: 'Rokkit', Serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 7rem;
+    min-width: 7rem;
+    border-radius: 4rem;
+    border: none;
+}
+
+.exploreButton:hover {
+    color: var(--orange-color);
+}
+
+.explore img {
+    width:  22vw;
+    padding: 0rem 1rem;
+}
+
+/************************************************************* RIGHT */
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 94vh;
+}
+
+.categoriesHome {
+    width: 100%;
+    height: 65vh;
+    background-color: var(--purple-color);
+    border-bottom: 2px black solid;
+}
+
+.homeRightDown {
+    height: 29vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.buttonContainer {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.surpriseButton {
+    font-family: 'Rokkit', Serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: var(--orange-color);
+    height: 7rem;
+    width: 11rem;
+    border-radius: 4rem;
+    border: 2px solid var(--orange-color);
+}
+
+.surpriseButton:hover {
+    color: white;
+    border: 2px solid white;
+}
+
+.homeInfo {
+    height: 100%;
+    width: 10vw;
+    border-left: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.homeInfo p {
+    font-size: 1.1rem;
+}
+
