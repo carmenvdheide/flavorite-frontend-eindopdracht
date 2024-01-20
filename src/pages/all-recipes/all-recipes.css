@@ -86,6 +86,21 @@ h3 {
     background-color: transparent;
 }
 
+.allergenList {
+    background-color: transparent;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    border: 1px red solid;
+}
+
+.allergenIcon {
+    width: 2.5rem;
+    background-color: transparent;
+}
+
 .recipePageAllergens {
     list-style: circle;
     display: none;
