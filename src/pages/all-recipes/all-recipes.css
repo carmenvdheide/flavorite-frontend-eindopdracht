@@ -39,6 +39,7 @@ h3 {
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem 2rem;
+    /*position: relative;*/
 
 }
 
@@ -101,8 +102,13 @@ h3 {
     background-color: transparent;
 }
 
+
 .recipePageAllergens {
     list-style: circle;
     display: none;
+}
+
+.allergenIconWrapper {
+    position: relative;
 }
 

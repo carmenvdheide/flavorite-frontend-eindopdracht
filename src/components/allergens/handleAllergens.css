@@ -1,0 +1,31 @@
+.wrap {
+    position: relative;
+    background-color: transparent;
+
+}
+
+[role="tooltip"],
+.hidetooltip.hidetooltip.hidetooltip + [role="tooltip"] {
+    visibility: hidden;
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    background: lightgray;
+    color: black;
+    width: 5rem;
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 9;
+    opacity: 90%;
+}
+[aria-describedby]:hover,
+[aria-describedby]:focus {
+    position: relative;
+
+}
+[aria-describedby]:hover + [role="tooltip"],
+[aria-describedby]:focus + [role="tooltip"] {
+    visibility: visible;
+}
