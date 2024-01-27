@@ -14,143 +14,220 @@ import soyFree from "../../assets/soyfree.png";
 import sulfiteFree from "../../assets/sulfitefree.png";
 import treeNutFree from "../../assets/treenutfree.png";
 import './handleAllergens.css'
+import {all} from "axios";
+import {useState} from "react";
 
 
 function HandleAllergens(data) {
+    const allergenArray = []
+    const [size, setSize] = useState(7)
+
+    const [obj, setObj] = useState({
+        "alcoholFree" : alcoholFree,
+        "celeryFree" : celeryFree,
+        "crustceanFree" : crustceanFree,
+        "dairyFree" : dairyFree,
+        "eggFree" : eggFree,
+        "fishFree" : fishFree,
+        "glutenFree" : glutenFree,
+        "lupinFree" : lupinFree,
+        "mulluskFree" : molluscFree,
+        "mustardFree" : mustardFree,
+        "peanutFree" : peanutFree,
+        "sesameFree" : sesameFree,
+        "soyFree" : soyFree,
+        "sulfiteFree" : sulfiteFree,
+        "treeNutFree" : treeNutFree
+    })
+
+
+
+
+
+    data.recipe.healthLabels.map((label) => {
+        {label === "Alcohol-Free" && allergenArray.push("alcoholFree")}
+        {label === "Celery-Free" && allergenArray.push("celeryFree")}
+        {label === "Crustcean-Free" && allergenArray.push("crustCeanFree")}
+        {label === "Dairy-Free" && allergenArray.push("dairyFree")}
+        {label === "Egg-Free" && allergenArray.push("eggFree")}
+        {label === "Fish-Free" && allergenArray.push("fishFree")}
+        {label === "Gluten-Free" && allergenArray.push("glutenFree")}
+        {label === "Lupine-Free" && allergenArray.push("lupinFree")}
+        {label === "Mullusk-Free" && allergenArray.push("molluscFree")}
+        {label === "Mustard-Free" && allergenArray.push("mustardFree")}
+        {label === "Peanut-Free" && allergenArray.push("peanutFree")}
+        {label === "Sesame-Free" && allergenArray.push("sesameFree")}
+        {label === "Soy-Free" && allergenArray.push("soyFree")}
+        {label === "Sulfite-Free" && allergenArray.push("sulfiteFree")}
+        {label === "Tree-Nut-Free" && allergenArray.push("treeNutFree")}
+
+    })
+    function shortarray() {
+
+       return (
+           <>
+               {data.recipe.healthLabels.includes("Alcohol-Free") &&
+                   <div className="wrap">
+                       <img src={alcoholFree} className="allergenIcon" alt="alcohol free" aria-describedby="alcoholFree"/>
+                       <p role="tooltip" id="alcoholFree">Alcohol-free</p>
+                   </div>
+               }
+
+
+               {data.recipe.healthLabels.includes("Celery-Free") &&
+                   <div className="wrap">
+                       <img src={celeryFree} className="allergenIcon" alt="celery free" aria-describedby="celeryFree"/>
+                       <p role="tooltip" id="celeryFree">Celery-free</p>
+                   </div>
+               }
+
+
+               {data.recipe.healthLabels.includes("Crustcean-Free") &&
+                   <div className="wrap">
+                       <img src={crustceanFree} className="allergenIcon"alt="crustcean free" aria-describedby="crustceanFree"/>
+                       <p role="tooltip" id="crustceanFree">Crustcean-free</p>
+                   </div>
+               }
+
+
+               {data.recipe.healthLabels.includes("Dairy-Free") &&
+                   <div className="wrap">
+                       <img src={dairyFree} className="allergenIcon" alt="dairy free" aria-describedby="dairyFree"/>
+                       <p role="tooltip" id="dairyFree">Dairy-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Egg-Free") &&
+                   <div className="wrap">
+                       <img src={eggFree} className="allergenIcon" alt="eggg free" aria-describedby="eggFree"/>
+                       <p role="tooltip" id="eggFree">Egg-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Fish-Free") &&
+                   <div className="wrap">
+                       <img src={fishFree} className="allergenIcon" alt="fish free"
+                            aria-describedby="fishFree"/>
+                       <p role="tooltip" id="fishFree">Fish-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Gluten-Free") &&
+                   <div className="wrap">
+                       <img src={glutenFree} className="allergenIcon" alt="gluten free"
+                            aria-describedby="glutenFree"/>
+                       <p role="tooltip" id="glutenFree">Gluten-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Lupine-Free") &&
+                   <div className="wrap">
+                       <img src={lupinFree} className="allergenIcon" alt="lupine free"
+                            aria-describedby="lupinFree"/>
+                       <p role="tooltip" id="lupinFree">Lupin-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Mollusk-Free") &&
+                   <div className="wrap">
+                       <img src={molluscFree} className="allergenIcon" alt="mollusc free"
+                            aria-describedby="molluscFree"/>
+                       <p role="tooltip" id="molluscFree">Mollusc-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Mustard-Free") &&
+                   <div className="wrap">
+                       <img src={mustardFree} className="allergenIcon" alt="mustard free"
+                            aria-describedby="mustardFree"/>
+                       <p role="tooltip" id="mustardFree">Mustard-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Peanut-Free") &&
+                   <div className="wrap">
+                       <img src={peanutFree} className="allergenIcon" alt="peanut free" aria-describedby="peanutFree"/>
+                       <p role="tooltip" id="peanutFree">Peanut-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Sesame-Free") &&
+                   <div className="wrap">
+                       <img src={sesameFree} className="allergenIcon" alt="sesame free"
+                            aria-describedby="sesameFree"/>
+                       <p role="tooltip" id="sesameFree">Sesame-free</p>
+                   </div>
+               }
+
+               {data.recipe.healthLabels.includes("Soy-Free") &&
+                   <div className="wrap">
+                       <img src={soyFree} className="allergenIcon" alt="soy free" aria-describedby="soyFree"/>
+                       <p role="tooltip"id="soyFree">Soy-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Sulfite-Free") &&
+                   <div className="wrap">
+                       <img src={sulfiteFree} className="allergenIcon" alt="sulfite free"
+                            aria-describedby="sulfiteFree"/>
+                       <p role="tooltip" id="sulfiteFree">Sulfite-free</p>
+                   </div>
+
+               }
+
+               {data.recipe.healthLabels.includes("Tree-Nut-Free") &&
+                   <div className="wrap">
+                       <img src={treeNutFree} className="allergenIcon" alt="tree nut free" aria-describedby="treeNutFree"/>
+                       <p role="tooltip" id="treeNutFree">Tree-nut-free</p>
+                   </div>
+               }
+
+           </>
+       )
+
+    }
+
+
+    function longArray() {
+
+
+       return (
+           <>
+               {allergenArray.slice(0, size).map((allergen) => {
+                   console.log(allergen);
+                   return <img src={obj[allergen]} key={allergen} className="allergenIcon"/>
+               })}
+               <button onClick={() => {
+                   setSize(allergenArray.length)
+
+               }}>More</button>
+           </>
+       )
+    }
+
+
+    console.log(allergenArray.length)
 
 
     return (
 
         <>
-            {data.recipe.healthLabels.includes("Alcohol-Free") &&
-                <div className="wrap">
-                    <img src={alcoholFree} className="allergenIcon" alt="alcohol free" aria-describedby="alcoholFree"/>
-                    <p role="tooltip" id="alcoholFree">Alcohol-free</p>
-                </div>
-            }
-
-
-            {data.recipe.healthLabels.includes("Celery-Free") &&
-                <div className="wrap">
-                    <img src={celeryFree} className="allergenIcon" alt="celery free" aria-describedby="celeryFree"/>
-                    <p role="tooltip" id="celeryFree">Celery-free</p>
-                </div>
-            }
-
-
-            {data.recipe.healthLabels.includes("Crustcean-Free") &&
-                <div className="wrap">
-                    <img src={crustceanFree} className="allergenIcon"alt="crustcean free" aria-describedby="crustceanFree"/>
-                    <p role="tooltip" id="crustceanFree">Crustcean-free</p>
-                </div>
-            }
-
-
-            {data.recipe.healthLabels.includes("Dairy-Free") &&
-                <div className="wrap">
-                    <img src={dairyFree} className="allergenIcon" alt="dairy free" aria-describedby="dairyFree"/>
-                    <p role="tooltip" id="dairyFree">Dairy-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Egg-Free") &&
-                <div className="wrap">
-                    <img src={eggFree} className="allergenIcon" alt="eggg free" aria-describedby="eggFree"/>
-                    <p role="tooltip" id="eggFree">Egg-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Fish-Free") &&
-                <div className="wrap">
-                    <img src={fishFree} className="allergenIcon" alt="fish free"
-                    aria-describedby="fishFree"/>
-                    <p role="tooltip" id="fishFree">Fish-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Gluten-Free") &&
-                <div className="wrap">
-                    <img src={glutenFree} className="allergenIcon" alt="gluten free"
-                    aria-describedby="glutenFree"/>
-                    <p role="tooltip" id="glutenFree">Gluten-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Lupine-Free") &&
-                <div className="wrap">
-                    <img src={lupinFree} className="allergenIcon" alt="lupine free"
-                    aria-describedby="lupinFree"/>
-                    <p role="tooltip" id="lupinFree">Lupin-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Mollusk-Free") &&
-                <div className="wrap">
-                    <img src={molluscFree} className="allergenIcon" alt="mollusc free"
-                    aria-describedby="molluscFree"/>
-                    <p role="tooltip" id="molluscFree">Mollusc-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Mustard-Free") &&
-                <div className="wrap">
-                    <img src={mustardFree} className="allergenIcon" alt="mustard free"
-                    aria-describedby="mustardFree"/>
-                    <p role="tooltip" id="mustardFree">Mustard-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Peanut-Free") &&
-                <div className="wrap">
-                    <img src={peanutFree} className="allergenIcon" alt="peanut free" aria-describedby="peanutFree"/>
-                    <p role="tooltip" id="peanutFree">Peanut-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Sesame-Free") &&
-                <div className="wrap">
-                    <img src={sesameFree} className="allergenIcon" alt="sesame free"
-                    aria-describedby="sesameFree"/>
-                    <p role="tooltip" id="sesameFree">Sesame-free</p>
-                </div>
-            }
-
-            {data.recipe.healthLabels.includes("Soy-Free") &&
-                <div className="wrap">
-                    <img src={soyFree} className="allergenIcon" alt="soy free" aria-describedby="soyFree"/>
-                    <p role="tooltip"id="soyFree">Soy-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Sulfite-Free") &&
-                <div className="wrap">
-                    <img src={sulfiteFree} className="allergenIcon" alt="sulfite free"
-                    aria-describedby="sulfiteFree"/>
-                    <p role="tooltip" id="sulfiteFree">Sulfite-free</p>
-                </div>
-
-            }
-
-            {data.recipe.healthLabels.includes("Tree-Nut-Free") &&
-                <div className="wrap">
-                    <img src={treeNutFree} className="allergenIcon" alt="tree nut free" aria-describedby="treeNutFree"/>
-                    <p role="tooltip" id="treeNutFree">Tree-nut-free</p>
-                </div>
-
-            }
-
+            {allergenArray.length > 7 ? longArray() : shortarray()}
         </>
+
+
+
     )
 
-}
+    }
 
 export default HandleAllergens

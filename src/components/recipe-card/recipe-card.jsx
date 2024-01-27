@@ -8,14 +8,13 @@ import HandleAllergens from "../allergens/handleAllergens.jsx";
 
 function RecipeCard({recipe}) {
 
-    console.log(recipe)
 
     return (
 
 
-        <NavLink
-            to="/recipes/${recipe.recipe.uri.split('_')[1]}"
-            className="recipe-link">
+        // <NavLink
+        //     to="/recipes/${recipe.recipe.uri.split('_')[1]}"
+        //     className="recipe-link">
             <li
                 className="recipeCard">
                 <img
@@ -40,12 +39,14 @@ function RecipeCard({recipe}) {
                     ))}
                 </ul>
                 <div className="allergenList">
+
+
                     {HandleAllergens(recipe)}
                 </div>
 
 
             </li>
-        </NavLink>
+        // </NavLink>
 
     )
 }
