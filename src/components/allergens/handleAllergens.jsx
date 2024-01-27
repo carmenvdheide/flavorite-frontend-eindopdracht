@@ -21,6 +21,8 @@ import {useState} from "react";
 function HandleAllergens(data) {
     const allergenArray = []
     const [size, setSize] = useState(7)
+    const [classnameMoreButton, setClassnameMoreButton] = useState('allergenButton')
+    const [classnameLessButton, setClassnameLessButton] = useState('dontShowButton')
 
     const [obj, setObj] = useState({
         "alcoholFree" : alcoholFree,
@@ -200,16 +202,28 @@ function HandleAllergens(data) {
     function longArray() {
 
 
+
        return (
            <>
                {allergenArray.slice(0, size).map((allergen) => {
-                   console.log(allergen);
                    return <img src={obj[allergen]} key={allergen} className="allergenIcon"/>
                })}
-               <button onClick={() => {
-                   setSize(allergenArray.length)
-
-               }}>More</button>
+               <button
+                   onClick={() => {
+                       setSize(allergenArray.length)
+                       setClassnameMoreButton("dontShowButton")
+                       setClassnameLessButton("allergenButton")
+                   }}
+                   className={classnameMoreButton}
+               >+</button>
+               <button
+                   onClick={() => {
+                       setSize(6)
+                       setClassnameMoreButton("allergenButton")
+                       setClassnameLessButton("dontShowButton")
+                   }}
+                   className={classnameLessButton}
+               >-</button>
            </>
        )
     }

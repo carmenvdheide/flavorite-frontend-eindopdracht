@@ -40,7 +40,6 @@ function RecipeCard({recipe}) {
                 </ul>
                 <div className="allergenList">
 
-
                     {HandleAllergens(recipe)}
                 </div>
 
