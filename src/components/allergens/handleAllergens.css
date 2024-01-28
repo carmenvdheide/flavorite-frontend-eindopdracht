@@ -37,6 +37,8 @@
     border-radius: 0.5rem;
     text-align: center;
     padding: 0;
+    justify-self: end;
+    grid-column-start: 4;
 }
 
 .dontShowButton {

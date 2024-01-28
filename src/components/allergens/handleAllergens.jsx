@@ -14,7 +14,6 @@ import soyFree from "../../assets/soyfree.png";
 import sulfiteFree from "../../assets/sulfitefree.png";
 import treeNutFree from "../../assets/treenutfree.png";
 import './handleAllergens.css'
-import {all} from "axios";
 import {useState} from "react";
 
 
@@ -41,9 +40,6 @@ function HandleAllergens(data) {
         "sulfiteFree" : sulfiteFree,
         "treeNutFree" : treeNutFree
     })
-
-
-
 
 
     data.recipe.healthLabels.map((label) => {
@@ -198,7 +194,6 @@ function HandleAllergens(data) {
 
     }
 
-
     function longArray() {
 
 
@@ -206,7 +201,21 @@ function HandleAllergens(data) {
        return (
            <>
                {allergenArray.slice(0, size).map((allergen) => {
-                   return <img src={obj[allergen]} key={allergen} className="allergenIcon"/>
+                   const firstSub = allergen.substring(0, allergen.length - 4)
+                   const secondSub = allergen.substring(allergen.length-4, allergen.length).toLowerCase()
+
+                   const tooltipText = `${firstSub[0].toUpperCase() + firstSub.slice(1)}-${secondSub}`
+
+                   return (
+
+                       <div key={allergen} className="wrap">
+                           <img src={obj[allergen]} className="allergenIcon" alt={tooltipText} aria-describedby={allergen}/>
+                           <p role="tooltip" id={allergen}>{tooltipText}</p>
+                       </div>
+
+                       )
+
+
                })}
                <button
                    onClick={() => {
@@ -228,8 +237,6 @@ function HandleAllergens(data) {
        )
     }
 
-
-    console.log(allergenArray.length)
 
 
     return (
