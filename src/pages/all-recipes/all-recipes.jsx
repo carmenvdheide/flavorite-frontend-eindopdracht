@@ -53,18 +53,19 @@ function AllRecipes() {
     return (
 
         <>
-            <p>RECIPES</p>
             <section className="searchContainer">
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="search"
-                />
-                <button
-                    className="recipeSearchButton"
-                    onClick={inputValue ? fetchSearchedRecipes : fetchRecipes}
-                >go</button>
+                <div className="searchBar">
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder="search"
+                    />
+                    <button
+                        className="recipeSearchButton"
+                        onClick={inputValue ? fetchSearchedRecipes : fetchRecipes}
+                    >go</button>
+                </div>
             </section>
 
             <section className="allRecipesContainer">

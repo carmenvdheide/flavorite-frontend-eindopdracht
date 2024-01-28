@@ -16,14 +16,41 @@ h3 {
     font-size: 1.2rem;
 }
 
+/********************************************************** search/filter section */
+
+.searchContainer {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
 .recipeSearchButton {
     border-radius: 0.2rem;
-    margin: 0.3rem;
     padding: 0.5rem;
     width: 3rem;
+    height: 3rem;
     background-color: transparent;
     border: var(--purple-color) 2px solid;
 }
+
+input {
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid black;
+    padding-left: 1rem;
+}
+
+
+
+.searchBar {
+    background-color: transparent;
+}
+
+
+
+/********************************************************** recipe cards section*/
 
 .recipe-link {
     color: black;
@@ -48,8 +75,6 @@ h3 {
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem 2rem;
-    /*position: relative;*/
-
 }
 
 .recipeCard {
@@ -72,8 +97,9 @@ h3 {
 }
 
 .recipePageImage {
-    /*width: 15.5rem;*/
+    width: 15.5rem;
     height: 15.5rem;
+    object-fit: cover;
     border-radius: 0.8rem 0.8rem 0 0;
 }
 
@@ -112,7 +138,6 @@ h3 {
     background-color: transparent;
 
 }
-
 
 .recipePageAllergens {
     list-style: circle;

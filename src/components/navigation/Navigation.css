@@ -15,11 +15,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    background-color: var(--background-color);
 }
 
 .navBar img {
     height: 80%;
     padding-right: 3.5rem;
+    background-color: transparent;
 }
 
 .navBar ul {
@@ -27,7 +29,9 @@
     gap: 5rem;
     list-style: none;
     text-transform: uppercase;
+    background-color: transparent;
 }
+
 
 
 .accountNav {
@@ -45,12 +49,15 @@
     border-bottom: 2px solid var(--orange-color);
     text-decoration: none;
     color: var(--orange-color);
+    background-color: var(--background-color);
 }
 
 .default-menu-link {
     border-bottom: 2px solid transparent;
     text-decoration: none;
     color: black;
+    background-color: var(--background-color);
 }
+
 
 
