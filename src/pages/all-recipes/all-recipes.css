@@ -21,19 +21,18 @@ h3 {
 .searchContainer {
     background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    min-height: 30vh;
 }
 
 .recipeSearchButton {
-    border-radius: 0.2rem;
     padding: 0.5rem;
     width: 3rem;
     height: 3rem;
-    background-color: transparent;
     background-color: var(--purple-color);
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     margin-left: 0.5rem;
     font-weight: bold;
 }

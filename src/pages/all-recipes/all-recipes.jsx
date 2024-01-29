@@ -5,6 +5,7 @@ import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
+import Filters from "../../components/filters /Filters.jsx";
 
 
 function AllRecipes() {
@@ -55,6 +56,7 @@ function AllRecipes() {
                     fetchSearchedRecipes={fetchSearchedRecipes}
                     fetchRecipes={fetchRecipes}
                 />
+                <Filters/>
             </section>
 
             <section className="allRecipesContainer">
@@ -64,7 +66,6 @@ function AllRecipes() {
                                 <RecipeCard recipe={recipe} key={recipe.recipe.uri.split('_')[1]}/>
                             )
                     })}
-
                 </ul>
             </section>
 
