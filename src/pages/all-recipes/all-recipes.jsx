@@ -4,12 +4,11 @@ import './all-recipes.css'
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 
 
 function AllRecipes() {
     const [ data, setData ] = useState([])
-    const [ inputValue, setInputValue] = useState('')
-
     async function fetchRecipes() {
 
         try {
@@ -28,13 +27,11 @@ function AllRecipes() {
         }
     }
 
-    async function fetchSearchedRecipes() {
-        console.log(inputValue)
+     async function fetchSearchedRecipes(searchValue) {
         try {
-            console.log(inputValue, "DEZE")
             const result = await axios.get('https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public',
                 { params: {
-                        q: inputValue
+                        q: searchValue
                     }})
             setData(result.data.hits)
             console.log(result)
@@ -54,18 +51,10 @@ function AllRecipes() {
 
         <>
             <section className="searchContainer">
-                <div className="searchBar">
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="search"
-                    />
-                    <button
-                        className="recipeSearchButton"
-                        onClick={inputValue ? fetchSearchedRecipes : fetchRecipes}
-                    >go</button>
-                </div>
+                <SearchBar
+                    fetchSearchedRecipes={fetchSearchedRecipes}
+                    fetchRecipes={fetchRecipes}
+                />
             </section>
 
             <section className="allRecipesContainer">
@@ -74,7 +63,6 @@ function AllRecipes() {
                         return (
                                 <RecipeCard recipe={recipe} key={recipe.recipe.uri.split('_')[1]}/>
                             )
-
                     })}
 
                 </ul>

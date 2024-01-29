@@ -32,7 +32,10 @@ h3 {
     width: 3rem;
     height: 3rem;
     background-color: transparent;
-    border: var(--purple-color) 2px solid;
+    background-color: var(--purple-color);
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
 }
 
 input {
@@ -40,6 +43,7 @@ input {
     background-color: transparent;
     border: 2px solid black;
     padding-left: 1rem;
+    border-radius: 1rem;
 }
 
 
