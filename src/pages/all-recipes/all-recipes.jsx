@@ -10,6 +10,7 @@ import Filters from "../../components/filters /Filters.jsx";
 
 function AllRecipes() {
     const [ data, setData ] = useState([])
+    const [ allergenFilters, setAllergenFilters ] = useState([])
     async function fetchRecipes() {
 
         try {
@@ -29,10 +30,11 @@ function AllRecipes() {
     }
 
      async function fetchSearchedRecipes(searchValue) {
+
         try {
-            const result = await axios.get('https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public',
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public}`,
                 { params: {
-                        q: searchValue
+                        q: searchValue,
                     }})
             setData(result.data.hits)
             console.log(result)
@@ -42,6 +44,9 @@ function AllRecipes() {
         }
     }
 
+    function createHealthParam(selectedAllergens) {
+        console.log(selectedAllergens, "<<<<<<")
+    }
 
     useEffect(() => {
         void fetchRecipes()
@@ -56,7 +61,10 @@ function AllRecipes() {
                     fetchSearchedRecipes={fetchSearchedRecipes}
                     fetchRecipes={fetchRecipes}
                 />
-                <Filters/>
+                <Filters
+                    createHealthParam={createHealthParam}
+
+                />
             </section>
 
             <section className="allRecipesContainer">
