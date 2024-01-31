@@ -2,8 +2,8 @@ import {useState} from "react";
 import "./Filters.css"
 import handleAllergens from "../allergens/handleAllergens.jsx";
 
-function Filters({createHealthParam}) {
-    const [ allergenFilters, setAllergenFilters ] = useState([])
+function Filters({setToState, setAllergenFilters}) {
+
 
     const [classnameFiltersShow, setClassnameFiltersShow] = useState('dontShowFilters')
 
@@ -11,18 +11,30 @@ function Filters({createHealthParam}) {
         {classnameFiltersShow === "dontShowFilters" ? setClassnameFiltersShow("showFilters") : setClassnameFiltersShow("dontShowFilters")}
     }
 
+
+
     let selectedAllergens = []
 
-
     function handleSelectAllergens(e) {
+
+
+
         const index = selectedAllergens.indexOf(e.target.value)
         {!selectedAllergens.includes(e.target.value) ? selectedAllergens.push(e.target.value) : selectedAllergens.splice(index, 1)}
         console.log(selectedAllergens)
 
-        createHealthParam(selectedAllergens)
 
+        let allergens = "&health=" + selectedAllergens.join('&health=')
+        let allergenString = allergens.toString()
+
+
+
+
+
+        console.log("HIERRR",allergenString)
 
     }
+
 
 
 
@@ -142,6 +154,7 @@ function Filters({createHealthParam}) {
                 <label htmlFor="molluscFilter">Mollusc-free</label>
 
             </div>
+
 
         </div>
 
