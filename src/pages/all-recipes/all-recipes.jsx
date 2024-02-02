@@ -5,74 +5,90 @@ import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
-import Filters from "../../components/filters /Filters.jsx";
+import AllergenFilters from "../../components/AllergenFilters/AllergenFilters.jsx";
+import DietFilters from "../../components/dietFilters/DietFilters.jsx";
 
 
 function AllRecipes() {
     const [ data, setData ] = useState([])
     const [ allergenFilters, setAllergenFilters ] = useState([
-        {name: "dairy-free", checked: false},
-        {name: "gluten-free", checked: false},
-        {name: "celery-free", checked: false},
-        {name: "egg-free", checked: false},
-        {name: "soy-free", checked: false},
-        {name: "peanut-free", checked: false},
-        {name: "fish-free", checked: false},
-        {name: "mustard-free", checked: false},
-        {name: "sulfite-free", checked: false},
-        {name: "lupin-free", checked: false},
-        {name: "sesame-free", checked: false},
-        {name: "tree-nut-free", checked: false},
-        {name: "alcohol-free", checked: false},
-        {name: "crustcean-free", checked: false},
-        {name: "mollusk-free", checked: false},
+        {name: "dairy-free", checked: false, type: "health"},
+        {name: "gluten-free", checked: false, type: "health"},
+        {name: "celery-free", checked: false, type: "health"},
+        {name: "egg-free", checked: false, type: "health"},
+        {name: "soy-free", checked: false, type: "health"},
+        {name: "peanut-free", checked: false, type: "health"},
+        {name: "fish-free", checked: false, type: "health"},
+        {name: "mustard-free", checked: false, type: "health"},
+        {name: "sulfite-free", checked: false, type: "health"},
+        {name: "lupin-free", checked: false, type: "health"},
+        {name: "sesame-free", checked: false, type: "health"},
+        {name: "tree-nut-free", checked: false, type: "health"},
+        {name: "alcohol-free", checked: false, type: "health"},
+        {name: "crustcean-free", checked: false, type: "health"},
+        {name: "mollusk-free", checked: false, type: "health"},
     ])
 
     const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
 
+    const [ dietFilters, setDietFilters ] = useState([
+        {name: "balanced", checked: false, type: "diet"},
+        {name: "high-fiber", checked: false, type: "diet"},
+        {name: "high-protein", checked: false, type: "diet"},
+        {name: "low-carb", checked: false, type: "diet"},
+        {name: "low-fat", checked: false, type: "diet"},
+        {name: "low-sodium", checked: false, type: "diet"},
+    ])
 
-    function updateCheckStatus(index) {
-        // setAllergenFilters(
-        // [
-        //     ...allergenFilters.slice(0, index),
-        //     {...allergenFilters[index], checked: !allergenFilters[index].checked},
-        //     ...allergenFilters.slice(index + 1)
-        // ])
-        //
-        // let allergenArray = []
-        // allergenFilters.map((filter) => {
-        //     filter.checked === true && allergenArray.push(filter.name)
-        // })
-        // console.log(allergenArray)
-        // let allergens = "&health=" + allergenArray.join('&health=')
-        // let allergenString = allergens.toString()
-        //
-        // setAllergenFilterParam(allergenString)
-        //
-        //
-        //
-        // console.log(allergenString)
+    const [ dietFilterParam, setDietFilterParam ] = useState('')
 
 
-        setAllergenFilters(prevFilters => {
-            const updatedFilters = prevFilters.map((filter, i) => {
-                if (i === index) {
-                    return { ...filter, checked: !filter.checked };
-                }
-                return filter;
-            });
-            return updatedFilters;
-        });
+    function updateCheckStatus(index, type) {
 
-    }
+        if (type === "health") {
+            setAllergenFilters(prevFilters => {
+                const updatedFilters = prevFilters.map((filter, i) => {
+                    if (i === index) {
+                        return { ...filter, checked: !filter.checked }
+                    }
+                    return filter
+                })
+                return updatedFilters
+            })
+        } else if (type === "diet") {
+            setDietFilters(prevFilters => {
+                const updatedFilters = prevFilters.map((filter, i) => {
+                    if (i === index) {
+                        return { ...filter, checked: !filter.checked }
+                    }
+                    return filter
+                })
+                return updatedFilters
+            })
+        }
+
+        }
+
 
     useEffect(() => {
-        let allergenArray = allergenFilters.filter(filter => filter.checked).map(filter => filter.name);
-        let allergens = allergenArray.length > 0 ? "&health=" + allergenArray.join('&health=') : '';
-        setAllergenFilterParam(allergens);
-        console.log(allergens);
+        let allergenArray = allergenFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let allergens = allergenArray.length > 0
+            ? "&health=" + allergenArray.join('&health=')
+            : ''
+        setAllergenFilterParam(allergens)
+        console.log(allergens)
 
-    }, [allergenFilters]);
+    }, [allergenFilters])
+
+    useEffect(() => {
+        let dietArray = dietFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let allergens = dietArray.length > 0
+            ? "&diet=" + dietArray.join('&diet=')
+            : ''
+        setDietFilterParam(allergens)
+        console.log(allergens)
+
+    }, [dietFilters])
 
 
 
@@ -106,7 +122,7 @@ function AllRecipes() {
          console.log("PARAMETERS",allergenFilterParam)
 
         try {
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}` ,
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}${dietFilterParam}` ,
                 { params: {
                         q: searchValue,
                     }})
@@ -133,17 +149,38 @@ function AllRecipes() {
                     fetchRecipes={fetchRecipes}
                 />
 
-                {allergenFilters.map((filter, index) => (
-                        <Filters
-                            key={filter.name}
-                            label={filter.name}
-                            index={index}
-                            isChecked={filter.checked}
-                            checkHandler={() => updateCheckStatus(index)}
-                        />
-                    )
+                <div className="filtersBox">
+                    <div>
+                        {allergenFilters.map((filter, index) => (
+                                <AllergenFilters
+                                    key={filter.name}
+                                    label={filter.name}
+                                    index={index}
+                                    isChecked={filter.checked}
+                                    checkHandler={() => updateCheckStatus(index, filter.type)}
+                                />
+                            )
 
-                )}
+                        )}
+                    </div>
+
+                    <div>
+                        {dietFilters.map((filter, index) => (
+                            <DietFilters
+                                key={filter.name}
+                                label={filter.name}
+                                index={index}
+                                isChecked={filter.checked}
+                                checkHandler={() => updateCheckStatus(index, filter.type) }
+                            />
+                        ))}
+                    </div>
+
+
+
+                </div>
+
+
 
             </section>
 

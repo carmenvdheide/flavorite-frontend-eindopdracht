@@ -1,8 +1,8 @@
 import {useState} from "react";
-import "./Filters.css"
+import "./AllergenFilters.css"
 import handleAllergens from "../allergens/handleAllergens.jsx";
 
-function Filters({label, index, isChecked, checkHandler}) {
+function AllergenFilters({label, index, isChecked, checkHandler}) {
 
 
 
@@ -44,4 +44,4 @@ function Filters({label, index, isChecked, checkHandler}) {
 
 }
 
-export default Filters
+export default AllergenFilters

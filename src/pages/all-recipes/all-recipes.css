@@ -51,6 +51,11 @@ input {
     background-color: transparent;
 }
 
+.filtersBox {
+    display: flex;
+
+}
+
 
 
 /********************************************************** recipe cards section*/
