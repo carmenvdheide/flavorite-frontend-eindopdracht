@@ -10,13 +10,39 @@ import Filters from "../../components/filters /Filters.jsx";
 
 function AllRecipes() {
     const [ data, setData ] = useState([])
-    const [ allergenFilters, setAllergenFilters ] = useState('')
+    const [ allergenFilters, setAllergenFilters ] = useState([
+        {name: "dairy-free", checked: false},
+        {name: "gluten-free", checked: false},
+        {name: "celery-free", checked: false},
+        {name: "egg-free", checked: false},
+        {name: "soy-free", checked: false},
+        {name: "peanut-free", checked: false},
+        {name: "fish-free", checked: false},
+        {name: "mustard-free", checked: false},
+        {name: "sulfite-free", checked: false},
+        {name: "lupin-free", checked: false},
+        {name: "sesame-free", checked: false},
+        {name: "tree-nut-free", checked: false},
+        {name: "alcohol-free", checked: false},
+        {name: "crustcean-free", checked: false},
+        {name: "mollusk-free", checked: false},
+    ])
+
+
+    function updateCheckStatus(index) {
+        console.log("CLICK", index)
+        setAllergenFilters(
+        [
+            ...allergenFilters.slice(0, index),
+            {...allergenFilters[index], checked: !allergenFilters[index].checked},
+            ...allergenFilters.slice(index + 1)
+        ])}
 
 
     async function fetchRecipes() {
         try {
 
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public${letAllergenString}`, { params: {
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public`, { params: {
                     mealType: 'Dinner',
                     dishType: 'Main course',
                     random: true,
@@ -31,13 +57,13 @@ function AllRecipes() {
         }
     }
 
-    let letAllergenString = ''
 
      async function fetchSearchedRecipes(searchValue) {
 
 
         try {
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public&health=dairy-free&health=gluten-free&health=egg-free&health=celery-free${allergenFilters}` ,
+            console.log(allergenFilters)
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public` ,
                 { params: {
                         q: searchValue,
                     }})
@@ -49,16 +75,6 @@ function AllRecipes() {
         }
     }
 
-    function setToState(allergenString)
-    {
-        console.log(allergenString, "{{{{{{")
-
-
-        return (
-            setAllergenFilters(allergenString)
-        )
-
-    }
 
     useEffect(() => {
         void fetchRecipes()
@@ -73,11 +89,19 @@ function AllRecipes() {
                     fetchSearchedRecipes={fetchSearchedRecipes}
                     fetchRecipes={fetchRecipes}
                 />
-                <Filters
-                    // createHealthParam={createHealthParam}
-                    setToState = {setToState}
-                    setAllergenFilters={setAllergenFilters}
-                />
+
+                {allergenFilters.map((filter, index) => (
+                        <Filters
+                            key={filter.name}
+                            label={filter.name}
+                            index={index}
+                            isChecked={filter.checked}
+                            checkHandler={() => updateCheckStatus(index)}
+                        />
+                    )
+
+                )}
+
             </section>
 
             <section className="allRecipesContainer">
