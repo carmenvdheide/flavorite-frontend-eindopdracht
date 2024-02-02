@@ -28,15 +28,57 @@ function AllRecipes() {
         {name: "mollusk-free", checked: false},
     ])
 
+    const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
+
 
     function updateCheckStatus(index) {
-        console.log("CLICK", index)
-        setAllergenFilters(
-        [
-            ...allergenFilters.slice(0, index),
-            {...allergenFilters[index], checked: !allergenFilters[index].checked},
-            ...allergenFilters.slice(index + 1)
-        ])}
+        // setAllergenFilters(
+        // [
+        //     ...allergenFilters.slice(0, index),
+        //     {...allergenFilters[index], checked: !allergenFilters[index].checked},
+        //     ...allergenFilters.slice(index + 1)
+        // ])
+        //
+        // let allergenArray = []
+        // allergenFilters.map((filter) => {
+        //     filter.checked === true && allergenArray.push(filter.name)
+        // })
+        // console.log(allergenArray)
+        // let allergens = "&health=" + allergenArray.join('&health=')
+        // let allergenString = allergens.toString()
+        //
+        // setAllergenFilterParam(allergenString)
+        //
+        //
+        //
+        // console.log(allergenString)
+
+
+        setAllergenFilters(prevFilters => {
+            const updatedFilters = prevFilters.map((filter, i) => {
+                if (i === index) {
+                    return { ...filter, checked: !filter.checked };
+                }
+                return filter;
+            });
+            return updatedFilters;
+        });
+
+    }
+
+    useEffect(() => {
+        let allergenArray = allergenFilters.filter(filter => filter.checked).map(filter => filter.name);
+        let allergens = allergenArray.length > 0 ? "&health=" + allergenArray.join('&health=') : '';
+        setAllergenFilterParam(allergens);
+        console.log(allergens);
+
+    }, [allergenFilters]);
+
+
+
+
+
+
 
 
     async function fetchRecipes() {
@@ -58,17 +100,18 @@ function AllRecipes() {
     }
 
 
+
      async function fetchSearchedRecipes(searchValue) {
 
+         console.log("PARAMETERS",allergenFilterParam)
 
         try {
-            console.log(allergenFilters)
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public` ,
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}` ,
                 { params: {
                         q: searchValue,
                     }})
             setData(result.data.hits)
-            console.log(result)
+            console.log(result.data.hits)
         } catch (e) {
             console.error(e)
             console.log('nope')

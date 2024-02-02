@@ -2,6 +2,7 @@ import {useState} from "react";
 
 function SearchBar(props) {
     const [searchBarValue, setSearchBarValue] = useState('')
+
     return (
         <div className="searchBar">
             <input
@@ -12,7 +13,12 @@ function SearchBar(props) {
             />
             <button
                 className="recipeSearchButton"
-                onClick={() => {searchBarValue ? props.fetchSearchedRecipes(searchBarValue) : props.fetchRecipes}}
+                onClick={() => {
+                    searchBarValue
+                        ? props.fetchSearchedRecipes(searchBarValue)
+                        : props.fetchRecipes
+                }}
+
             >go</button>
         </div>
 
