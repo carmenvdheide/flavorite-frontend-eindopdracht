@@ -1,4 +1,4 @@
-function DietFilters({label, isChecked, checkHandler}) {
+function Filters({label, isChecked, checkHandler}) {
     return (
         <div>
             <input
@@ -8,11 +8,10 @@ function DietFilters({label, isChecked, checkHandler}) {
                 onChange={checkHandler}
             />
             <label
-                htmlFor={`${name}Filter`}
+                htmlFor={`${label}Filter`}
             >{label}</label>
         </div>
-
     )
 }
 
-export default DietFilters
+export default Filters

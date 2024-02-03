@@ -5,13 +5,14 @@ import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
-import AllergenFilters from "../../components/AllergenFilters/AllergenFilters.jsx";
-import DietFilters from "../../components/dietFilters/DietFilters.jsx";
+import Filters from "../../components/Filters /Filters.jsx";
 
 
 function AllRecipes() {
     const [ data, setData ] = useState([])
     const [ allergenFilters, setAllergenFilters ] = useState([
+        {name: "vegetarian", checked: false, type: "health"},
+        {name: "vegan", checked: false, type: "health"},
         {name: "dairy-free", checked: false, type: "health"},
         {name: "gluten-free", checked: false, type: "health"},
         {name: "celery-free", checked: false, type: "health"},
@@ -29,8 +30,6 @@ function AllRecipes() {
         {name: "mollusk-free", checked: false, type: "health"},
     ])
 
-    const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
-
     const [ dietFilters, setDietFilters ] = useState([
         {name: "balanced", checked: false, type: "diet"},
         {name: "high-fiber", checked: false, type: "diet"},
@@ -40,7 +39,23 @@ function AllRecipes() {
         {name: "low-sodium", checked: false, type: "diet"},
     ])
 
+    const [ mealTypeFilters, setMealTypeFilters ] = useState([
+        {name: "breakfast", checked: false, type: "mealType"},
+        {name: "brunch", checked: false, type: "mealType"},
+        {name: "lunch/dinner", checked: false, type: "mealType"},
+        {name: "snack", checked: false, type: "mealType"},
+        {name: "teatime", checked: false, type: "mealType"},
+    ])
+
+
+    const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
+
     const [ dietFilterParam, setDietFilterParam ] = useState('')
+
+    const [ mealTypeFiltersParam, setMealTypeFiltersParam ] = useState('')
+
+
+
 
 
     function updateCheckStatus(index, type) {
@@ -64,6 +79,17 @@ function AllRecipes() {
                     return filter
                 })
                 return updatedFilters
+            })
+        } else {
+            setMealTypeFilters(prevFilters => {
+                const updatedFilters = prevFilters.map((filter, i) => {
+                    if (i === index) {
+                        return { ...filter, checked: !filter.checked }
+                    }
+                    return filter
+                })
+                return updatedFilters
+
             })
         }
 
@@ -89,6 +115,16 @@ function AllRecipes() {
         console.log(allergens)
 
     }, [dietFilters])
+
+    useEffect(() => {
+        let mealTypeArray = mealTypeFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let mealType = mealTypeArray.length > 0
+            ? "&mealType=" + mealTypeArray.join('&mealType=')
+            : ''
+        setMealTypeFiltersParam(mealType)
+        console.log(mealType)
+
+    }, [mealTypeFilters])
 
 
 
@@ -122,7 +158,7 @@ function AllRecipes() {
          console.log("PARAMETERS",allergenFilterParam)
 
         try {
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}${dietFilterParam}` ,
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}${dietFilterParam}${mealTypeFiltersParam}` ,
                 { params: {
                         q: searchValue,
                     }})
@@ -152,7 +188,7 @@ function AllRecipes() {
                 <div className="filtersBox">
                     <div>
                         {allergenFilters.map((filter, index) => (
-                                <AllergenFilters
+                                <Filters
                                     key={filter.name}
                                     label={filter.name}
                                     index={index}
@@ -166,12 +202,23 @@ function AllRecipes() {
 
                     <div>
                         {dietFilters.map((filter, index) => (
-                            <DietFilters
+                            <Filters
                                 key={filter.name}
                                 label={filter.name}
                                 index={index}
                                 isChecked={filter.checked}
                                 checkHandler={() => updateCheckStatus(index, filter.type) }
+                            />
+                        ))}
+                    </div>
+
+                    <div>
+                        {mealTypeFilters.map((filter, index) => (
+                            <Filters
+                                key={filter.name}
+                                label={filter.name}
+                                isChecked={filter.checked}
+                                checkHandler={() => updateCheckStatus(index, filter.type)}
                             />
                         ))}
                     </div>
