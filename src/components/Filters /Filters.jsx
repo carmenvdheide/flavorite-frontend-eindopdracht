@@ -1,6 +1,8 @@
+import "./Filters.css"
+
 function Filters({label, isChecked, checkHandler}) {
     return (
-        <div>
+        <div className="checkboxWrap">
             <input
                 type="checkbox"
                 id={`${label}Filter`}

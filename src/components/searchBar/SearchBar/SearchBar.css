@@ -1,0 +1,19 @@
+.searchBar {
+    margin: 1.5rem;
+}
+
+.searchBar button {
+    padding: 0.5rem 0.9rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+
+.recipeSearchButton {
+    background-color: var(--purple-color);
+}
+
+.recipeFilterButton {
+    background-color: var(--orange-color);
+}

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import "./SearchBar.css"
 
 function SearchBar(props) {
     const [searchBarValue, setSearchBarValue] = useState('')
@@ -20,6 +21,10 @@ function SearchBar(props) {
                 }}
 
             >go</button>
+            <button
+                className="recipeFilterButton"
+                onClick={props.handleFilterButton}
+            >Filters</button>
         </div>
 
     )

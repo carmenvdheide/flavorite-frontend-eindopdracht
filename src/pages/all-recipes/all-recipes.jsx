@@ -11,8 +11,7 @@ import Filters from "../../components/Filters /Filters.jsx";
 function AllRecipes() {
     const [ data, setData ] = useState([])
     const [ allergenFilters, setAllergenFilters ] = useState([
-        {name: "vegetarian", checked: false, type: "health"},
-        {name: "vegan", checked: false, type: "health"},
+
         {name: "dairy-free", checked: false, type: "health"},
         {name: "gluten-free", checked: false, type: "health"},
         {name: "celery-free", checked: false, type: "health"},
@@ -42,9 +41,15 @@ function AllRecipes() {
     const [ mealTypeFilters, setMealTypeFilters ] = useState([
         {name: "breakfast", checked: false, type: "mealType"},
         {name: "brunch", checked: false, type: "mealType"},
-        {name: "lunch/dinner", checked: false, type: "mealType"},
+        {name: "lunch", checked: false, type: "mealType"},
+        {name: "dinner", checked: false, type: "mealType"},
         {name: "snack", checked: false, type: "mealType"},
         {name: "teatime", checked: false, type: "mealType"},
+    ])
+
+    const [eatingHabitFilters, setEatingHabitFilters ] = useState([
+        {name: "vegetarian", checked: false, type: "health"},
+        {name: "vegan", checked: false, type: "health"},
     ])
 
 
@@ -54,22 +59,37 @@ function AllRecipes() {
 
     const [ mealTypeFiltersParam, setMealTypeFiltersParam ] = useState('')
 
+    const [ eatingHabitFilterParam, setEatingHabitFilterParam ] = useState('')
 
 
 
 
-    function updateCheckStatus(index, type) {
+
+    function updateCheckStatus(index, type, name) {
 
         if (type === "health") {
-            setAllergenFilters(prevFilters => {
-                const updatedFilters = prevFilters.map((filter, i) => {
-                    if (i === index) {
-                        return { ...filter, checked: !filter.checked }
-                    }
-                    return filter
+            if (name === "vegetarian" || name === "vegan") {
+                setEatingHabitFilters(prevFilters => {
+                    const updatedFilters = prevFilters.map((filter, i) => {
+                        if (i === index) {
+                            return { ...filter, checked: !filter.checked }
+                        }
+                        return filter
+                    })
+                    return updatedFilters
                 })
-                return updatedFilters
-            })
+            } else {
+                setAllergenFilters(prevFilters => {
+                    const updatedFilters = prevFilters.map((filter, i) => {
+                        if (i === index) {
+                            return { ...filter, checked: !filter.checked }
+                        }
+                        return filter
+                    })
+                    return updatedFilters
+                })
+            }
+
         } else if (type === "diet") {
             setDietFilters(prevFilters => {
                 const updatedFilters = prevFilters.map((filter, i) => {
@@ -126,6 +146,16 @@ function AllRecipes() {
 
     }, [mealTypeFilters])
 
+    useEffect(() => {
+        let eatingHabitArray = eatingHabitFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let eatingHabit = eatingHabitArray.length > 0
+            ? "&health=" + eatingHabitArray.join('&health=')
+            : ''
+        setEatingHabitFilterParam(eatingHabit)
+        console.log(eatingHabit)
+
+    }, [eatingHabitFilters])
+
 
 
 
@@ -155,10 +185,10 @@ function AllRecipes() {
 
      async function fetchSearchedRecipes(searchValue) {
 
-         console.log("PARAMETERS",allergenFilterParam)
+         console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
 
         try {
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${allergenFilterParam}${dietFilterParam}${mealTypeFiltersParam}` ,
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${eatingHabitFilterParam,allergenFilterParam,dietFilterParam,mealTypeFiltersParam}` ,
                 { params: {
                         q: searchValue,
                     }})
@@ -175,55 +205,91 @@ function AllRecipes() {
         void fetchRecipes()
     }, [])
 
+    const [ filtersDisplay, setFiltersDisplay ] = useState('dontDisplayFilters')
+
+    function handleFilterButton() {
+        filtersDisplay === 'dontDisplayFilters'
+            ? setFiltersDisplay('filtersBox')
+            : setFiltersDisplay('dontDisplayFilters')
+    }
+
 
     return (
 
         <>
             <section className="searchContainer">
-                <SearchBar
-                    fetchSearchedRecipes={fetchSearchedRecipes}
-                    fetchRecipes={fetchRecipes}
-                />
+                    <SearchBar
+                        fetchSearchedRecipes={fetchSearchedRecipes}
+                        fetchRecipes={fetchRecipes}
+                        handleFilterButton={handleFilterButton}
+                    />
 
-                <div className="filtersBox">
-                    <div>
-                        {allergenFilters.map((filter, index) => (
+
+
+                <div className={filtersDisplay}>
+                    <div className="filterCategory">
+                        <p>Habits</p>
+                        <div>
+                            {eatingHabitFilters.map((filter, index) => (
                                 <Filters
                                     key={filter.name}
                                     label={filter.name}
                                     index={index}
                                     isChecked={filter.checked}
-                                    checkHandler={() => updateCheckStatus(index, filter.type)}
+                                    checkHandler={() => updateCheckStatus(index, filter.type, filter.name)}
                                 />
-                            )
 
-                        )}
+                            ))}
+                        </div>
+
+                    </div>
+                    <div className="filterCategory">
+                        <p>Allergens</p>
+                        <div>
+                            {allergenFilters.map((filter, index) => (
+                                <Filters
+                                    key={filter.name}
+                                    label={filter.name}
+                                    index={index}
+                                    isChecked={filter.checked}
+                                    checkHandler={() => updateCheckStatus(index, filter.type, filter.name)}
+                                />
+
+                            ))}
+                        </div>
+
                     </div>
 
-                    <div>
-                        {dietFilters.map((filter, index) => (
-                            <Filters
-                                key={filter.name}
-                                label={filter.name}
-                                index={index}
-                                isChecked={filter.checked}
-                                checkHandler={() => updateCheckStatus(index, filter.type) }
-                            />
-                        ))}
+                    <div className="filterCategory">
+                        <p>Diets</p>
+                        <div>
+                            {dietFilters.map((filter, index) => (
+                                <Filters
+                                    key={filter.name}
+                                    label={filter.name}
+                                    index={index}
+                                    isChecked={filter.checked}
+                                    checkHandler={() => updateCheckStatus(index, filter.type, filter.name) }
+                                />
+                            ))}
+                        </div>
+
                     </div>
 
-                    <div>
-                        {mealTypeFilters.map((filter, index) => (
-                            <Filters
-                                key={filter.name}
-                                label={filter.name}
-                                isChecked={filter.checked}
-                                checkHandler={() => updateCheckStatus(index, filter.type)}
-                            />
-                        ))}
+                    <div className="filterCategory">
+                        <p>Meal Types</p>
+                        <div>
+                            {mealTypeFilters.map((filter, index) => (
+                                <Filters
+                                    key={filter.name}
+                                    label={filter.name}
+                                    isChecked={filter.checked}
+                                    checkHandler={() => updateCheckStatus(index, filter.type, filter.name)}
+                                />
+                            ))}
+                        </div>
+
                     </div>
-
-
 
                 </div>
 

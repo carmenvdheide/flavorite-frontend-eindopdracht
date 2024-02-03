@@ -24,25 +24,16 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 30vh;
+    padding: 2rem 10rem;
 }
 
-.recipeSearchButton {
-    padding: 0.5rem;
-    width: 3rem;
-    height: 3rem;
-    background-color: var(--purple-color);
-    border-radius: 0.8rem;
-    margin-left: 0.5rem;
-    font-weight: bold;
-}
 
 input {
     height: 50px;
     background-color: transparent;
-    border: 2px solid black;
+    border: 1.5px solid black;
     padding-left: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
 }
 
 
@@ -51,11 +42,32 @@ input {
     background-color: transparent;
 }
 
-.filtersBox {
-    display: flex;
-
+.dontDisplayFilters {
+    display: none;
 }
 
+.filtersBox {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.filtersBox p {
+    font-weight: 700;
+}
+
+.filterCategory {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    transition: all 0.5s ease-out;
+}
+
+.filterCategory div {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+}
 
 
 /********************************************************** recipe cards section*/

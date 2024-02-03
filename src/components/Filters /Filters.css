@@ -1,0 +1,17 @@
+
+
+.checkboxWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem ;
+ }
+
+ .checkboxWrap input {
+ }
+
+ .checkboxWrap label {
+     background-color: transparent;
+     font-family: "Montserrat", sans-serif;
+ }
