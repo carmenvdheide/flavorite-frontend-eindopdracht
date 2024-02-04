@@ -1,0 +1,106 @@
+.recipeDetailsContainer {
+    border: 1px black solid;
+    margin: 10vh 15vw;
+    background-color: white;
+}
+
+/****************************************************************** TOP */
+
+.recipeDetailsTop {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 4rem 6rem 2rem 6rem;
+    padding-bottom: 5rem;
+    background-color: white;
+    border-bottom: 2px black solid;
+}
+
+.detailPageImg{
+    width: 25rem;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.recipeDetailsInfo {
+    background-color: transparent;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 60%;
+    margin: 0;
+}
+
+.recipeDetailsTop h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.3rem;
+    background-color: transparent;
+}
+
+.iconNumberWrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin: 1rem 2rem;
+    background-color: transparent;
+}
+
+.iconNumberWrapper div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.iconDetailPage {
+    color: black;
+    background-color: transparent;
+}
+
+.recipeDetailsTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background-color: transparent;
+}
+
+.recipeDetailsTags p {
+    font-weight: 300;
+    background-color: #e7e6e6;
+    padding: 0.3rem 0.5rem;
+    border: #a7a5a5 1.5px solid;
+    border-radius: 0.4rem;
+    text-transform: capitalize;
+}
+
+
+/****************************************************************** MIDDLE */
+
+.recipeDetailsMiddle {
+    background-color: white;
+}
+.recipeDetailsButtonWrap {
+    background-color: transparent;
+    margin: 2rem 6rem 2rem 6rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.recipeDetailsButton {
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 2px var(--orange-color) solid;
+    color: var(--orange-color);
+}
+
+.recipeDetailsButton:hover {
+    background-color: var(--light-orange-color);
+}
+
+
+
+/****************************************************************** BOTTOM */
+

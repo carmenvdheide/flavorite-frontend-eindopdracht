@@ -5,7 +5,10 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    margin: 0 1rem ;
+    margin: 0.2rem 1rem;
+    border: none;
+    /*background-color: #43aa8b;*/
+
  }
 
  .checkboxWrap input {
@@ -14,4 +17,5 @@
  .checkboxWrap label {
      background-color: transparent;
      font-family: "Montserrat", sans-serif;
+     text-transform: capitalize;
  }

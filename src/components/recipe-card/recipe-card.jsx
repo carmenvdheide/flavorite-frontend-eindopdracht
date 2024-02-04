@@ -2,16 +2,18 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
 import HandleAllergens from "../allergens/handleAllergens.jsx";
+import {NavLink} from "react-router-dom";
 
 function RecipeCard({recipe}) {
 
+    const recipeID = recipe.recipe.uri.split('_')[1]
 
     return (
 
 
-        // <NavLink
-        //     to="/recipes/${recipe.recipe.uri.split('_')[1]}"
-        //     className="recipe-link">
+        <NavLink
+            to={`/recipes/${recipeID}`}
+            className="recipe-link">
             <li
                 className="recipeCard">
                 <img
@@ -30,19 +32,15 @@ function RecipeCard({recipe}) {
                 </section>
 
 
-                <ul className='recipePageAllergens'>
-                    {recipe.recipe.healthLabels.map((allergen) => (
-                        <li key={recipe.recipe.uri.split('_')[1]}>{allergen}</li>
-                    ))}
-                </ul>
                 <div className="allergenList">
-
-                    {HandleAllergens(recipe)}
+                    <HandleAllergens
+                        data={recipe}
+                    />
                 </div>
 
 
             </li>
-        // </NavLink>
+         </NavLink>
 
     )
 }

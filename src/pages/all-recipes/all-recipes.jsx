@@ -301,7 +301,10 @@ function AllRecipes() {
                 <ul className="allRecipesList">
                     {data && data.map((recipe) => {
                         return (
-                                <RecipeCard recipe={recipe} key={recipe.recipe.uri.split('_')[1]}/>
+                                <RecipeCard
+                                    recipe={recipe}
+                                    key={recipe.recipe.uri.split('_')[1]}
+                                />
                             )
                     })}
                 </ul>

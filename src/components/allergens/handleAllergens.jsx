@@ -17,7 +17,7 @@ import './handleAllergens.css'
 import {useState} from "react";
 
 
-function HandleAllergens(data) {
+function HandleAllergens({data}) {
     const allergenArray = []
     const [size, setSize] = useState(7)
     const [classnameMoreButton, setClassnameMoreButton] = useState('allergenButton')
