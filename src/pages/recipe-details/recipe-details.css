@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin: 4rem 6rem 2rem 6rem;
+    margin: 4rem 8rem 2rem 8rem;
     padding-bottom: 5rem;
     background-color: white;
     border-bottom: 2px black solid;
@@ -83,9 +83,11 @@
 }
 .recipeDetailsButtonWrap {
     background-color: transparent;
-    margin: 2rem 6rem 2rem 6rem;
+    margin: 3rem 8rem 2rem 8rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2vw;
+    flex-wrap: wrap;
 }
 
 .recipeDetailsButton {
@@ -99,8 +101,60 @@
 .recipeDetailsButton:hover {
     background-color: var(--light-orange-color);
 }
+.recipeDetailsButton:current {
+    background-color: var(--light-orange-color);
+}
 
 
 
 /****************************************************************** BOTTOM */
+.recipeDetailsBottom {
+    background-color: white;
+}
+
+.recipeDetailsIngredients {
+    margin: 4rem 12rem 4rem 12rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*border: 1px red solid ;*/
+    flex-wrap: wrap;
+    gap: 7vh 3vw;
+    background-color: transparent;
+}
+
+.recipeDetailsIngredients img {
+    width: 7rem;
+    border: 1px solid #000000;
+    border-radius: 1rem;
+}
+
+
+.recipeDetailsIngredients li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: transparent;
+    width: 8rem;
+    height: 9rem;
+}
+
+.recipeDetailsIngredients p {
+    text-align: center;
+}
+
+.recipeDetailsAllergens {
+
+}
+
+.recipeDetailsNutrients {
+    list-style: none;
+}
+
+.recipeDetailsDontDisplay {
+    display: none;
+}
 

@@ -9,7 +9,9 @@ import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 function RecipeDetails() {
     const { id } = useParams()
     const [ recipeDetails, setRecipeDetails ] = useState([])
-
+    const [ ingredientsClassname, setIngrdientsClassname ] = useState('recipeDetailsIngredients')
+    const [ allergensClassname, setAllergensClassname ] = useState('recipeDetailsDontDisplay')
+    const [ nutrientsClassname, setNutrientsClassname ] = useState('recipeDetailsDontDisplay')
 
     async function fetchRecipeDetails() {
         try {
@@ -29,6 +31,36 @@ function RecipeDetails() {
         void fetchRecipeDetails()
     }, [])
 
+    function handleIngredientButton() {
+        ingredientsClassname === "recipeDetailsDontDisplay" &&
+            setIngrdientsClassname("recipeDetailsIngredients")
+            setAllergensClassname("recipeDetailsDontDisplay")
+        setNutrientsClassname('recipeDetailsDontDisplay')
+
+    }
+
+    function handleAllergenButton() {
+        allergensClassname === "recipeDetailsDontDisplay" &&
+            setAllergensClassname("recipeDetailsAllergens")
+            setIngrdientsClassname("recipeDetailsDontDisplay")
+            setNutrientsClassname('recipeDetailsDontDisplay')
+
+    }
+
+    function handleNutrientButton() {
+        nutrientsClassname === "recipeDetailsDontDisplay" &&
+            setNutrientsClassname('recipeDetailsNutrients')
+            setIngrdientsClassname('recipeDetailsDontDisplay')
+            setAllergensClassname("recipeDetailsDontDisplay")
+
+
+
+
+
+    }
+
+    const nutrientArray = recipeDetails.totalNutrients &&
+        Object.values(recipeDetails.totalNutrients)
 
 
 
@@ -60,22 +92,66 @@ function RecipeDetails() {
                         {recipeDetails.dishType && recipeDetails.dishType.map((type) => {return <p key={type}>{type}</p> })}
                     </div>
 
-                    {/*<ul>*/}
-                    {/*    {recipeDetails.healthLabels.map((label) => {*/}
-                    {/*        return <li key={label}>{label}</li>*/}
-                    {/*    })}*/}
-                    {/*</ul>*/}
 
                 </div>
 
             </section>
             <section className="recipeDetailsMiddle">
                 <div className="recipeDetailsButtonWrap">
-                    <button className="recipeDetailsButton">Ingredients</button>
-                    <button className="recipeDetailsButton">Allergens</button>
-                    <button className="recipeDetailsButton">Nutrients</button>
+                    <button
+                        className="recipeDetailsButton"
+                        value="ingredients"
+                        onClick={handleIngredientButton}
+                    >Ingredients</button>
+                    <button
+                        className="recipeDetailsButton"
+                        value="allergens"
+                        onClick={handleAllergenButton}
+                    >Allergens</button>
+                    <button
+                        className="recipeDetailsButton"
+                        value="nutrients"
+                        onClick={handleNutrientButton}
+                    >Nutrients</button>
                     <button className="recipeDetailsButton">Directions</button>
                 </div>
+            </section>
+
+            <section className="recipeDetailsBottom">
+                <ul className={ingredientsClassname}>
+                    { recipeDetails.ingredients && recipeDetails.ingredients.map((ingredient) =>{
+                        return (
+                                <li key={ingredient.food}>
+                                    <img src={ingredient.image}/>
+                                    <p>{ingredient.food}</p>
+                                </li>
+                            )
+
+                    })}
+                </ul>
+
+                <ul>
+                    {recipeDetails.healthLabels && recipeDetails.healthLabels.map((label) => {
+                        return <li
+                            key={label}
+                            className={allergensClassname}
+                        >{label}</li>
+                    })}
+                </ul>
+                <uL>
+                    {nutrientArray && nutrientArray.map((nutrient) => {
+                        return (
+                            <li
+                                key={nutrient.label}
+                                className={nutrientsClassname}>
+                                <p>{nutrient.label}</p>
+                                <p>{Math.round(nutrient.quantity)}{nutrient.unit}</p>
+                            </li>)
+                    })}
+                </uL>
+
+
+
             </section>
 
         </article>
