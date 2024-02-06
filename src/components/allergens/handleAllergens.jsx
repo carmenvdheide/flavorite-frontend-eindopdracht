@@ -215,8 +215,8 @@ function HandleAllergens({data}) {
 
                        )
 
-
                })}
+
                <button
                    onClick={() => {
                        setSize(allergenArray.length)

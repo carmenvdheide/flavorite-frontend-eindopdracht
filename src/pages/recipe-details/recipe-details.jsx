@@ -6,6 +6,7 @@ import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCu
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 
+
 function RecipeDetails() {
     const { id } = useParams()
     const [ recipeDetails, setRecipeDetails ] = useState([])
@@ -53,15 +54,13 @@ function RecipeDetails() {
             setIngrdientsClassname('recipeDetailsDontDisplay')
             setAllergensClassname("recipeDetailsDontDisplay")
 
-
-
-
-
     }
 
     const nutrientArray = recipeDetails.totalNutrients &&
         Object.values(recipeDetails.totalNutrients)
 
+    const dailyNutrientArray = recipeDetails.totalDaily &&
+        Object.values(recipeDetails.totalDaily)
 
 
     return (
@@ -107,7 +106,7 @@ function RecipeDetails() {
                         className="recipeDetailsButton"
                         value="allergens"
                         onClick={handleAllergenButton}
-                    >Allergens</button>
+                    >Health labels</button>
                     <button
                         className="recipeDetailsButton"
                         value="nutrients"
@@ -124,28 +123,46 @@ function RecipeDetails() {
                                 <li key={ingredient.food}>
                                     <img src={ingredient.image}/>
                                     <p>{ingredient.food}</p>
+                                    <p className="ingredientAmount">{ingredient.quantity} {ingredient.measure}</p>
                                 </li>
                             )
 
                     })}
                 </ul>
 
-                <ul>
+                <ul className={allergensClassname}>
                     {recipeDetails.healthLabels && recipeDetails.healthLabels.map((label) => {
-                        return <li
-                            key={label}
-                            className={allergensClassname}
-                        >{label}</li>
+                        return (
+                                <li
+                                    key={label}
+                                    className="recipeDetailsAllergenList">
+                                    <p>{label}</p>
+                                </li>
+                            )
+
                     })}
                 </ul>
-                <uL>
+
+                <uL className={nutrientsClassname}>
+                    <li>
+                        <p className="description descriptionNutrient">Nutrient</p>
+                        <p className="description descriptionQuantity">Quantity</p>
+                        <p className="description descriptionDaily">% of daily requirements</p>
+                    </li>
                     {nutrientArray && nutrientArray.map((nutrient) => {
                         return (
                             <li
                                 key={nutrient.label}
-                                className={nutrientsClassname}>
-                                <p>{nutrient.label}</p>
-                                <p>{Math.round(nutrient.quantity)}{nutrient.unit}</p>
+                                >
+                                <p className="nutrientLabel">{nutrient.label}</p>
+                                <p className="nutrientQuantity">{Math.round(nutrient.quantity)}{nutrient.unit}</p>
+                                <p className="dailyNutrient">{dailyNutrientArray.map((dailyNutrient) => {
+                                    return (
+                                        dailyNutrient.label === nutrient.label
+                                            ? <p>{Math.round(dailyNutrient.quantity)}{dailyNutrient.unit}</p>
+                                            : ""
+                                    )})}
+                                </p>
                             </li>)
                     })}
                 </uL>

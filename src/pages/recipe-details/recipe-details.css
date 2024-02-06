@@ -2,6 +2,7 @@
     border: 1px black solid;
     margin: 10vh 15vw;
     background-color: white;
+    border-radius: 0.8rem;
 }
 
 /****************************************************************** TOP */
@@ -112,12 +113,13 @@
     background-color: white;
 }
 
+/*********************************************************************** ingredients */
+
 .recipeDetailsIngredients {
     margin: 4rem 12rem 4rem 12rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /*border: 1px red solid ;*/
     flex-wrap: wrap;
     gap: 7vh 3vw;
     background-color: transparent;
@@ -127,6 +129,7 @@
     width: 7rem;
     border: 1px solid #000000;
     border-radius: 1rem;
+    margin-bottom: 0.4rem;
 }
 
 
@@ -136,7 +139,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 0.8rem;
+    /*gap: 0.8rem;*/
     background-color: transparent;
     width: 8rem;
     height: 9rem;
@@ -144,17 +147,102 @@
 
 .recipeDetailsIngredients p {
     text-align: center;
+    text-transform: capitalize;
+    margin-top: 0.4rem;
 }
+
+.ingredientAmount {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+/*********************************************************************** allergens */
 
 .recipeDetailsAllergens {
-
+    margin: 4rem 12rem 4rem 12rem;
+    background-color: white;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
+
+.recipeDetailsAllergens li {
+    list-style: none;
+    padding: 0.5rem;
+    background-color: #d9f4d9;
+    border: solid 2px #bed5be;
+    border-radius: 0.7rem;
+    text-align: center;
+    width: 13vw;
+}
+
+.recipeDetailsAllergens li p {
+    font-size: 0.9rem;
+}
+
+    /*********************************************************************** nutrients */
 
 .recipeDetailsNutrients {
     list-style: none;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 4rem 12rem 4rem 12rem;
+}
+
+.recipeDetailsNutrients li {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    /*border-bottom: 1px solid black;*/
+    padding: 1rem;
+}
+
+.recipeDetailsNutrients li:nth-child(odd) {
+    background-color: var(--background-color);
+}
+
+.description {
+    font-weight: 700;
+}
+
+.descriptionNutrient {
+    width: 18vw;
+}
+
+.descriptionQuantity {
+    width: 10vw;
+}
+
+.descriptionDaily {
+    width: 10vw;
+}
+
+.nutrientLabel {
+    width: 18vw;
+}
+
+.nutrientQuantity {
+    width: 10vw;
+}
+
+.dailyNutrient {
+    width: 10vw;
 }
 
 .recipeDetailsDontDisplay {
     display: none;
 }
+
+.recipeDetailsNutrients li p:nth-child(n+2) {
+    text-align: end;
+}
+
+
 
