@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import './recipe-details.css'
@@ -62,6 +62,8 @@ function RecipeDetails() {
     const dailyNutrientArray = recipeDetails.totalDaily &&
         Object.values(recipeDetails.totalDaily)
 
+    const navigate = useNavigate()
+
 
     return (
         <article className="recipeDetailsContainer">
@@ -90,10 +92,7 @@ function RecipeDetails() {
                         {recipeDetails.mealType && recipeDetails.mealType.map((type) => {return <p key={type}>{type}</p>})}
                         {recipeDetails.dishType && recipeDetails.dishType.map((type) => {return <p key={type}>{type}</p> })}
                     </div>
-
-
                 </div>
-
             </section>
             <section className="recipeDetailsMiddle">
                 <div className="recipeDetailsButtonWrap">
@@ -123,7 +122,19 @@ function RecipeDetails() {
                                 <li key={ingredient.food}>
                                     <img src={ingredient.image}/>
                                     <p>{ingredient.food}</p>
-                                    <p className="ingredientAmount">{ingredient.quantity} {ingredient.measure}</p>
+                                    <p className="ingredientAmount">
+                                        {ingredient.quantity !== 0
+                                            ? Number.isInteger(ingredient.quantity)
+                                                ? ingredient.quantity
+                                                : /^\d+\.\d$/.test(ingredient.quantity)
+                                                    ? ingredient.quantity.toFixed(1)
+                                                : ingredient.quantity.toFixed(2)
+                                            : ""}
+                                        {ingredient.measure === "<unit>" || ingredient.measure === null
+                                            ? ""
+                                            : ingredient.quantity > 1
+                                                ? ` ${ingredient.measure}s`
+                                                : ` ${ingredient.measure}`}</p>
                                 </li>
                             )
 
