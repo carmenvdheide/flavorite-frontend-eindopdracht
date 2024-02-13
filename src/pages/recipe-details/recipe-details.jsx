@@ -5,6 +5,7 @@ import './recipe-details.css'
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
+import {faAnglesLeft} from "@fortawesome/free-solid-svg-icons";
 
 
 function RecipeDetails() {
@@ -67,6 +68,11 @@ function RecipeDetails() {
 
     return (
         <article className="recipeDetailsContainer">
+            <button
+                className="recipeDetailsButtonTop"
+                onClick={() => navigate('/recipes')}>
+                <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>Back to recipe overview</p>
+            </button>
             <section className='recipeDetailsTop'>
                     <img
                         src={recipeDetails.image}

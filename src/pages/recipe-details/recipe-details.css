@@ -5,13 +5,30 @@
     border-radius: 0.8rem;
 }
 
+.recipeDetailsButtonTop {
+    background-color: transparent;
+    padding: 1rem;
+    margin: 1.5rem 0 0 1rem;
+    /*border: 1px solid orange;*/
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.backIcon {
+    background-color: transparent;
+    color: var(--purple-color);
+    height: 1.5rem;
+    width: 2rem;
+}
+
 /****************************************************************** TOP */
 
 .recipeDetailsTop {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin: 4rem 8rem 2rem 8rem;
+    margin: 3rem 8rem 2rem 8rem;
     padding-bottom: 5rem;
     background-color: white;
     border-bottom: 2px black solid;
@@ -25,7 +42,6 @@
 
 .recipeDetailsInfo {
     background-color: transparent;
-    /*border: 1px solid red;*/
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -161,7 +177,7 @@
 .recipeDetailsAllergens {
     margin: 4rem 12rem 4rem 12rem;
     background-color: white;
-    height: 30vh;
+    max-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,7 +189,7 @@
     list-style: none;
     padding: 0.5rem;
     background-color: #d9f4d9;
-    border: solid 2klopx #bed5be;
+    border: solid 2px #bed5be;
     border-radius: 0.7rem;
     text-align: center;
     width: 13vw;
