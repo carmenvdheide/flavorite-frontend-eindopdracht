@@ -306,9 +306,11 @@ function AllRecipes() {
                                     key={recipe.recipe.uri.split('_')[1]}
                                     classname="recipeCard"
                                     classnameText="recipeCardText"
+                                    classnameIcons="recipeCardInfo"
                                     classnameAllergens="recipeCardAllergens"
                                     classnameNavLink="recipe-link"
                                     navlink="recipes"
+                                    backButton="/recipes"
 
                                 />
                             )

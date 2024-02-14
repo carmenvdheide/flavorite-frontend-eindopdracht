@@ -8,7 +8,7 @@ import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faAnglesLeft} from "@fortawesome/free-solid-svg-icons";
 
 
-function RecipeDetails() {
+function RecipeDetails({backButton, backButtonText}) {
     const { id } = useParams()
     const [ recipeDetails, setRecipeDetails ] = useState([])
     const [ ingredientsClassname, setIngrdientsClassname ] = useState('recipeDetailsIngredients')
@@ -70,8 +70,8 @@ function RecipeDetails() {
         <article className="recipeDetailsContainer">
             <button
                 className="recipeDetailsButtonTop"
-                onClick={() => navigate('/recipes')}>
-                <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>Back to recipe overview</p>
+                onClick={() => navigate(backButton)}>
+                <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>{backButtonText}</p>
             </button>
             <section className='recipeDetailsTop'>
                     <img

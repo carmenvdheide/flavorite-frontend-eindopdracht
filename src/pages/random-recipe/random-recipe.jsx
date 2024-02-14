@@ -158,9 +158,11 @@ function RandomRecipe() {
                         recipe={randomRecipeData}
                         classname="randomRecipeCard"
                         classnameText="randomRecipeCardText"
+                        classnameIcons="randomRecipeInfo"
                         classnameAllergens="randomRecipeAllergens"
                         classnameNavLink="randomRecipeLink"
                         navlink="random"
+                        backButton="/random"
                     />
                 </section>
 

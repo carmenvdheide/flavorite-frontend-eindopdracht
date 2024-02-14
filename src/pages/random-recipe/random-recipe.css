@@ -56,14 +56,12 @@
     background-color: white;
     list-style: none;
     max-width: 60rem;
-    /*min-height: 30rem;*/
     height: auto;
     border-radius: 0.8rem;
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    /*margin: 3rem 5rem;*/
-    margin: 3rem auto;
+    margin: 7rem auto;
 }
 
 
@@ -72,6 +70,21 @@
     width: 25rem;
     margin: 1.5rem 0;
 }
+
+.randomRecipeInfo {
+    display: flex;
+    gap: 3.5rem;
+    justify-content: center;
+    background-color: transparent;
+    padding: 0 1rem;
+}
+.randomRecipeInfo div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: transparent;
+}
+
 .randomRecipeAllergens {
     background-color: transparent;
     margin:  auto;

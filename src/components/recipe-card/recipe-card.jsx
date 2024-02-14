@@ -4,7 +4,7 @@ import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCu
 import HandleAllergens from "../allergens/handleAllergens.jsx";
 import {NavLink} from "react-router-dom";
 
-function RecipeCard({recipe, classname, classnameText, classnameAllergens, classnameNavLink, navlink}) {
+function RecipeCard({recipe, classname, classnameText, classnameAllergens, classnameNavLink, navlink, classnameIcons}) {
 
     const recipeID = recipe.recipe.uri.split('_')[1]
 
@@ -22,7 +22,7 @@ function RecipeCard({recipe, classname, classnameText, classnameAllergens, class
 
                 <div className={classnameText}>
                     <h3 className="recipePageName">{recipe.recipe.label}</h3>
-                    <section className="recipeCardInfo">
+                    <section className={classnameIcons}>
                         <div>
                             <FontAwesomeIcon className="iconAllRecipePage" icon={faClock} size={"2xl"}/>
                             <p>{recipe.recipe.totalTime}min</p>
