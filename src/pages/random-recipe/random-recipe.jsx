@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import './random-recipe.css'
 import Filters from "../../components/Filters /Filters.jsx";
+import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 
 function RandomRecipe() {
     const [ surpriseButtonText, setSurpriseButtonText ] = useState('surprise me')
@@ -31,7 +32,7 @@ function RandomRecipe() {
     const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
 
     function handleRandomButton() {
-        setSurpriseButtonText('next')
+        setSurpriseButtonText('another one')
 
 
         async function fetchRandomRecipe() {
@@ -126,7 +127,7 @@ function RandomRecipe() {
 
                 </div>
 
-                <div className="randomRecipeAllergens">
+                <div className="randomRecipeAllergensFilter">
                     <p>select allergens:</p>
                     <div className="checkboxAllergensRandom">
                         {allergenFilters.map((filter, index) => (
@@ -150,9 +151,17 @@ function RandomRecipe() {
 
             {randomRecipeData ?
                 <section>
-                    <p>{randomRecipeData.recipe.label}</p>
-                    <p>{randomRecipeData.recipe.mealType}</p>
-                    <p>{randomRecipeData.recipe.dishType}</p>
+                    {/*<p>{randomRecipeData.recipe.label}</p>*/}
+                    {/*<p>{randomRecipeData.recipe.mealType}</p>*/}
+                    {/*<p>{randomRecipeData.recipe.dishType}</p>*/}
+                    <RecipeCard
+                        recipe={randomRecipeData}
+                        classname="randomRecipeCard"
+                        classnameText="randomRecipeCardText"
+                        classnameAllergens="randomRecipeAllergens"
+                        classnameNavLink="randomRecipeLink"
+                        navlink="random"
+                    />
                 </section>
 
             : ""}

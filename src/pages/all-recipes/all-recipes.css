@@ -140,13 +140,17 @@ input {
     background-color: transparent;
 }
 
+.recipeCardText {
+    background-color: white;
+}
+
 
 .iconAllRecipePage {
     color: darkgrey;
     background-color: transparent;
 }
 
-.allergenList {
+.recipeCardAllergens{
     background-color: transparent;
     margin: 2rem auto;
     height: auto;

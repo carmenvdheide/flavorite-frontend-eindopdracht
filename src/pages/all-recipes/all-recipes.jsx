@@ -304,6 +304,12 @@ function AllRecipes() {
                                 <RecipeCard
                                     recipe={recipe}
                                     key={recipe.recipe.uri.split('_')[1]}
+                                    classname="recipeCard"
+                                    classnameText="recipeCardText"
+                                    classnameAllergens="recipeCardAllergens"
+                                    classnameNavLink="recipe-link"
+                                    navlink="recipes"
+
                                 />
                             )
                     })}

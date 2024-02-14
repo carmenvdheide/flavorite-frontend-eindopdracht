@@ -8,6 +8,7 @@ import RandomRecipe from "./pages/random-recipe/random-recipe.jsx";
 import Login from "./pages/login/login.jsx";
 import RecipeCard from "./components/recipe-card/recipe-card.jsx";
 import RecipeDetails from "./pages/recipe-details/recipe-details.jsx";
+import RandomRecipeDetails from "./pages/random-recipe-details/RandomRecipeDetails.jsx";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/random" element={<RandomRecipe/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/recipes/:id" element={<RecipeDetails/>}/>
+            <Route path="random/:id" element={<RandomRecipeDetails/>}/>
         </Routes>
     </>
   )
