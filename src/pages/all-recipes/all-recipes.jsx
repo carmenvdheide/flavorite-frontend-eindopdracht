@@ -61,7 +61,7 @@ function AllRecipes() {
 
     const [ eatingHabitFilterParam, setEatingHabitFilterParam ] = useState('')
 
-
+    const [ nextPage, setNextPage ] = useState("")
 
 
 
@@ -182,7 +182,6 @@ function AllRecipes() {
     }
 
 
-
      async function fetchSearchedRecipes(searchValue) {
 
          console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
@@ -193,7 +192,9 @@ function AllRecipes() {
                         q: searchValue,
                     }})
             setData(result.data.hits)
-            console.log(result.data.hits)
+            console.log(result.data)
+            console.log(result.data['_links'].next.href)
+            setNextPage(result.data['_links'].next.href)
         } catch (e) {
             console.error(e)
             console.log('nope')
@@ -213,6 +214,23 @@ function AllRecipes() {
             : setFiltersDisplay('dontDisplayFilters')
     }
 
+    async function handleNextPage(url) {
+        try {
+            const result = await axios.get(url)
+            setData(result.data.hits)
+
+            setNextPage(result.data['_links'].next.href)
+            console.log(nextPage)
+            console.log(result.data)
+
+        } catch (e) {
+            console.log('nope..')
+        }
+    }
+
+
+
+
 
     return (
 
@@ -223,8 +241,6 @@ function AllRecipes() {
                         fetchRecipes={fetchRecipes}
                         handleFilterButton={handleFilterButton}
                     />
-
-
 
                 <div className={filtersDisplay}>
                     <div className="filterCategory">
@@ -292,12 +308,12 @@ function AllRecipes() {
                     </div>
 
                 </div>
-
-
-
             </section>
 
             <section className="allRecipesContainer">
+
+                <button onClick={() => handleNextPage(nextPage)}>Next page</button>
+
                 <ul className="allRecipesList">
                     {data && data.map((recipe) => {
                         return (
