@@ -189,7 +189,8 @@ function AllRecipes() {
          console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
 
         try {
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${eatingHabitFilterParam,allergenFilterParam,dietFilterParam,mealTypeFiltersParam}` ,
+             const filtersParam = `${eatingHabitFilterParam}${allergenFilterParam}${dietFilterParam}${mealTypeFiltersParam}`
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${filtersParam}`,
                 { params: {
                         q: searchValue,
                     }})
