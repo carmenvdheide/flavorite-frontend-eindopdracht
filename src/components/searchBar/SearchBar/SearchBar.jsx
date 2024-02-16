@@ -15,9 +15,14 @@ function SearchBar(props) {
             <button
                 className="recipeSearchButton"
                 onClick={() => {
-                    searchBarValue
-                        ? props.fetchSearchedRecipes(searchBarValue)
-                        : props.fetchRecipes
+
+                    searchBarValue &&
+                        props.fetchSearchedRecipes(searchBarValue)
+                        props.setClassnamePageButton("pageButton")
+
+                    !searchBarValue && setSearchBarValue("empty field")
+
+
                 }}
 
             >go</button>

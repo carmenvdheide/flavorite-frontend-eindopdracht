@@ -395,6 +395,4 @@ function AllRecipes() {
 export default AllRecipes
 
 
-// searchBarValue && (props.fetchSearchedRecipes(searchBarValue), props.setClassnamePageButton("pageButton"))
-//
-// !searchBarValue && setSearchBarValue("empty field")
+
