@@ -65,6 +65,9 @@ function AllRecipes() {
 
     const [ nextPage, setNextPage ] = useState("")
 
+    const [ pageData, setPageData ] = useState([])
+    const [ pageCount, setPageCount ] = useState(1)
+
 
 
     function updateCheckStatus(index, type, name) {
@@ -178,8 +181,7 @@ function AllRecipes() {
 
     ///////////////////////////////////////////////////////////////////////////
 
-    const [ pageData, setPageData ] = useState([])
-    const [ pageCount, setPageCount ] = useState(1)
+
      async function fetchSearchedRecipes(searchValue) {
 
          console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
@@ -222,37 +224,43 @@ function AllRecipes() {
     async function handleNextPage(url) {
 
         try {
-            const result = await axios.get(url)
-            setPageCount(pageCount + 1)
-            setData(result.data.hits)
-            setNextPage(result.data['_links'].next.href)
-            setPageData(prevState => [...prevState, {page: pageCount + 1, data: result.data}])
+            const dataNextPage = pageData.find((dataNext) => dataNext.page === pageCount + 1)
 
-            console.log(nextPage)
-            console.log(result.data)
+
+            if (dataNextPage) {
+                setData(dataNextPage.data.hits)
+            } else {const result = await axios.get(url)
+
+                setData(result.data.hits)
+                setNextPage(result.data['_links'].next.href)
+                setPageData(prevState => [...prevState, {page: pageCount + 1, data: result.data}])
+
+                console.log(nextPage)
+                console.log(result.data)}
+            setPageCount(pageCount + 1)
+
 
         } catch (e) {
             console.log('nope..')
         }
     }
 
-
     async function handlePreviousPage() {
         console.log("!!!!!!")
-        pageCount > 0 && setPageCount(pageCount - 1)
+
         console.log(pageCount)
 
+        const dataPrevPage = pageData.find((dataPrev) => dataPrev.page === pageCount - 1)
 
+        console.log(dataPrevPage.data.hits)
+        dataPrevPage && setData(dataPrevPage.data.hits)
+        pageCount > 0 && setPageCount(pageCount - 1)
 
     }
 
     useEffect(() => {
         console.log(pageCount)
     }, [pageCount]);
-
-
-
-
 
     return (
 
