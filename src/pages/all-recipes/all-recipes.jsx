@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
+import {faCaretRight, faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function AllRecipes() {
@@ -220,7 +222,6 @@ function AllRecipes() {
     }
 
 
-
     async function handleNextPage(url) {
 
         try {
@@ -262,6 +263,8 @@ function AllRecipes() {
         console.log(pageCount)
     }, [pageCount]);
 
+    const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
+
     return (
 
         <>
@@ -270,6 +273,7 @@ function AllRecipes() {
                         fetchSearchedRecipes={fetchSearchedRecipes}
                         fetchRecipes={fetchRecipes}
                         handleFilterButton={handleFilterButton}
+                        setClassnamePageButton={() => setClassnamePageButton("pageButton")}
                     />
 
                 <div className={filtersDisplay}>
@@ -341,8 +345,17 @@ function AllRecipes() {
             </section>
 
             <section className="allRecipesContainer">
-                <button onClick={handlePreviousPage}>Previous page</button>
-                <button onClick={() => handleNextPage(nextPage)}>Next page</button>
+                <div className="buttonWrap">
+                    <button
+                        onClick={handlePreviousPage}
+                        className={classnamePageButton}
+                    ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
+                    <button
+                        onClick={() => handleNextPage(nextPage)}
+                        className={classnamePageButton}
+                    >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                </div>
+
 
                 <ul className="allRecipesList">
                     {data && data.map((recipe) => {
@@ -362,6 +375,16 @@ function AllRecipes() {
                             )
                     })}
                 </ul>
+                <div className="buttonWrap">
+                    <button
+                        onClick={handlePreviousPage}
+                        className="pageButton"
+                    ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
+                    <button
+                        onClick={() => handleNextPage(nextPage)}
+                        className="pageButton"
+                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                </div>
             </section>
 
         </>
@@ -369,3 +392,8 @@ function AllRecipes() {
 }
 
 export default AllRecipes
+
+
+// searchBarValue && (props.fetchSearchedRecipes(searchBarValue), props.setClassnamePageButton("pageButton"))
+//
+// !searchBarValue && setSearchBarValue("empty field")

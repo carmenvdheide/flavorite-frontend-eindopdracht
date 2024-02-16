@@ -23,7 +23,7 @@ function SearchBar(props) {
             >go</button>
             <button
                 className="recipeFilterButton"
-                onClick={props.handleFilterButton}
+                onClick={() => { props.handleFilterButton()}}
             >Filters</button>
         </div>
 
