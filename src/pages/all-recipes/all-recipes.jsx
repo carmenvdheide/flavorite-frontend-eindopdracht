@@ -61,6 +61,8 @@ function AllRecipes() {
 
     const [ eatingHabitFilterParam, setEatingHabitFilterParam ] = useState('')
 
+    const [ filtersDisplay, setFiltersDisplay ] = useState('dontDisplayFilters')
+
     const [ nextPage, setNextPage ] = useState("")
 
 
@@ -156,13 +158,6 @@ function AllRecipes() {
 
     }, [eatingHabitFilters])
 
-
-
-
-
-
-
-
     async function fetchRecipes() {
         try {
 
@@ -181,7 +176,10 @@ function AllRecipes() {
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////
 
+    const [ pageData, setPageData ] = useState([])
+    const [ pageCount, setPageCount ] = useState(1)
      async function fetchSearchedRecipes(searchValue) {
 
          console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
@@ -192,9 +190,10 @@ function AllRecipes() {
                         q: searchValue,
                     }})
             setData(result.data.hits)
+            setNextPage(result.data['_links'].next.href)
             console.log(result.data)
             console.log(result.data['_links'].next.href)
-            setNextPage(result.data['_links'].next.href)
+            setPageData(prevState => [...prevState, {page: 1, data: result.data}])
         } catch (e) {
             console.error(e)
             console.log('nope')
@@ -206,7 +205,11 @@ function AllRecipes() {
         void fetchRecipes()
     }, [])
 
-    const [ filtersDisplay, setFiltersDisplay ] = useState('dontDisplayFilters')
+    useEffect(() => {
+        console.log(pageData)
+    }, [pageData]);
+
+
 
     function handleFilterButton() {
         filtersDisplay === 'dontDisplayFilters'
@@ -214,12 +217,17 @@ function AllRecipes() {
             : setFiltersDisplay('dontDisplayFilters')
     }
 
+
+
     async function handleNextPage(url) {
+
         try {
             const result = await axios.get(url)
+            setPageCount(pageCount + 1)
             setData(result.data.hits)
-
             setNextPage(result.data['_links'].next.href)
+            setPageData(prevState => [...prevState, {page: pageCount + 1, data: result.data}])
+
             console.log(nextPage)
             console.log(result.data)
 
@@ -227,6 +235,20 @@ function AllRecipes() {
             console.log('nope..')
         }
     }
+
+
+    async function handlePreviousPage() {
+        console.log("!!!!!!")
+        pageCount > 0 && setPageCount(pageCount - 1)
+        console.log(pageCount)
+
+
+
+    }
+
+    useEffect(() => {
+        console.log(pageCount)
+    }, [pageCount]);
 
 
 
@@ -311,7 +333,7 @@ function AllRecipes() {
             </section>
 
             <section className="allRecipesContainer">
-
+                <button onClick={handlePreviousPage}>Previous page</button>
                 <button onClick={() => handleNextPage(nextPage)}>Next page</button>
 
                 <ul className="allRecipesList">
