@@ -203,7 +203,37 @@ function AllRecipes() {
             console.error(e)
             console.log('nope')
         }
+
+        data.map((recipe) => {
+            console.log(recipe.recipe.totalTime)
+
+        })
+
     }
+
+    const [ sortBy, setSortBy ] = useState('')
+
+    useEffect(() => {
+
+        switch (sortBy) {
+            case 'cookingTimeLow':
+                setData(prevData => [...prevData].sort((a, b) => a.recipe.totalTime - b.recipe.totalTime))
+                break
+            case 'cookingTimeHigh':
+                setData(prevData => [...prevData].sort((a, b) => b.recipe.totalTime - a.recipe.totalTime))
+                break
+            case 'caloriesLow':
+                setData(prevData => [...prevData].sort((a, b) => a.recipe.calories - b.recipe.calories))
+                break
+            case 'caloriesHigh':
+                setData(prevData => [...prevData].sort((a, b) => b.recipe.calories - a.recipe.calories))
+                break
+            case 'empty':
+                break
+
+        }
+
+    }, [data]);
 
 
     useEffect(() => {
@@ -265,6 +295,7 @@ function AllRecipes() {
     }, [pageCount]);
 
     const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
+    const [ classnameSortBy, setClassnameSortBy ] = useState('dontDisplayPageButton')
 
     return (
 
@@ -275,6 +306,7 @@ function AllRecipes() {
                         fetchRecipes={fetchRecipes}
                         handleFilterButton={handleFilterButton}
                         setClassnamePageButton={() => setClassnamePageButton("pageButton")}
+                        setClassnameSortBy={() => setClassnameSortBy("sortOptions")}
                     />
 
                 <div className={filtersDisplay}>
@@ -357,6 +389,18 @@ function AllRecipes() {
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
+                    <select
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                        className={classnameSortBy}>
+                        <option value='empty'>sort by</option>
+                        <option value='cookingTimeLow'>time (low to high) </option>
+                        <option value='cookingTimeHigh'>time (high to low)</option>
+                        <option value='caloriesLow'>calories (low to high) </option>
+                        <option value='caloriesHigh'>calories (high to low) </option>
+
+                    </select>
+
 
                 <ul className="allRecipesList">
                     {data && data.map((recipe) => {
@@ -379,12 +423,11 @@ function AllRecipes() {
                 <div className="buttonWrap">
                     <button
                         onClick={handlePreviousPage}
-                        className="pageButton"
+                        className={classnamePageButton}
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPage)}
-                        className="pageButton"
-                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                        className={classnamePageButton}                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
             </section>
 

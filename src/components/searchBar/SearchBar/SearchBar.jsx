@@ -19,6 +19,7 @@ function SearchBar(props) {
                     searchBarValue &&
                         props.fetchSearchedRecipes(searchBarValue)
                         props.setClassnamePageButton("pageButton")
+                        props.setClassnameSortBy("sortOptions")
 
                     !searchBarValue && setSearchBarValue("empty field")
 
