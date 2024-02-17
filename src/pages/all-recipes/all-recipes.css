@@ -72,6 +72,17 @@ input {
     /*background-color: transparent;*/
 }
 
+select {
+    padding: 0.6rem 5rem;
+    background-color: #ffffff;
+    border-radius: 0.4rem;
+}
+select:focus {
+    outline: none;
+    border-color: var(--purple-color);
+}
+
+
 
 /********************************************************** recipe cards section*/
 

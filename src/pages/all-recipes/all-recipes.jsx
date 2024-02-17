@@ -307,7 +307,6 @@ function AllRecipes() {
     }
 
     async function handlePreviousPage() {
-        console.log("!!!!!!")
 
         console.log(pageCount)
 
@@ -337,6 +336,17 @@ function AllRecipes() {
                         setClassnamePageButton={() => setClassnamePageButton("pageButton")}
                         setClassnameSortBy={() => setClassnameSortBy("sortOptions")}
                     />
+                <select
+                    value={sortBy}
+                    onChange={handleSortChange}
+                    className={classnameSortBy}>
+                    <option value='empty'>sort by</option>
+                    <option value='cookingTimeLow'>time (low to high) </option>
+                    <option value='cookingTimeHigh'>time (high to low)</option>
+                    <option value='caloriesLow'>calories (low to high) </option>
+                    <option value='caloriesHigh'>calories (high to low) </option>
+
+                </select>
 
                 <div className={filtersDisplay}>
                     <div className="filterCategory">
@@ -407,6 +417,8 @@ function AllRecipes() {
             </section>
 
             <section className="allRecipesContainer">
+
+
                 <div className="buttonWrap">
                     <button
                         onClick={handlePreviousPage}
@@ -418,17 +430,7 @@ function AllRecipes() {
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
-                    <select
-                        value={sortBy}
-                        onChange={handleSortChange}
-                        className={classnameSortBy}>
-                        <option value='empty'>sort by</option>
-                        <option value='cookingTimeLow'>time (low to high) </option>
-                        <option value='cookingTimeHigh'>time (high to low)</option>
-                        <option value='caloriesLow'>calories (low to high) </option>
-                        <option value='caloriesHigh'>calories (high to low) </option>
 
-                    </select>
 
 
                 <ul className="allRecipesList">
