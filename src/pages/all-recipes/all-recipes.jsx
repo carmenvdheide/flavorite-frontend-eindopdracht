@@ -8,6 +8,7 @@ import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
 import {faCaretRight, faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {isTSFunctionType} from "eslint-plugin-react/lib/util/ast.js";
 
 
 function AllRecipes() {
@@ -213,8 +214,29 @@ function AllRecipes() {
 
     const [ sortBy, setSortBy ] = useState('')
 
-    useEffect(() => {
+    // useEffect(() => {
+    //
+    //     switch (sortBy) {
+    //         case 'cookingTimeLow':
+    //             setData(prevData => [...prevData].sort((a, b) => a.recipe.totalTime - b.recipe.totalTime))
+    //             break
+    //         case 'cookingTimeHigh':
+    //             setData(prevData => [...prevData].sort((a, b) => b.recipe.totalTime - a.recipe.totalTime))
+    //             break
+    //         case 'caloriesLow':
+    //             setData(prevData => [...prevData].sort((a, b) => a.recipe.calories - b.recipe.calories))
+    //             break
+    //         case 'caloriesHigh':
+    //             setData(prevData => [...prevData].sort((a, b) => b.recipe.calories - a.recipe.calories))
+    //             break
+    //         case 'empty':
+    //             break
+    //
+    //     }
+    //
+    // }, [data]);
 
+    function sortData() {
         switch (sortBy) {
             case 'cookingTimeLow':
                 setData(prevData => [...prevData].sort((a, b) => a.recipe.totalTime - b.recipe.totalTime))
@@ -228,12 +250,19 @@ function AllRecipes() {
             case 'caloriesHigh':
                 setData(prevData => [...prevData].sort((a, b) => b.recipe.calories - a.recipe.calories))
                 break
-            case 'empty':
-                break
-
         }
 
-    }, [data]);
+    }
+
+    function handleSortChange(e) {
+        const selectedOption = e.target.value
+        console.log(e.target.value)
+        setSortBy(selectedOption)
+    }
+
+    useEffect(() => {
+        sortData()
+    }, [sortBy, data]);
 
 
     useEffect(() => {
@@ -391,7 +420,7 @@ function AllRecipes() {
 
                     <select
                         value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
+                        onChange={handleSortChange}
                         className={classnameSortBy}>
                         <option value='empty'>sort by</option>
                         <option value='cookingTimeLow'>time (low to high) </option>
