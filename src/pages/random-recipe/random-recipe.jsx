@@ -37,6 +37,7 @@ function RandomRecipe() {
 
         async function fetchRandomRecipe() {
             try {
+                console.log(allergenFilterParam)
                 const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public${allergenFilterParam}`, { params: {
                         mealType: stateMealType,
                         dishType: "main course",
@@ -109,21 +110,24 @@ function RandomRecipe() {
             <section className="randomRecipeFilters">
                 <div className="randomRecipeMealType">
                     <p>select a meal-type:</p>
-                    <Button
-                        text="breakfast"
-                        className={breakfast}
-                        onClick={handleMealType}
-                        value="Breakfast"/>
-                    <Button
-                        text="lunch"
-                        className={lunch}
-                        onClick={handleMealType}
-                        value="Lunch"/>
-                    <Button
-                        text="dinner"
-                        className={dinner}
-                        onClick={handleMealType}
-                        value="Dinner"/>
+                    <div>
+                        <Button
+                            text="breakfast"
+                            className={breakfast}
+                            onClick={handleMealType}
+                            value="Breakfast"/>
+                        <Button
+                            text="lunch"
+                            className={lunch}
+                            onClick={handleMealType}
+                            value="Lunch"/>
+                        <Button
+                            text="dinner"
+                            className={dinner}
+                            onClick={handleMealType}
+                            value="Dinner"/>
+                    </div>
+
 
                 </div>
 
@@ -143,17 +147,14 @@ function RandomRecipe() {
                     </div>
                 </div>
 
-                <Button
-                    text={surpriseButtonText}
-                    className="surpriseButton"
-                    onClick={handleRandomButton}/>
+                <button
+                    className='surpriseButton'
+                    onClick={handleRandomButton}
+                >{surpriseButtonText}</button>
+
             </section>
 
             {randomRecipeData ?
-                <section>
-                    {/*<p>{randomRecipeData.recipe.label}</p>*/}
-                    {/*<p>{randomRecipeData.recipe.mealType}</p>*/}
-                    {/*<p>{randomRecipeData.recipe.dishType}</p>*/}
                     <RecipeCard
                         recipe={randomRecipeData}
                         classname="randomRecipeCard"
@@ -164,7 +165,6 @@ function RandomRecipe() {
                         navlink="random"
                         backButton="/random"
                     />
-                </section>
 
             : ""}
 

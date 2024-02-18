@@ -10,6 +10,7 @@ import RecipeCard from "./components/recipe-card/recipe-card.jsx";
 import RecipeDetails from "./components/recipe-details/recipe-details.jsx";
 import RandomRecipeDetails from "./components/random-recipe-details/RandomRecipeDetails.jsx";
 import AllRecipeDetails from "./components/all-recipe-details/AllRecipeDetails.jsx";
+import Register from "./pages/register/Register.jsx";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/recipes" element={<AllRecipes/>}/>
             <Route path="/random" element={<RandomRecipe/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
             <Route path="/recipes/:id" element={<AllRecipeDetails/>}/>
             <Route path="random/:id" element={<RandomRecipeDetails/>}/>
         </Routes>

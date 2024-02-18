@@ -155,7 +155,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /*gap: 0.8rem;*/
     background-color: transparent;
     width: 8rem;
     height: 9rem;
@@ -163,7 +162,7 @@
 
 .recipeDetailsIngredients p {
     text-align: center;
-    text-transform: capitalize;
+
     margin-top: 0.4rem;
 }
 

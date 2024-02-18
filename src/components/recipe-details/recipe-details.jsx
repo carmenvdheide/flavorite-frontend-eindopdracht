@@ -65,6 +65,9 @@ function RecipeDetails({backButton, backButtonText}) {
 
     const navigate = useNavigate()
 
+    function handleDirectionsLink() {
+        window.open(recipeDetails.url)
+    }
 
     return (
         <article className="recipeDetailsContainer">
@@ -117,7 +120,10 @@ function RecipeDetails({backButton, backButtonText}) {
                         value="nutrients"
                         onClick={handleNutrientButton}
                     >Nutrients</button>
-                    <button className="recipeDetailsButton">Directions</button>
+                    <button
+                        className="recipeDetailsButton"
+                        onClick={handleDirectionsLink}
+                    >Directions</button>
                 </div>
             </section>
 
