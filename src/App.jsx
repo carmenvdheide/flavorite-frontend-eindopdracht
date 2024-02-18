@@ -10,7 +10,7 @@ import RecipeCard from "./components/recipe-card/recipe-card.jsx";
 import RecipeDetails from "./components/recipe-details/recipe-details.jsx";
 import RandomRecipeDetails from "./components/random-recipe-details/RandomRecipeDetails.jsx";
 import AllRecipeDetails from "./components/all-recipe-details/AllRecipeDetails.jsx";
-import Register from "./pages/register/Register.jsx";
+import Register from "./pages/RegisterForm/Register.jsx";
 
 
 function App() {

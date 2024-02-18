@@ -1,0 +1,9 @@
+#email, #confirm-password {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 22rem;
+    border: none;
+    border-radius: 0.5rem;
+}

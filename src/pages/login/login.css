@@ -9,7 +9,7 @@
     height: 45rem;
     margin: 4rem auto;
     background-color: var(--background-color);
-    border-radius: 3rem;
+    border-radius: 2rem;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -23,10 +23,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--purple-color);
-    border-radius: 3rem;
-    margin: 0.5rem ;
-    border: none;
+    background-color: rgba(197, 176, 226, 0.58);
+    border-radius: 2rem;
+    margin: 0.8rem ;
+    border: 3px solid white;
 }
 
 .login-form-wrap {
@@ -75,12 +75,13 @@ label, form {
     background-color: var(--background-color);
 }
 
-form button {
+.login-form button {
     width: 100%;
     border-radius: 0.5rem;
     padding: 1rem;
     text-transform: uppercase;
     margin-top: 1rem;
+    border: 3px solid white;
 }
 
 .register-login-form-link, .register-login-form-link:visited {

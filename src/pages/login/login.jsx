@@ -2,11 +2,11 @@ import ImgLogin from "../../components/img-login/ImgLogin.jsx";
 
 function Login() {
     return(
-        <>
             <section className="login-card">
                 <div className='image-wrap-login'>
                     <ImgLogin/>
                 </div>
+
 
                 <div className='login-form-wrap'>
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -19,9 +19,11 @@ function Login() {
                     </form>
                 </div>
 
+
+
             </section>
 
-        </>
+
     )
 }
 
