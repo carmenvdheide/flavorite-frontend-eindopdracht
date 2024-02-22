@@ -6,9 +6,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
-import {faCaretRight, faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {isTSFunctionType} from "eslint-plugin-react/lib/util/ast.js";
 
 
 function AllRecipes() {

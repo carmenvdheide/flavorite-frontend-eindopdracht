@@ -89,3 +89,9 @@ label, form {
     background-color: transparent;
 }
 
+.succesfull-message {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #F17300;
+}
+
