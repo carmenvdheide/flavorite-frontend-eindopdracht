@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import {jwtDecode} from 'jwt-decode'
 import axios from "axios";
 
@@ -13,8 +13,7 @@ function AuthContextProvider({children}) {
     })
 
     const jwtToken = localStorage.getItem('jwtToken')
-    const currenTime = Date.now() / 1000
-    const decodedToken = jwtDecode(jwtToken)
+
 
     async function handleGetInfo() {
         try {
@@ -37,24 +36,29 @@ function AuthContextProvider({children}) {
         }
     }
 
+
     useEffect(() => {
+        const currenTime = Date.now() / 1000
+        const decodedToken = jwtDecode(jwtToken)
         console.log(decodedToken.exp)
         console.log(currenTime)
         if (jwtToken && decodedToken.exp > currenTime){
             void handleGetInfo()
             console.log('valid')
         } else {
-            setAuthState({
+            setAuthState(prevState => ({
+                ...prevState,
                 isAuth: false,
-                user: null,
                 status: 'done'
-            })
+            }));
         }
     }, []);
 
     useEffect(() => {
         console.log(authState)
     }, [authState]);
+
+
     function login(token) {
         localStorage.setItem('jwtToken', token)
         void handleGetInfo()
@@ -65,7 +69,7 @@ function AuthContextProvider({children}) {
         setAuthState({
             isAuth: false,
             user: null,
-            status: 'done '
+            status: 'done'
         })
     }
 
