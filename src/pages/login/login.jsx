@@ -18,6 +18,8 @@ function Login() {
             console.log("trying!!!")
             const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', loginData)
             console.log(result)
+            const jwtToken = result.data.accessToken
+            localStorage.setItem('jwtToken', jwtToken)
         } catch (e){
             console.log('error', e)
         }
