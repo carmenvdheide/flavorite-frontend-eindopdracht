@@ -1,7 +1,8 @@
 import ImgLogin from "../../components/img-login/ImgLogin.jsx";
 import {useLocation} from "react-router-dom";
 import axios from "axios";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {AuthContext} from "../../context/AuthContextProvider.jsx";
 
 function Login() {
 
@@ -12,6 +13,8 @@ function Login() {
         password: ""
     })
 
+    const { login } = useContext(AuthContext)
+
     async function postUserLogin() {
         try {
             console.log(loginData)
@@ -19,10 +22,11 @@ function Login() {
             const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', loginData)
             console.log(result)
             const jwtToken = result.data.accessToken
-            localStorage.setItem('jwtToken', jwtToken)
+            login(jwtToken)
         } catch (e){
             console.log('error', e)
         }
+
 
     }
 
@@ -40,6 +44,7 @@ function Login() {
             [e.target.name]: e.target.value
         })
     }
+
 
 
     return(
