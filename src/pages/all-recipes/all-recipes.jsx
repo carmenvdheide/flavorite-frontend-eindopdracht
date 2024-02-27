@@ -1,6 +1,6 @@
 
 import './all-recipes.css'
-
+import React from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";

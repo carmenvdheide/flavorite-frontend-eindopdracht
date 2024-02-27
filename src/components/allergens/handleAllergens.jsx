@@ -1,3 +1,4 @@
+import React from "react"
 import alcoholFree from "../../assets/alcoholfree.png";
 import celeryFree from "../../assets/celeryfree.png";
 import crustceanFree from "../../assets/crustceanfree.png";

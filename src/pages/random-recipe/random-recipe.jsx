@@ -1,3 +1,4 @@
+import React from "react"
 import Button from "../../components/button/button.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -101,9 +102,9 @@ function RandomRecipe() {
 
     }, [allergenFilters])
 
-    const [breakfast, setBreakfast ] = useState('')
-    const [lunch, setLunch ] = useState('')
-    const [dinner, setDinner ] = useState('')
+    // const [breakfast, setBreakfast ] = useState('')
+    // const [lunch, setLunch ] = useState('')
+    // const [dinner, setDinner ] = useState('')
 
     return (
         <>
@@ -113,17 +114,17 @@ function RandomRecipe() {
                     <div>
                         <Button
                             text="breakfast"
-                            className={breakfast}
+                            // className={breakfast}
                             onClick={handleMealType}
                             value="Breakfast"/>
                         <Button
                             text="lunch"
-                            className={lunch}
+                            // className={lunch}
                             onClick={handleMealType}
                             value="Lunch"/>
                         <Button
                             text="dinner"
-                            className={dinner}
+                            // className={dinner}
                             onClick={handleMealType}
                             value="Dinner"/>
                     </div>

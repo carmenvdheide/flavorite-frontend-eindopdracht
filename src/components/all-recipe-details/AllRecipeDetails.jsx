@@ -1,3 +1,4 @@
+import React from "react"
 import RecipeDetails from "../recipe-details/recipe-details.jsx";
 
 function AllRecipeDetails() {

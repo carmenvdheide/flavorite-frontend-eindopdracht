@@ -1,3 +1,4 @@
+import React from "react"
 import image1 from '../../assets/burger.png'
 import image2 from '../../assets/cake.png'
 import image6 from '../../assets/candy_4.png'

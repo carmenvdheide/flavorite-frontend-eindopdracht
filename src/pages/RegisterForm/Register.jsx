@@ -1,3 +1,4 @@
+import React from "react"
 import ImgLogin from "../../components/img-login/ImgLogin.jsx";
 import './Register.css'
 import axios from "axios";
