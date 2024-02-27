@@ -30,6 +30,17 @@
     list-style: none;
     text-transform: uppercase;
     background-color: transparent;
+    align-items: center;
+}
+
+.logged-in-navbar {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    list-style: none;
+    gap: 2rem;
+    text-transform: uppercase;
+    margin-right: 3rem;
 }
 
 
@@ -41,7 +52,7 @@
     border-radius: 0.5rem;
     padding: 0.3rem 0.6rem;
     background-color: black;
-
+    text-transform: uppercase;
 
 }
 
@@ -58,6 +69,33 @@
     color: black;
     background-color: var(--background-color);
 }
+
+.logout-icon {
+    color: white;
+    background-color: black;
+}
+
+.end-navbar {
+    width: 11rem;
+    margin-right: 3rem;
+
+}
+
+.logged-in-navbar {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    list-style: none;
+    gap: 2rem;
+    text-transform: uppercase;
+
+}
+
+.login-button {
+    width: 5rem;
+    text-align: center;
+}
+
 
 
 

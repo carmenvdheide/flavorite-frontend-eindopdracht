@@ -178,11 +178,6 @@ function AuthContextProvider({ children }) {
         console.log(authState);
     }, [authState])
 
-    // function login(token) {
-    //     localStorage.setItem("jwtToken", token)
-    //     void handleGetInfo()
-    //     console.log('login')
-    // }
 
     function login(token) {
         localStorage.setItem("jwtToken", token);
@@ -195,12 +190,19 @@ function AuthContextProvider({ children }) {
     }
 
     function logout() {
+        console.log('logout')
+        try {
+            navigate('/')
+        } catch (error) {
+            console.error("Error navigating to home page:", error);
+        }
         localStorage.removeItem("jwtToken")
         setAuthState({
             isAuth: false,
             user: null,
             status: "done",
         });
+
     }
 
     const contextData = {

@@ -1,0 +1,27 @@
+.profile-container{
+    border: 1px solid black;
+    width: 60vw;
+    margin: auto;
+}
+
+.welcome-user {
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    text-transform: capitalize;
+}
+
+.user-information-container {
+    border: dashed 1px pink;
+}
+
+.user-information {
+    display: flex;
+    margin: 1rem 0;
+
+}
+
+.user-information >p:first-of-type {
+    width: 6.5rem;
+    text-transform: capitalize;
+}
+
