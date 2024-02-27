@@ -104,10 +104,13 @@
 import React, { createContext, useEffect, useState } from "react"
 import { jwtDecode } from "jwt-decode"
 import axios from "axios"
+import {useNavigate} from "react-router-dom";
 
 export const AuthContext = createContext(null)
 
 function AuthContextProvider({ children }) {
+    const navigate = useNavigate()
+
     const [authState, setAuthState] = useState({
         isAuth: false,
         user: null,
@@ -175,10 +178,20 @@ function AuthContextProvider({ children }) {
         console.log(authState);
     }, [authState])
 
+    // function login(token) {
+    //     localStorage.setItem("jwtToken", token)
+    //     void handleGetInfo()
+    //     console.log('login')
+    // }
+
     function login(token) {
-        localStorage.setItem("jwtToken", token)
-        void handleGetInfo()
-        console.log('login')
+        localStorage.setItem("jwtToken", token);
+        void handleGetInfo();
+        try {
+            navigate("/profile")
+        } catch (error) {
+            console.error("Error navigating to profile page:", error);
+        }
     }
 
     function logout() {

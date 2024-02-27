@@ -9,6 +9,7 @@ import Login from "./pages/login/login.jsx";
 import RandomRecipeDetails from "./components/random-recipe-details/RandomRecipeDetails.jsx";
 import AllRecipeDetails from "./components/all-recipe-details/AllRecipeDetails.jsx";
 import Register from "./pages/RegisterForm/Register.jsx";
+import Profile from "./pages/profile/profile.jsx";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/random" element={<RandomRecipe/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/profile' element={<Profile/>}/>
             <Route path="/recipes/:id" element={<AllRecipeDetails/>}/>
             <Route path="random/:id" element={<RandomRecipeDetails/>}/>
         </Routes>
