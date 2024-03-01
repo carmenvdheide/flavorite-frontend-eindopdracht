@@ -8,20 +8,40 @@
     font-size: 2rem;
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
+    margin: 2rem;
 }
 
 .user-information-container {
-    border: dashed 1px pink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 3rem;
 }
+
 
 .user-information {
     display: flex;
     margin: 1rem 0;
-
 }
 
 .user-information >p:first-of-type {
     width: 6.5rem;
     text-transform: capitalize;
+}
+
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: var(--orange-color) 2.3px solid;
+    height: 3rem;
+    width: 7rem;
+    border-radius: 1rem;
+}
+
+.profile-button:hover {
+    box-shadow: black 1px 1px 5px;
 }
 
