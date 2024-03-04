@@ -45,3 +45,32 @@
     box-shadow: black 1px 1px 5px;
 }
 
+/************************************************************ FAVORITE LIST */
+
+.favorite-section {
+    border-top: 2px solid black;
+    padding: 2rem ;
+}
+
+.favorite-list {
+    padding: 3rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.favorite-list-item {
+    list-style: none;
+    display: flex;
+    border: 1px dotted pink;
+    width: 40rem;
+}
+
+.favorite-list-item img {
+    width: 8rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+

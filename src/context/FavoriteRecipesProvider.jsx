@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react"
+import React, { createContext} from "react"
 
 
 export const FavoriteRecipeContext = createContext(null)
@@ -16,6 +16,7 @@ function FavoriteRecipesProvider({children}) {
 
         const recipeInfo = {
             label: recipe.label,
+            image: recipe.image,
             uri: recipe.uri
         }
         recipeArray.push(recipeInfo)
@@ -29,6 +30,26 @@ function FavoriteRecipesProvider({children}) {
 
     }
 
+    function deleteFavoriteRecipe(recipeLabelToDelete) {
+
+        const storedFavorites = localStorage.getItem('favorite')
+        if (storedFavorites) {
+
+            let favorites = JSON.parse(storedFavorites)
+            console.log(favorites)
+
+            const indexToDelete = favorites.findIndex(recipe => recipe.label === recipeLabelToDelete)
+
+            if (indexToDelete !== -1) {
+                favorites.splice(indexToDelete, 1)
+
+                localStorage.setItem('favorite', JSON.stringify(favorites))
+
+                window.location.reload()
+            }
+        }
+    }
+
 
 
 
@@ -37,6 +58,7 @@ function FavoriteRecipesProvider({children}) {
 
     const contextData = {
         setFavoritesArray: setFavoritesArray,
+        deleteFavoriteRecipe: deleteFavoriteRecipe,
     }
 
     return (
