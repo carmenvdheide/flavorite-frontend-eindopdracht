@@ -84,39 +84,31 @@ function RecipeDetails({backButton, backButtonText}) {
 
 
     const handleButtonClick = () => {
-        setFavoriteState(prevState => ({
-            clicked: !prevState.clicked,
-            classname: prevState.clicked ? 'favorite-icon' : 'favorite-icon-clicked'
-        }))
+        const updatedClickedState = !favoriteState.clicked
+        setFavoriteState({
+            clicked: updatedClickedState,
+            classname: updatedClickedState ? 'favorite-icon-clicked' : 'favorite-icon'
+        })
+        if (updatedClickedState) {
+            setFavoritesArray(recipeDetails)
+        } else {
+            deleteFavoriteRecipe(recipeDetails.label)
+        }
     }
 
 
-
-
     useEffect(() => {
-        favoriteState.clicked && setFavoritesArray(recipeDetails)
-        !favoriteState.clicked && deleteFavoriteRecipe(recipeDetails.label)
-    }, [favoriteState]);
-
-    useEffect(() => {
-
-        console.log( '111111', recipeDetails)
         const storedFavorites = localStorage.getItem('favorite')
-
         if (storedFavorites) {
             const recipeArray = JSON.parse(storedFavorites)
-
             const isRecipeAlreadyAdded = recipeArray.some(existingRecipe => existingRecipe.label === recipeDetails.label)
-
-            if (isRecipeAlreadyAdded) {
-                setFavoriteState(prevState => ({
-                    clicked: !prevState.clicked,
-                    classname:  'favorite-icon-clicked'
-                }))
-                console.log('Recipe is already in favorites.')
-            }
+            setFavoriteState({
+                clicked: isRecipeAlreadyAdded,
+                classname: isRecipeAlreadyAdded ? 'favorite-icon-clicked' : 'favorite-icon'
+            })
         }
-    }, [recipeDetails]);
+    }, [recipeDetails])
+
 
     return (
         <article className="recipeDetailsContainer">
