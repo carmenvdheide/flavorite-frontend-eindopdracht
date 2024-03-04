@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react"
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import './recipe-details.css'
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
@@ -79,6 +79,8 @@ function RecipeDetails({backButton, backButtonText}) {
 
     const { setFavoritesArray } = useContext(FavoriteRecipeContext)
 
+    const {deleteFavoriteRecipe} = useContext(FavoriteRecipeContext)
+
 
 
     const handleButtonClick = () => {
@@ -92,10 +94,29 @@ function RecipeDetails({backButton, backButtonText}) {
 
 
     useEffect(() => {
-        // console.log(recipeDetails.label)
-        // console.log(recipeDetails)
         favoriteState.clicked && setFavoritesArray(recipeDetails)
+        !favoriteState.clicked && deleteFavoriteRecipe(recipeDetails.label)
     }, [favoriteState]);
+
+    useEffect(() => {
+
+        console.log( '111111', recipeDetails)
+        const storedFavorites = localStorage.getItem('favorite')
+
+        if (storedFavorites) {
+            const recipeArray = JSON.parse(storedFavorites)
+
+            const isRecipeAlreadyAdded = recipeArray.some(existingRecipe => existingRecipe.label === recipeDetails.label)
+
+            if (isRecipeAlreadyAdded) {
+                setFavoriteState(prevState => ({
+                    clicked: !prevState.clicked,
+                    classname:  'favorite-icon-clicked'
+                }))
+                console.log('Recipe is already in favorites.')
+            }
+        }
+    }, [recipeDetails]);
 
     return (
         <article className="recipeDetailsContainer">
