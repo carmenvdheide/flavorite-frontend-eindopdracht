@@ -4,6 +4,9 @@ import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
 import HandleAllergens from "../allergens/handleAllergens.jsx";
 import {NavLink} from "react-router-dom";
+import { faStar} from "@fortawesome/free-solid-svg-icons";
+
+import './recipe-card.css'
 
 function RecipeCard({recipe, classname, classnameText, classnameAllergens, classnameNavLink, navlink, classnameIcons}) {
 
@@ -11,7 +14,6 @@ function RecipeCard({recipe, classname, classnameText, classnameAllergens, class
 
     return (
     <div className={classname}>
-
 
         <NavLink
             to={`/${navlink}/${recipeID}`}
@@ -23,6 +25,7 @@ function RecipeCard({recipe, classname, classnameText, classnameAllergens, class
 
                 <div className={classnameText}>
                     <h3 className="recipePageName">{recipe.recipe.label}</h3>
+
                     <section className={classnameIcons}>
                         <div>
                             <FontAwesomeIcon className="iconAllRecipePage" icon={faClock} size={"2xl"}/>

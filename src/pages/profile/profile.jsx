@@ -1,8 +1,12 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
 import './profile.css'
 
 const Profile = () => {
+
+    const recipeString = localStorage.getItem('favorite')
+    const recipe = JSON.parse(recipeString)
+
 
     const {user} = useContext(AuthContext)
     return (
@@ -14,7 +18,13 @@ const Profile = () => {
                     <span className="user-information"><p>email:</p><p>{user.email}</p></span>
                 </div>
                 <button className='profile-button'>change info</button>
-
+            </section>
+            <section>
+                <ul>
+                {recipe && recipe.map((recipe) => {
+                    return <li key={recipe.label}>{recipe.label}</li>
+                })}
+                </ul>
 
             </section>
 

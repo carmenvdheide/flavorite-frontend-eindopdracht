@@ -1,12 +1,13 @@
-import React from "react"
+import React, {useContext, useEffect, useState} from "react"
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import {useEffect, useState} from "react";
 import './recipe-details.css'
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
-import {faAnglesLeft} from "@fortawesome/free-solid-svg-icons";
+import {faAnglesLeft, faStar} from "@fortawesome/free-solid-svg-icons";
+
+import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
 
 
 function RecipeDetails({backButton, backButtonText}) {
@@ -70,13 +71,46 @@ function RecipeDetails({backButton, backButtonText}) {
         window.open(recipeDetails.url)
     }
 
+
+    const [ favoriteState, setFavoriteState ] = useState({
+        clicked: false,
+        classname: 'favorite-icon'
+    })
+
+    const { setFavoritesArray } = useContext(FavoriteRecipeContext)
+
+
+
+    const handleButtonClick = () => {
+        setFavoriteState(prevState => ({
+            clicked: !prevState.clicked,
+            classname: prevState.clicked ? 'favorite-icon' : 'favorite-icon-clicked'
+        }))
+    }
+
+
+
+
+    useEffect(() => {
+        // console.log(recipeDetails.label)
+        // console.log(recipeDetails)
+        favoriteState.clicked && setFavoritesArray(recipeDetails)
+    }, [favoriteState]);
+
     return (
         <article className="recipeDetailsContainer">
-            <button
-                className="recipeDetailsButtonTop"
-                onClick={() => navigate(backButton)}>
-                <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>{backButtonText}</p>
-            </button>
+
+            <div>
+                <button
+                    className="recipeDetailsButtonTop"
+                    onClick={() => navigate(backButton)}>
+                    <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>{backButtonText}</p>
+                </button>
+                <button className='favorite-button'
+                        onClick={handleButtonClick}><FontAwesomeIcon icon={faStar} className={favoriteState.classname}/></button>
+
+            </div>
+
             <section className='recipeDetailsTop'>
                     <img
                         src={recipeDetails.image}
@@ -85,12 +119,12 @@ function RecipeDetails({backButton, backButtonText}) {
                 <div className="recipeDetailsInfo">
                     <h2>{recipeDetails.label}</h2>
                     <span className="iconNumberWrapper">
-                        <FontAwesomeIcon className="iconDetailPage" icon={faClock} size={"2xl"}/>
+                        <FontAwesomeIcon className="iconDetailPage" icon={faClock}/>
                         <div>
                             <p>{recipeDetails.totalTime}</p>
                             <p>min</p>
                         </div>
-                        <FontAwesomeIcon className="iconDetailPage" icon={faFireFlameCurved} size={"2xl"}/>
+                        <FontAwesomeIcon className="iconDetailPage" icon={faFireFlameCurved} />
                         <div>
                             <p>{Math.round(recipeDetails.calories)}</p>
                             <p>kCal</p>
@@ -190,8 +224,6 @@ function RecipeDetails({backButton, backButtonText}) {
                             </li>)
                     })}
                 </uL>
-
-
 
             </section>
 

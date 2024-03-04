@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border: none;
 }
 
 .backIcon {
@@ -20,6 +21,29 @@
     color: var(--purple-color);
     height: 1.5rem;
     width: 2rem;
+}
+
+.favorite-button {
+    border: none;
+}
+
+.favorite-icon {
+    color: var(--background-color);
+    height: 2.5rem;
+    margin: 1rem 3rem 0 0;
+}
+
+.favorite-icon-clicked {
+    color: #F17300;
+    height: 2.5rem;
+    margin: 1rem 3rem 0 0;
+}
+
+.recipeDetailsContainer >div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
 }
 
 /****************************************************************** TOP */
@@ -74,6 +98,7 @@
 .iconDetailPage {
     color: black;
     background-color: transparent;
+    height: 3rem;
 }
 
 .recipeDetailsTags {

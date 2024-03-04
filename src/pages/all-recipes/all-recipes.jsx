@@ -213,28 +213,6 @@ function AllRecipes() {
 
     const [ sortBy, setSortBy ] = useState('')
 
-    // useEffect(() => {
-    //
-    //     switch (sortBy) {
-    //         case 'cookingTimeLow':
-    //             setData(prevData => [...prevData].sort((a, b) => a.recipe.totalTime - b.recipe.totalTime))
-    //             break
-    //         case 'cookingTimeHigh':
-    //             setData(prevData => [...prevData].sort((a, b) => b.recipe.totalTime - a.recipe.totalTime))
-    //             break
-    //         case 'caloriesLow':
-    //             setData(prevData => [...prevData].sort((a, b) => a.recipe.calories - b.recipe.calories))
-    //             break
-    //         case 'caloriesHigh':
-    //             setData(prevData => [...prevData].sort((a, b) => b.recipe.calories - a.recipe.calories))
-    //             break
-    //         case 'empty':
-    //             break
-    //
-    //     }
-    //
-    // }, [data]);
-
     function sortData() {
         switch (sortBy) {
             case 'cookingTimeLow':
