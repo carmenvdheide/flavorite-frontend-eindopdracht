@@ -78,13 +78,14 @@ function AuthContextProvider({ children }) {
 
 
     function login(token) {
-        localStorage.setItem("jwtToken", token);
-        void handleGetInfo();
-        try {
-            navigate("/profile")
-        } catch (error) {
-            console.error("Error navigating to profile page:", error);
-        }
+        localStorage.setItem("jwtToken", token)
+        void handleGetInfo()
+            .then(() => {
+                navigate("/profile")
+            })
+            .catch ((error) => {
+                console.error("Error navigating to profile page:", error)
+            })
     }
 
     function logout() {

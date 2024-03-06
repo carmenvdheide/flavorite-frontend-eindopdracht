@@ -31,7 +31,7 @@ function FavoriteRecipesProvider({children}) {
         const recipeInfo = {
             label: recipe.label,
             image: recipe.image,
-            uri: recipe.uri
+            uri: recipe.uri,
         }
         recipeArray.push(recipeInfo)
         console.log(recipeArray, "///////")
