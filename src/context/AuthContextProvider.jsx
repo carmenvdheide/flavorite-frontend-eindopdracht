@@ -68,7 +68,8 @@ function AuthContextProvider({ children }) {
                 ...prevState,
                 isAuth: false,
                 status: "done",
-            }));
+            }))
+            navigate('/')
         }
     }, [])
 

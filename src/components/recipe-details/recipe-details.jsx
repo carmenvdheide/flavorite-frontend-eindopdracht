@@ -8,6 +8,7 @@ import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faAnglesLeft, faStar} from "@fortawesome/free-solid-svg-icons";
 
 import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
+import {AuthContext} from "../../context/AuthContextProvider.jsx";
 
 
 function RecipeDetails({backButton, backButtonText}) {
@@ -109,6 +110,8 @@ function RecipeDetails({backButton, backButtonText}) {
         }
     }, [recipeDetails])
 
+    const { isAuth } = useContext(AuthContext)
+
 
     return (
         <article className="recipeDetailsContainer">
@@ -119,8 +122,14 @@ function RecipeDetails({backButton, backButtonText}) {
                     onClick={() => navigate(backButton)}>
                     <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>{backButtonText}</p>
                 </button>
-                <button className='favorite-button'
-                        onClick={handleButtonClick}><FontAwesomeIcon icon={faStar} className={favoriteState.classname}/></button>
+
+                {isAuth &&
+                    <button
+                        className='favorite-button'
+                        onClick={handleButtonClick}
+                    ><FontAwesomeIcon icon={faStar} className={favoriteState.classname}/>
+                    </button>}
+
 
             </div>
 
