@@ -8,9 +8,12 @@ import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
 import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Loading from "../../components/loading/loading.jsx";
 
 
 function AllRecipes() {
+
+    const [ isLoading, setIsLoading ] = useState('')
     const [ data, setData ] = useState([])
     const [ allergenFilters, setAllergenFilters ] = useState([
 
@@ -164,6 +167,7 @@ function AllRecipes() {
     }, [eatingHabitFilters])
 
     async function fetchRecipes() {
+        setIsLoading('loading')
         try {
 
             const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public`, { params: {
@@ -175,9 +179,11 @@ function AllRecipes() {
             setData(
                 result.data.hits
             )
+            setIsLoading('done')
         } catch (e) {
             console.error(e)
             console.log('nope')
+            setIsLoading('done')
         }
     }
 
@@ -185,6 +191,7 @@ function AllRecipes() {
 
 
      async function fetchSearchedRecipes(searchValue) {
+        setIsLoading('loading')
 
          console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
 
@@ -199,15 +206,17 @@ function AllRecipes() {
             console.log(result.data)
             console.log(result.data['_links'].next.href)
             setPageData(prevState => [...prevState, {page: 1, data: result.data}])
+            setIsLoading('done')
         } catch (e) {
             console.error(e)
             console.log('nope')
+            setIsLoading('done')
         }
 
-        data.map((recipe) => {
-            console.log(recipe.recipe.totalTime)
-
-        })
+        // data.map((recipe) => {
+        //     console.log(recipe.recipe.totalTime)
+        //
+        // })
 
     }
 
@@ -302,7 +311,7 @@ function AllRecipes() {
     const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
     const [ classnameSortBy, setClassnameSortBy ] = useState('dontDisplayPageButton')
 
-    return (
+    return ( isLoading === 'loading' ? <Loading/> :
 
         <>
             <section className="searchContainer">

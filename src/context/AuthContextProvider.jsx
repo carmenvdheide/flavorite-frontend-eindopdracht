@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from "react"
 import { jwtDecode } from "jwt-decode"
 import axios from "axios"
 import {useNavigate} from "react-router-dom";
+import Loading from "../components/loading/loading.jsx";
 
 export const AuthContext = createContext(null)
 
@@ -113,7 +114,7 @@ function AuthContextProvider({ children }) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {authState.status === "pending" ? <p>loading...</p> : children}
+            {authState.status === "pending" ? <Loading/> : children}
         </AuthContext.Provider>
     );
 }

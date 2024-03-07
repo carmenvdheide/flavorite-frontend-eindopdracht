@@ -1,10 +1,11 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Button from "../../components/button/button.jsx";
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import axios from "axios";
 import './random-recipe.css'
 import Filters from "../../components/Filters /Filters.jsx";
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
+import Loading from "../../components/loading/loading.jsx";
 
 function RandomRecipe() {
     const [ surpriseButtonText, setSurpriseButtonText ] = useState('surprise me')
@@ -32,11 +33,14 @@ function RandomRecipe() {
 
     const [ allergenFilterParam, setAllergenFilterParam ] = useState('')
 
+    const [ isLoading, setIsLoading ] = useState('')
+
     function handleRandomButton() {
-        setSurpriseButtonText('another one')
+        // setSurpriseButtonText('another one')
 
 
         async function fetchRandomRecipe() {
+            setIsLoading('loading')
             try {
                 console.log(allergenFilterParam)
                 const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public${allergenFilterParam}`, { params: {
@@ -46,10 +50,12 @@ function RandomRecipe() {
                     }})
                 console.log(result.data.hits[0])
                 setRandomRecipeData(result.data.hits[0])
+                setIsLoading('done')
 
             } catch (e) {
                 console.error(e)
                 console.log('nope')
+                setIsLoading('done')
             }
         }
         return fetchRandomRecipe()
@@ -59,24 +65,6 @@ function RandomRecipe() {
     function handleMealType(e) {
         setStateMealType(e.target.value)
         console.log(e.target.value)
-
-        ///////////////////////////////////// idk
-
-        // e.target.value === "Breakfast" &&
-        //     setBreakfast(breakfast === '' ? "clickedButton" : '')
-        //     setLunch('')
-        //     setDinner('')
-        //
-        // e.target.value === "Lunch" &&
-        // setBreakfast('')
-        // setLunch(lunch === '' ? "clickedButton" : '')
-        // setDinner('')
-        //
-        // e.target.value === "Dinner" &&
-        // setBreakfast('')
-        // setLunch('')
-        // setDinner(dinner === '' ? 'clickedButton' : '')
-
 
     }
 
@@ -102,9 +90,10 @@ function RandomRecipe() {
 
     }, [allergenFilters])
 
-    // const [breakfast, setBreakfast ] = useState('')
-    // const [lunch, setLunch ] = useState('')
-    // const [dinner, setDinner ] = useState('')
+    useEffect(() => {
+        void handleRandomButton()
+    }, []);
+
 
     return (
         <>
@@ -155,19 +144,19 @@ function RandomRecipe() {
 
             </section>
 
-            {randomRecipeData ?
-                    <RecipeCard
-                        recipe={randomRecipeData}
-                        classname="randomRecipeCard"
-                        classnameText="randomRecipeCardText"
-                        classnameIcons="randomRecipeInfo"
-                        classnameAllergens="randomRecipeAllergens"
-                        classnameNavLink="randomRecipeLink"
-                        navlink="random"
-                        backButton="/random"
-                    />
+            {isLoading === 'loading' ? <Loading/> : randomRecipeData &&
+                <RecipeCard
+                    recipe={randomRecipeData}
+                    classname="randomRecipeCard"
+                    classnameText="randomRecipeCardText"
+                    classnameIcons="randomRecipeInfo"
+                    classnameAllergens="randomRecipeAllergens"
+                    classnameNavLink="randomRecipeLink"
+                    navlink="random"
+                    backButton="/random"
+                />
 
-            : ""}
+            }
 
 
         </>

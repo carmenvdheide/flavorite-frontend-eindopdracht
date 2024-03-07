@@ -1,7 +1,15 @@
 .profile-container{
     border: 1px solid black;
     width: 60vw;
-    margin: auto;
+    margin: 3rem auto;
+    background-color: var(--background-color);
+    border-radius: 1rem;
+}
+
+.profile-container-top {
+    border-radius: 1rem;
+    padding: 1rem;;
+    background-color: var(--purple-color);
 }
 
 .welcome-user {
@@ -9,24 +17,38 @@
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
     margin: 2rem;
+    background-color: transparent;
 }
 
 .user-information-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 3rem;
+    padding: 1rem 3rem;
+    background-color: transparent;
 }
 
 
 .user-information {
     display: flex;
     margin: 1rem 0;
+    background-color: transparent;
 }
 
+.user-data {
+    background-color: transparent;
+
+}
+
+.user-information p {
+    font-size: 1.1rem;
+}
+
+
 .user-information >p:first-of-type {
-    width: 6.5rem;
+    width: 7rem;
     text-transform: capitalize;
+
 }
 
 
@@ -49,8 +71,10 @@
 /************************************************************ FAVORITE LIST */
 
 .favorite-section {
-    border-top: 2px solid black;
+    /*border-top: 2px solid black;*/
     padding: 2rem ;
+    border-radius: 0 0 1rem 1rem;
+    background-color: var(--background-color);
 }
 
 .favorite-list {
@@ -59,20 +83,37 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    background-color: transparent;
 }
 
 .favorite-list-item {
     list-style: none;
     display: flex;
-    border: 1px dotted pink;
-    width: 40rem;
+    width: 35rem;
+    border-radius: 1rem;
+    box-shadow: #c5b7af 1px 1px 10px ;
+    border: none;
+}
+
+.favorite-list-item-navlink {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    width: 80%;
+    background-color: transparent;
 }
 
 .favorite-list-item img {
-    width: 8rem;
+    width: 12rem;
     height: 6rem;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+.favorite-list-item p {
+    margin: 0.5rem;
+    width: 14rem;
 }
 
 .favorite-list-item button {

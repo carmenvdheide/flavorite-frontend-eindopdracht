@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
 import './profile.css'
 import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
@@ -16,22 +16,21 @@ const Profile = () => {
 
     const {deleteFavoriteRecipe} = useContext(FavoriteRecipeContext)
 
-    const id = recipe[0].uri.split('_')[1]
 
-    function handleClick() {
-        console.log(id)
-    }
 
     return (
         <div className='profile-container'>
-            <h2 className='welcome-user'>Welcome {user.username}!</h2>
-            <section className="user-information-container">
-                <div className="user-data">
-                    <span className="user-information"><p>username:</p><p>{user.username}</p></span>
-                    <span className="user-information"><p>email:</p><p>{user.email}</p></span>
-                </div>
-                <button className='profile-button' onClick={handleClick}>change info</button>
-            </section>
+            <div className="profile-container-top">
+                <h2 className='welcome-user'>Welcome {user.username}!</h2>
+                <section className="user-information-container">
+                    <div className="user-data">
+                        <span className="user-information"><p>username:</p><p>{user.username}</p></span>
+                        <span className="user-information"><p>email:</p><p>{user.email}</p></span>
+                    </div>
+                    <button className='profile-button' >change info</button>
+                </section>
+            </div>
+
             <section className='favorite-section'>
                 <h3>Favorite recipes ({recipe.length})</h3>
                 <ul className="favorite-list">
@@ -40,7 +39,7 @@ const Profile = () => {
                         <li key={recipe.label}
                             className="favorite-list-item">
                             {/*TO DO: when the user clicks on the back buttonon the detail-page, it goes back to the page with all recipes instead of the profile page*/}
-                            <NavLink
+                            <NavLink className="favorite-list-item-navlink"
                                 to={`/recipes/${recipe.uri.split('_')[1]}`}>
                             <img src={recipe.image} alt="favorite recipe img"/>
                             <div>
