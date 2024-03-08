@@ -12,22 +12,29 @@ function Navigation () {
 
 
     return (
-        <nav className="navBar">
-            <img src={logo}/>
+        <nav className="nav-bar">
+
+            <span>
+                 <img
+                     src={logo}
+                     alt='flavorite logo'
+                 />
+            </span>
+
             <ul>
                 <li>
                     <NavLink
-                        className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                        className={({ isActive }) => isActive ? 'active-menu-link menu-link' : 'default-menu-link menu-link'}
                         to="/">Home</NavLink>
                 </li>
                 <li>
                     <NavLink
-                        className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                        className={({ isActive }) => isActive ? 'active-menu-link menu-link' : 'default-menu-link menu-link'}
                         to="/recipes">Recipes</NavLink>
                 </li>
                 <li>
                     <NavLink
-                        className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                        className={({ isActive }) => isActive ? 'active-menu-link menu-link' : 'default-menu-link menu-link'}
                         to="/random">Random</NavLink>
                 </li>
             </ul>
@@ -47,13 +54,14 @@ function Navigation () {
                         </button>
                     </li>
                 </div>
-            : <ul className="end-navbar">
-                    <li className="accountNav end-navbar login-button">
-                        <NavLink
-                            className="accountNav"
-                            to="/login">Login</NavLink>
-                    </li>
-                </ul>}
+                : <ul className="end-navbar">
+                        <li className="account-nav end-navbar login-button">
+                            <NavLink
+                                className="account-nav"
+                                to="/login"
+                            >Login</NavLink>
+                        </li>
+                    </ul>}
 
         </nav>
     )

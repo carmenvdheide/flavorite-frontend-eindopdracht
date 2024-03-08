@@ -6,10 +6,11 @@
     font-size: 18px;
 }
 
-.navBar {
+.nav-bar {
     font-family: 'Roboto Flex', sans-serif;
     font-weight: 300;
     height: 6vh;
+    min-height: 2.5rem;
     border-bottom: 2px black solid;
     display: flex;
     justify-content: space-between;
@@ -18,13 +19,20 @@
     background-color: var(--background-color);
 }
 
-.navBar img {
+.nav-bar span {
+    background-color: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 10rem;
+}
+
+.nav-bar img {
     height: 80%;
-    padding-right: 3.5rem;
     background-color: transparent;
 }
 
-.navBar ul {
+.nav-bar ul {
     display: flex;
     gap: 5rem;
     list-style: none;
@@ -32,6 +40,8 @@
     background-color: transparent;
     align-items: center;
 }
+
+
 
 .logged-in-navbar {
     display: flex;
@@ -45,7 +55,7 @@
 
 
 
-.accountNav {
+.account-nav {
     text-decoration: none;
     color: white;
     border: 1px solid black;
@@ -55,19 +65,20 @@
     text-transform: uppercase;
 
 }
+.menu-link {
+    background-color: var(--background-color);
+    text-decoration: none;
+}
+
 
 .active-menu-link {
     border-bottom: 2px solid var(--orange-color);
-    text-decoration: none;
     color: var(--orange-color);
-    background-color: var(--background-color);
 }
 
 .default-menu-link {
     border-bottom: 2px solid transparent;
-    text-decoration: none;
     color: black;
-    background-color: var(--background-color);
 }
 
 .logout-icon {

@@ -1,4 +1,3 @@
-
 import './all-recipes.css'
 import React from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
@@ -69,11 +68,116 @@ function AllRecipes() {
     const [ filtersDisplay, setFiltersDisplay ] = useState('dontDisplayFilters')
 
     const [ nextPage, setNextPage ] = useState("")
-
     const [ pageData, setPageData ] = useState([])
     const [ pageCount, setPageCount ] = useState(1)
 
+    const [ sortBy, setSortBy ] = useState('')
+    const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
+    const [ classnameSortBy, setClassnameSortBy ] = useState('dontDisplayPageButton')
 
+    //////////////////////////////////////////////////////////////////////////////////////////// useEffects
+
+
+    useEffect(() => {
+        // Update allergen filter parameter
+        let allergenArray = allergenFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let allergens = allergenArray.length > 0 ? "&health=" + allergenArray.join('&health=') : ''
+        setAllergenFilterParam(allergens)
+
+        // Update diet filter parameter
+        let dietArray = dietFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let diets = dietArray.length > 0 ? "&diet=" + dietArray.join('&diet=') : ''
+        setDietFilterParam(diets)
+
+        // Update meal type filter parameter
+        let mealTypeArray = mealTypeFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let mealType = mealTypeArray.length > 0 ? "&mealType=" + mealTypeArray.join('&mealType=') : ''
+        setMealTypeFiltersParam(mealType)
+
+        // Update eating habit filter parameter
+        let eatingHabitArray = eatingHabitFilters.filter(filter => filter.checked).map(filter => filter.name)
+        let eatingHabit = eatingHabitArray.length > 0 ? "&health=" + eatingHabitArray.join('&health=') : ''
+        setEatingHabitFilterParam(eatingHabit)
+
+        console.log(allergens, diets, mealType, eatingHabit)
+
+    }, [allergenFilters, dietFilters, mealTypeFilters, eatingHabitFilters])
+
+
+    useEffect(() => {
+        sortData()
+    }, [sortBy, data])
+
+
+    useEffect(() => {
+        void fetchRecipes()
+    }, [])
+
+    useEffect(() => {
+        console.log(pageData)
+    }, [pageData])
+
+    useEffect(() => {
+        console.log(pageCount)
+    }, [pageCount])
+
+    //////////////////////////////////////////////////////////////////////////////////////////// fetch recipes
+
+
+    async function fetchRecipes() {
+        setIsLoading('loading')
+        try {
+
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public`,
+                { params: {
+                            mealType: 'Dinner',
+                            dishType: 'Main course',
+                            random: true,
+                    }})
+            console.log("result hits:", result.data.hits)
+            setData(
+                result.data.hits
+            )
+            setIsLoading('done')
+        } catch (e) {
+            console.error(e)
+            console.log('nope')
+            setIsLoading('done')
+        }
+    }
+
+    async function fetchSearchedRecipes(searchValue) {
+        setIsLoading('loading')
+
+        console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
+
+        try {
+            const filtersParam = `${eatingHabitFilterParam}${allergenFilterParam}${dietFilterParam}${mealTypeFiltersParam}`
+            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${filtersParam}`,
+                { params: {
+                        q: searchValue,
+                    }})
+            setData(result.data.hits)
+            setNextPage(result.data['_links'].next.href)
+            console.log(result.data)
+            console.log(result.data['_links'].next.href)
+            setPageData(prevState => [...prevState, {page: 1, data: result.data}])
+            setIsLoading('done')
+        } catch (e) {
+            console.error(e)
+            console.log('nope')
+            setIsLoading('done')
+        }
+
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////// filter recipes
+
+    function handleFilterButton() {
+        filtersDisplay === 'dontDisplayFilters'
+            ? setFiltersDisplay('filtersBox')
+            : setFiltersDisplay('dontDisplayFilters')
+    }
 
     function updateCheckStatus(index, type, name) {
 
@@ -125,102 +229,7 @@ function AllRecipes() {
 
         }
 
-
-    useEffect(() => {
-        let allergenArray = allergenFilters.filter(filter => filter.checked).map(filter => filter.name)
-        let allergens = allergenArray.length > 0
-            ? "&health=" + allergenArray.join('&health=')
-            : ''
-        setAllergenFilterParam(allergens)
-        console.log(allergens)
-
-    }, [allergenFilters])
-
-    useEffect(() => {
-        let dietArray = dietFilters.filter(filter => filter.checked).map(filter => filter.name)
-        let allergens = dietArray.length > 0
-            ? "&diet=" + dietArray.join('&diet=')
-            : ''
-        setDietFilterParam(allergens)
-        console.log(allergens)
-
-    }, [dietFilters])
-
-    useEffect(() => {
-        let mealTypeArray = mealTypeFilters.filter(filter => filter.checked).map(filter => filter.name)
-        let mealType = mealTypeArray.length > 0
-            ? "&mealType=" + mealTypeArray.join('&mealType=')
-            : ''
-        setMealTypeFiltersParam(mealType)
-        console.log(mealType)
-
-    }, [mealTypeFilters])
-
-    useEffect(() => {
-        let eatingHabitArray = eatingHabitFilters.filter(filter => filter.checked).map(filter => filter.name)
-        let eatingHabit = eatingHabitArray.length > 0
-            ? "&health=" + eatingHabitArray.join('&health=')
-            : ''
-        setEatingHabitFilterParam(eatingHabit)
-        console.log(eatingHabit)
-
-    }, [eatingHabitFilters])
-
-    async function fetchRecipes() {
-        setIsLoading('loading')
-        try {
-
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public`, { params: {
-                    mealType: 'Dinner',
-                    dishType: 'Main course',
-                    random: true,
-                }})
-            console.log("result hits:", result.data.hits)
-            setData(
-                result.data.hits
-            )
-            setIsLoading('done')
-        } catch (e) {
-            console.error(e)
-            console.log('nope')
-            setIsLoading('done')
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-
-
-     async function fetchSearchedRecipes(searchValue) {
-        setIsLoading('loading')
-
-         console.log("PARAMETERS", eatingHabitFilterParam, allergenFilterParam, dietFilterParam, mealTypeFiltersParam)
-
-        try {
-             const filtersParam = `${eatingHabitFilterParam}${allergenFilterParam}${dietFilterParam}${mealTypeFiltersParam}`
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&type=public${filtersParam}`,
-                { params: {
-                        q: searchValue,
-                    }})
-            setData(result.data.hits)
-            setNextPage(result.data['_links'].next.href)
-            console.log(result.data)
-            console.log(result.data['_links'].next.href)
-            setPageData(prevState => [...prevState, {page: 1, data: result.data}])
-            setIsLoading('done')
-        } catch (e) {
-            console.error(e)
-            console.log('nope')
-            setIsLoading('done')
-        }
-
-        // data.map((recipe) => {
-        //     console.log(recipe.recipe.totalTime)
-        //
-        // })
-
-    }
-
-    const [ sortBy, setSortBy ] = useState('')
+    ////////////////////////////////////////////////////////////////////////////////////////////// sort recipes
 
     function sortData() {
         switch (sortBy) {
@@ -246,28 +255,8 @@ function AllRecipes() {
         setSortBy(selectedOption)
     }
 
-    useEffect(() => {
-        sortData()
-    }, [sortBy, data]);
 
-
-    useEffect(() => {
-        void fetchRecipes()
-    }, [])
-
-    useEffect(() => {
-        console.log(pageData)
-    }, [pageData]);
-
-
-
-    function handleFilterButton() {
-        filtersDisplay === 'dontDisplayFilters'
-            ? setFiltersDisplay('filtersBox')
-            : setFiltersDisplay('dontDisplayFilters')
-    }
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////// previous/next page
     async function handleNextPage(url) {
 
         try {
@@ -304,12 +293,6 @@ function AllRecipes() {
 
     }
 
-    useEffect(() => {
-        console.log(pageCount)
-    }, [pageCount]);
-
-    const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
-    const [ classnameSortBy, setClassnameSortBy ] = useState('dontDisplayPageButton')
 
     return ( isLoading === 'loading' ? <Loading/> :
 
@@ -444,7 +427,8 @@ function AllRecipes() {
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPage)}
-                        className={classnamePageButton}                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                        className={classnamePageButton}
+                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
             </section>
 
