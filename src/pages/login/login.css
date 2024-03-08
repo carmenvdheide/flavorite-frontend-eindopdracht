@@ -52,7 +52,16 @@
 .login-form-wrap h2 {
     background-color: var(--background-color);
     font-size: 2rem;
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
+}
+
+.login-form-wrap div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.login-form-wrap div p {
+    color: var(--orange-color);
 }
 
 .login-form {
@@ -89,9 +98,14 @@ label, form {
     background-color: transparent;
 }
 
-.succesfull-message {
+.successful-message {
     font-weight: bold;
     font-size: 1.5rem;
     /*color: #F17300;*/
+}
+
+.login-form-wrap div {
+    height: 22px;
+    background-color: transparent;
 }
 

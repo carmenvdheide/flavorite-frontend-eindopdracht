@@ -14,6 +14,8 @@ function Login() {
         password: ""
     })
 
+    const [ statusLogin, setStatusLogin ] = useState('')
+
     const { login } = useContext(AuthContext)
 
     async function postUserLogin() {
@@ -24,8 +26,10 @@ function Login() {
             console.log(result)
             const jwtToken = result.data.accessToken
             login(jwtToken)
+            setStatusLogin('done')
         } catch (e){
             console.log('error', e)
+            setStatusLogin('error')
         }
 
 
@@ -58,13 +62,19 @@ function Login() {
                 <div className='login-form-wrap'>
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
                     <p className='register-login-form'>Don't have an account? <a className='register-login-form-link' href='/register'>Register here</a></p>
-                    {successMessage ? <p className='succesfull-message'>Registration successful! Please login</p> : <h2>Login</h2>}
+
+                    <div>
+                        {successMessage ? <p className='successful-message'>Registration successful! Please login</p> : <h2>Login</h2>}
+                        {statusLogin === 'error' ? <p>Please try again..</p> : <div></div>}
+                    </div>
+
 
                     <form className='login-form'  onSubmit={handleSubmit}>
                         <input type="text" id="username" name="username"  placeholder="username" onChange={handleOnChange}/>
                         <input type="password" id="password" name="password" placeholder="password" onChange={handleOnChange}/>
                         <button type="submit">Sign in</button>
                     </form>
+
                 </div>
 
 

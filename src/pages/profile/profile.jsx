@@ -46,10 +46,12 @@ const Profile = () => {
                                 <p>{recipe.label}</p>
                             </div>
                             </NavLink>
-                            <button onClick={() => deleteFavoriteRecipe(recipe.label)}>
+
+                            <button onClick={() => deleteFavoriteRecipe(recipe.label)} aria-describedby='delete-favorite'>
                                 <FontAwesomeIcon
                                     className='icon-delete-favorite'
                                     icon={faTrashCan} />
+
                             </button>
 
                         </li>
