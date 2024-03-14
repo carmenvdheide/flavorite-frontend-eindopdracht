@@ -1,13 +1,13 @@
 import './all-recipes.css'
-import React from "react"
+import React, {useEffect, useState} from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
-import {useEffect, useState} from "react";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
 import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Loading from "../../components/loading/loading.jsx";
+import {fetchRecipes} from "../../helpers/apiFetch.js";
 
 
 function AllRecipes() {
@@ -110,7 +110,7 @@ function AllRecipes() {
 
 
     useEffect(() => {
-        void fetchRecipes()
+        void fetchData()
     }, [])
 
     useEffect(() => {
@@ -122,29 +122,18 @@ function AllRecipes() {
     }, [pageCount])
 
     //////////////////////////////////////////////////////////////////////////////////////////// fetch recipes
-
-
-    async function fetchRecipes() {
-        setIsLoading('loading')
+    async function fetchData() {
         try {
-
-            const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public`,
-                { params: {
-                            mealType: 'Dinner',
-                            dishType: 'Main course',
-                            random: true,
-                    }})
-            console.log("result hits:", result.data.hits)
-            setData(
-                result.data.hits
-            )
-            setIsLoading('done')
-        } catch (e) {
-            console.error(e)
-            console.log('nope')
-            setIsLoading('done')
+            setIsLoading('loading');
+            await fetchRecipes({ setIsLoading, setData });
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+        } finally {
+            setIsLoading('done');
         }
     }
+
+
 
     async function fetchSearchedRecipes(searchValue) {
         setIsLoading('loading')
@@ -403,7 +392,7 @@ function AllRecipes() {
 
 
                 <ul className="allRecipesList">
-                    {data && data.map((recipe) => {
+                    {data ? data.map((recipe) => {
                         return (
                                 <RecipeCard
                                     recipe={recipe}
@@ -418,7 +407,7 @@ function AllRecipes() {
 
                                 />
                             )
-                    })}
+                    }) : null}
                 </ul>
                 <div className="buttonWrap">
                     <button

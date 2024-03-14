@@ -1,14 +1,15 @@
 import React, {useEffect} from "react"
 import Button from "../../components/button/button.jsx";
 import { useState} from "react";
-import axios from "axios";
+// import axios from "axios";
 import './random-recipe.css'
 import Filters from "../../components/Filters /Filters.jsx";
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import Loading from "../../components/loading/loading.jsx";
+import {fetchRandom} from "../../helpers/apiFetch.js";
 
 function RandomRecipe() {
-    const [ surpriseButtonText, setSurpriseButtonText ] = useState('surprise me')
+    // const [ surpriseButtonText, setSurpriseButtonText ] = useState('surprise me')
     const [ stateMealType, setStateMealType ] = useState(null)
     const [ randomRecipeData, setRandomRecipeData] = useState(null)
 
@@ -35,30 +36,15 @@ function RandomRecipe() {
 
     const [ isLoading, setIsLoading ] = useState('')
 
-    function handleRandomButton() {
-        // setSurpriseButtonText('another one')
-
-
-        async function fetchRandomRecipe() {
-            setIsLoading('loading')
-            try {
-                console.log(allergenFilterParam)
-                const result = await axios.get(`https://api.edamam.com/api/recipes/v2?app_id=5512310a&app_key=efdf28b15f81638625269787d80913f7&q=a&type=public${allergenFilterParam}`, { params: {
-                        mealType: stateMealType,
-                        dishType: "main course",
-                        random: true,
-                    }})
-                console.log(result.data.hits[0])
-                setRandomRecipeData(result.data.hits[0])
-                setIsLoading('done')
-
-            } catch (e) {
-                console.error(e)
-                console.log('nope')
-                setIsLoading('done')
-            }
+    async function handleRandomButton() {
+        try {
+            setIsLoading('loading');
+            await fetchRandom({ setIsLoading, allergenFilterParam, stateMealType, setRandomRecipeData });
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+        } finally {
+            setIsLoading('done');
         }
-        return fetchRandomRecipe()
     }
 
 
@@ -140,7 +126,7 @@ function RandomRecipe() {
                 <button
                     className='surpriseButton'
                     onClick={handleRandomButton}
-                >{surpriseButtonText}</button>
+                >surprise me</button>
 
             </section>
 
