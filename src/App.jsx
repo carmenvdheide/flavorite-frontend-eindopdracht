@@ -10,6 +10,7 @@ import RandomRecipeDetails from "./components/random-recipe-details/RandomRecipe
 import AllRecipeDetails from "./components/all-recipe-details/AllRecipeDetails.jsx";
 import Register from "./pages/RegisterForm/Register.jsx";
 import Profile from "./pages/profile/profile.jsx";
+import HomeRecipeDetails from "./components/home-recipe-details/HomeRecipeDetails.jsx";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path='/profile' element={<Profile/>}/>
             <Route path="/recipes/:id" element={<AllRecipeDetails/>}/>
             <Route path="random/:id" element={<RandomRecipeDetails/>}/>
+            <Route path="home/:id" element={<HomeRecipeDetails/>}/>
         </Routes>
     </>
   )

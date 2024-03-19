@@ -8,10 +8,9 @@ function SearchBar(props) {
     function handleSearch(e) {
         e.preventDefault()
 
-            searchBarValue &&
-            props.fetchSearchedRecipes(searchBarValue)
-            props.setClassnamePageButton("pageButton")
-            props.setClassnameSortBy("sortOptions")
+        searchBarValue && props.fetchSearchedRecipes(searchBarValue)
+        searchBarValue && props.setClassnamePageButton("pageButton")
+        searchBarValue && props.setClassnameSortBy("sortOptions")
 
     }
 

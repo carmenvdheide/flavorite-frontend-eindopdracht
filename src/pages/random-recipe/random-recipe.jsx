@@ -139,7 +139,7 @@ function RandomRecipe() {
                     classnameAllergens="randomRecipeAllergens"
                     classnameNavLink="randomRecipeLink"
                     navlink="random"
-                    backButton="/random"
+                    // backButton="/random"
                 />
 
             }

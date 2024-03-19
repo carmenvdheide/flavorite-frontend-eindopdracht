@@ -125,13 +125,17 @@ function AllRecipes() {
     async function fetchData() {
         try {
             setIsLoading('loading');
-            await fetchRecipes({ setIsLoading, setData });
+            await fetchRecipes({
+                setIsLoading: setIsLoading,
+                setData: setData
+            });
+            setIsLoading('done');
         } catch (error) {
             console.error('Error fetching recipes:', error);
-        } finally {
             setIsLoading('done');
         }
     }
+
 
 
 

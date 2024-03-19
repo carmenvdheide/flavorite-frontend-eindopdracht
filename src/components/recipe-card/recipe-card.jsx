@@ -4,7 +4,6 @@ import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
 import HandleAllergens from "../allergens/handleAllergens.jsx";
 import {NavLink} from "react-router-dom";
-import { faStar} from "@fortawesome/free-solid-svg-icons";
 
 import './recipe-card.css'
 
