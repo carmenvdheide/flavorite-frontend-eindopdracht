@@ -107,6 +107,30 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 768px) {
+    * {
+        font-size: 1rem;
+    }
+
+    .nav-bar {
+        max-width: 100vw;
+    }
+
+    .nav-bar span {
+        width: 5rem;
+    }
+
+    .nav-bar ul {
+        gap: 1.5rem;
+    }
+
+    .end-navbar {
+        margin: 0 0 0 1.2rem;
+
+    }
+
+}
+
 
 
 
