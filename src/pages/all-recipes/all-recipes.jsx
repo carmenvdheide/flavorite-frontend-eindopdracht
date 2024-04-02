@@ -65,15 +65,15 @@ function AllRecipes() {
 
     const [ eatingHabitFilterParam, setEatingHabitFilterParam ] = useState('')
 
-    const [ filtersDisplay, setFiltersDisplay ] = useState('dontDisplayFilters')
+    const [ filtersDisplay, setFiltersDisplay ] = useState('dont-display-filters')
 
     const [ nextPage, setNextPage ] = useState("")
     const [ pageData, setPageData ] = useState([])
     const [ pageCount, setPageCount ] = useState(1)
 
     const [ sortBy, setSortBy ] = useState('')
-    const [ classnamePageButton, setClassnamePageButton ] = useState('dontDisplayPageButton')
-    const [ classnameSortBy, setClassnameSortBy ] = useState('dontDisplayPageButton')
+    const [ classnamePageButton, setClassnamePageButton ] = useState('dont-display-page-button')
+    const [ classnameSortBy, setClassnameSortBy ] = useState('dont-display-page-button')
 
     //////////////////////////////////////////////////////////////////////////////////////////// useEffects
 
@@ -167,9 +167,9 @@ function AllRecipes() {
     ///////////////////////////////////////////////////////////////////////////////////////////////// filter recipes
 
     function handleFilterButton() {
-        filtersDisplay === 'dontDisplayFilters'
-            ? setFiltersDisplay('filtersBox')
-            : setFiltersDisplay('dontDisplayFilters')
+        filtersDisplay === 'dont-display-filters'
+            ? setFiltersDisplay('filters-box')
+            : setFiltersDisplay('dont-display-filters')
     }
 
     function updateCheckStatus(index, type, name) {
@@ -290,13 +290,13 @@ function AllRecipes() {
     return ( isLoading === 'loading' ? <Loading/> :
 
         <>
-            <section className="searchContainer">
+            <section className="search-container">
                     <SearchBar
                         fetchSearchedRecipes={fetchSearchedRecipes}
                         fetchRecipes={fetchRecipes}
                         handleFilterButton={handleFilterButton}
-                        setClassnamePageButton={() => setClassnamePageButton("pageButton")}
-                        setClassnameSortBy={() => setClassnameSortBy("sortOptions")}
+                        setClassnamePageButton={() => setClassnamePageButton("page-button")}
+                        setClassnameSortBy={() => setClassnameSortBy("sort-options")}
                     />
                 <select
                     value={sortBy}
@@ -378,10 +378,10 @@ function AllRecipes() {
                 </div>
             </section>
 
-            <section className="allRecipesContainer">
+            <section className="all-recipes-container">
 
 
-                <div className="buttonWrap">
+                <div className="button-wrap">
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
@@ -395,16 +395,16 @@ function AllRecipes() {
 
 
 
-                <ul className="allRecipesList">
+                <ul className="all-recipes-list">
                     {data ? data.map((recipe) => {
                         return (
                                 <RecipeCard
                                     recipe={recipe}
                                     key={recipe.recipe.uri.split('_')[1]}
-                                    classname="recipeCard"
-                                    classnameText="recipeCardText"
-                                    classnameIcons="recipeCardInfo"
-                                    classnameAllergens="recipeCardAllergens"
+                                    classname="recipe-card"
+                                    classnameText="recipe-card-text"
+                                    classnameIcons="recipe-card-info"
+                                    classnameAllergens="recipe-card-allergens"
                                     classnameNavLink="recipe-link"
                                     navlink="recipes"
                                     backButton="/recipes"
@@ -413,7 +413,7 @@ function AllRecipes() {
                             )
                     }) : null}
                 </ul>
-                <div className="buttonWrap">
+                <div className="button-wrap">
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}

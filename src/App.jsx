@@ -28,6 +28,7 @@ function App() {
             <Route path="/recipes/:id" element={<AllRecipeDetails/>}/>
             <Route path="random/:id" element={<RandomRecipeDetails/>}/>
             <Route path="home/:id" element={<HomeRecipeDetails/>}/>
+
         </Routes>
     </>
   )

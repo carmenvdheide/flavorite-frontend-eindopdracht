@@ -14,9 +14,9 @@ import {AuthContext} from "../../context/AuthContextProvider.jsx";
 function RecipeDetails({backButton, backButtonText}) {
     const { id } = useParams()
     const [ recipeDetails, setRecipeDetails ] = useState([])
-    const [ ingredientsClassname, setIngrdientsClassname ] = useState('recipeDetailsIngredients')
-    const [ allergensClassname, setAllergensClassname ] = useState('recipeDetailsDontDisplay')
-    const [ nutrientsClassname, setNutrientsClassname ] = useState('recipeDetailsDontDisplay')
+    const [ ingredientsClassname, setIngrdientsClassname ] = useState('recipe-details-ingredients')
+    const [ allergensClassname, setAllergensClassname ] = useState('recipe-details-dont-display')
+    const [ nutrientsClassname, setNutrientsClassname ] = useState('recipe-details-dont-display')
 
     async function fetchRecipeDetails() {
         try {
@@ -37,26 +37,26 @@ function RecipeDetails({backButton, backButtonText}) {
     }, [])
 
     function handleIngredientButton() {
-        ingredientsClassname === "recipeDetailsDontDisplay" &&
-            setIngrdientsClassname("recipeDetailsIngredients")
-            setAllergensClassname("recipeDetailsDontDisplay")
-        setNutrientsClassname('recipeDetailsDontDisplay')
+        ingredientsClassname === "recipe-details-dont-display" &&
+            setIngrdientsClassname("recipe-details-ingredients")
+            setAllergensClassname("recipe-details-dont-display")
+        setNutrientsClassname('recipe-details-dont-display')
 
     }
 
     function handleAllergenButton() {
-        allergensClassname === "recipeDetailsDontDisplay" &&
-            setAllergensClassname("recipeDetailsAllergens")
-            setIngrdientsClassname("recipeDetailsDontDisplay")
-            setNutrientsClassname('recipeDetailsDontDisplay')
+        allergensClassname === "recipe-details-dont-display" &&
+            setAllergensClassname("recipe-details-allergens")
+            setIngrdientsClassname("recipe-details-dont-display")
+            setNutrientsClassname('recipe-details-dont-display')
 
     }
 
     function handleNutrientButton() {
-        nutrientsClassname === "recipeDetailsDontDisplay" &&
-            setNutrientsClassname('recipeDetailsNutrients')
-            setIngrdientsClassname('recipeDetailsDontDisplay')
-            setAllergensClassname("recipeDetailsDontDisplay")
+        nutrientsClassname === "recipe-details-dont-display" &&
+            setNutrientsClassname('recipe-details-nutrients')
+            setIngrdientsClassname('recipe-details-dont-display')
+            setAllergensClassname("recipe-details-dont-display")
 
     }
 
@@ -114,13 +114,13 @@ function RecipeDetails({backButton, backButtonText}) {
 
 
     return (
-        <article className="recipeDetailsContainer">
+        <article className="recipe-details-container">
 
             <div>
                 <button
-                    className="recipeDetailsButtonTop"
+                    className="recipe-details-button-top"
                     onClick={() => navigate(backButton)}>
-                    <FontAwesomeIcon className="backIcon" icon={faAnglesLeft} /><p>{backButtonText}</p>
+                    <FontAwesomeIcon className="back-icon" icon={faAnglesLeft} /><p>{backButtonText}</p>
                 </button>
 
                 {isAuth &&
@@ -133,26 +133,26 @@ function RecipeDetails({backButton, backButtonText}) {
 
             </div>
 
-            <section className='recipeDetailsTop'>
+            <section className='recipe-details-top'>
                     <img
                         src={recipeDetails.image}
-                        className="detailPageImg"
+                        className="detail-page-img"
                     />
-                <div className="recipeDetailsInfo">
+                <div className="recipe-details-info">
                     <h2>{recipeDetails.label}</h2>
-                    <span className="iconNumberWrapper">
-                        <FontAwesomeIcon className="iconDetailPage" icon={faClock}/>
+                    <span className="icon-number-wrapper">
+                        <FontAwesomeIcon className="icon-detail-page" icon={faClock}/>
                         <div>
                             <p>{recipeDetails.totalTime}</p>
                             <p>min</p>
                         </div>
-                        <FontAwesomeIcon className="iconDetailPage" icon={faFireFlameCurved} />
+                        <FontAwesomeIcon className="icon-detail-page" icon={faFireFlameCurved} />
                         <div>
                             <p>{Math.round(recipeDetails.calories)}</p>
                             <p>kCal</p>
                         </div>
                     </span>
-                    <div className="recipeDetailsTags">
+                    <div className="recipe-details-tags">
                         {recipeDetails.dietLabels && recipeDetails.dietLabels.map((label) => {return <p key={label}>{label}</p>})}
                         {recipeDetails.cuisineType && recipeDetails.cuisineType.map((type) => {return <p key={type}>{type}</p>})}
                         {recipeDetails.mealType && recipeDetails.mealType.map((type) => {return <p key={type}>{type}</p>})}
@@ -160,38 +160,38 @@ function RecipeDetails({backButton, backButtonText}) {
                     </div>
                 </div>
             </section>
-            <section className="recipeDetailsMiddle">
-                <div className="recipeDetailsButtonWrap">
+            <section className="recipe-details-middle">
+                <div className="recipe-details-button-wrap">
                     <button
-                        className="recipeDetailsButton"
+                        className="recipe-details-button"
                         value="ingredients"
                         onClick={handleIngredientButton}
                     >Ingredients</button>
                     <button
-                        className="recipeDetailsButton"
+                        className="recipe-details-button"
                         value="allergens"
                         onClick={handleAllergenButton}
                     >Health labels</button>
                     <button
-                        className="recipeDetailsButton"
+                        className="recipe-details-button"
                         value="nutrients"
                         onClick={handleNutrientButton}
                     >Nutrients</button>
                     <button
-                        className="recipeDetailsButton"
+                        className="recipe-details-button"
                         onClick={handleDirectionsLink}
                     >Directions</button>
                 </div>
             </section>
 
-            <section className="recipeDetailsBottom">
+            <section className="recipe-details-bottom">
                 <ul className={ingredientsClassname}>
                     { recipeDetails.ingredients && recipeDetails.ingredients.map((ingredient) =>{
                         return (
                                 <li key={ingredient.food}>
                                     <img src={ingredient.image}/>
                                     <p>{ingredient.food}</p>
-                                    <p className="ingredientAmount">
+                                    <p className="ingredient-amount">
                                         {ingredient.quantity !== 0
                                             ? Number.isInteger(ingredient.quantity)
                                                 ? ingredient.quantity
@@ -225,18 +225,18 @@ function RecipeDetails({backButton, backButtonText}) {
 
                 <uL className={nutrientsClassname}>
                     <li>
-                        <p className="description descriptionNutrient">Nutrient</p>
-                        <p className="description descriptionQuantity">Quantity</p>
-                        <p className="description descriptionDaily">% of daily requirements</p>
+                        <p className="description description-nutrient">Nutrient</p>
+                        <p className="description description-quantity">Quantity</p>
+                        <p className="description description-daily">% of daily requirements</p>
                     </li>
                     {nutrientArray && nutrientArray.map((nutrient) => {
                         return (
                             <li
                                 key={nutrient.label}
                                 >
-                                <p className="nutrientLabel">{nutrient.label}</p>
-                                <p className="nutrientQuantity">{Math.round(nutrient.quantity)}{nutrient.unit}</p>
-                                <p className="dailyNutrient">{dailyNutrientArray.map((dailyNutrient) => {
+                                <p className="nutrient-label">{nutrient.label}</p>
+                                <p className="nutrient-quantity">{Math.round(nutrient.quantity)}{nutrient.unit}</p>
+                                <p className="daily-nutrient">{dailyNutrientArray.map((dailyNutrient) => {
                                     return (
                                         dailyNutrient.label === nutrient.label
                                             ? <p>{Math.round(dailyNutrient.quantity)}{dailyNutrient.unit}</p>

@@ -1,11 +1,11 @@
-.recipeDetailsContainer {
+.recipe-details-container {
     border: 1px black solid;
     margin: 10vh 15vw;
     background-color: white;
     border-radius: 0.8rem;
 }
 
-.recipeDetailsButtonTop {
+.recipe-details-button-top {
     background-color: transparent;
     padding: 1rem;
     margin: 1.5rem 0 0 1rem;
@@ -16,7 +16,7 @@
     border: none;
 }
 
-.backIcon {
+.back-icon {
     background-color: transparent;
     color: var(--purple-color);
     height: 1.5rem;
@@ -39,7 +39,7 @@
     margin: 1rem 3rem 0 0;
 }
 
-.recipeDetailsContainer >div:first-of-type {
+.recipe-details-container >div:first-of-type {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,7 +48,7 @@
 
 /****************************************************************** TOP */
 
-.recipeDetailsTop {
+.recipe-details-top {
     display: flex;
     justify-content: center;
     gap: 3rem;
@@ -58,13 +58,13 @@
     border-bottom: 2px black solid;
 }
 
-.detailPageImg{
+.detail-page-img{
     width: 25rem;
     height: 15rem;
     object-fit: cover;
 }
 
-.recipeDetailsInfo {
+.recipe-details-info {
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -73,13 +73,13 @@
     margin: 0;
 }
 
-.recipeDetailsTop h2 {
+.recipe-details-top h2 {
     font-family: "Montserrat", sans-serif;
     font-size: 1.3rem;
     background-color: transparent;
 }
 
-.iconNumberWrapper {
+.icon-number-wrapper {
     display: flex;
     justify-content: space-around;
     gap: 2rem;
@@ -87,7 +87,7 @@
     background-color: transparent;
 }
 
-.iconNumberWrapper div {
+.icon-number-wrapper div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,20 +95,20 @@
     background-color: transparent;
 }
 
-.iconDetailPage {
+.icon-detail-page {
     color: black;
     background-color: transparent;
     height: 3rem;
 }
 
-.recipeDetailsTags {
+.recipe-details-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     background-color: transparent;
 }
 
-.recipeDetailsTags p {
+.recipe-details-tags p {
     font-weight: 300;
     background-color: #e7e6e6;
     padding: 0.3rem 0.5rem;
@@ -120,10 +120,10 @@
 
 /****************************************************************** MIDDLE */
 
-.recipeDetailsMiddle {
+.recipe-details-middle {
     background-color: white;
 }
-.recipeDetailsButtonWrap {
+.recipe-details-button-wrap {
     background-color: transparent;
     margin: 3rem 8rem 2rem 8rem;
     display: flex;
@@ -132,7 +132,7 @@
     flex-wrap: wrap;
 }
 
-.recipeDetailsButton {
+.recipe-details-button {
     border-radius: 2rem;
     padding: 1rem 2rem;
     background-color: transparent;
@@ -140,23 +140,27 @@
     color: var(--orange-color);
 }
 
-.recipeDetailsButton:hover {
+.recipe-details-button:hover {
     background-color: var(--light-orange-color);
 }
-.recipeDetailsButton:current {
+.recipe-details-button:current {
     background-color: var(--light-orange-color);
 }
 
 
 
 /****************************************************************** BOTTOM */
-.recipeDetailsBottom {
+.recipe-details-bottom {
     background-color: white;
+}
+
+.recipe-details-dont-display {
+    display: none;
 }
 
 /*********************************************************************** ingredients */
 
-.recipeDetailsIngredients {
+.recipe-details-ingredients {
     margin: 4rem 12rem 4rem 12rem;
     display: flex;
     flex-direction: row;
@@ -166,7 +170,7 @@
     background-color: transparent;
 }
 
-.recipeDetailsIngredients img {
+.recipe-details-ingredients img {
     width: 7rem;
     border: 1px solid #000000;
     border-radius: 1rem;
@@ -174,7 +178,7 @@
 }
 
 
-.recipeDetailsIngredients li {
+.recipe-details-ingredients li {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -185,20 +189,20 @@
     height: 9rem;
 }
 
-.recipeDetailsIngredients p {
+.recipe-details-ingredients p {
     text-align: center;
 
     margin-top: 0.4rem;
 }
 
-.ingredientAmount {
+.ingredient-amount {
     font-size: 0.8rem;
     font-weight: 300;
 }
 
 /*********************************************************************** allergens */
 
-.recipeDetailsAllergens {
+.recipe-details-allergens {
     margin: 4rem 12rem 4rem 12rem;
     background-color: white;
     max-height: 60vh;
@@ -209,7 +213,7 @@
     gap: 0.8rem;
 }
 
-.recipeDetailsAllergens li {
+.recipe-details-allergens li {
     list-style: none;
     padding: 0.5rem;
     background-color: #d9f4d9;
@@ -219,13 +223,13 @@
     width: 13vw;
 }
 
-.recipeDetailsAllergens li p {
+.recipe-details-allergens li p {
     font-size: 0.9rem;
 }
 
     /*********************************************************************** nutrients */
 
-.recipeDetailsNutrients {
+.recipe-details-nutrients {
     list-style: none;
     background-color: white;
     display: flex;
@@ -234,7 +238,7 @@
     margin: 4rem 12rem 4rem 12rem;
 }
 
-.recipeDetailsNutrients li {
+.recipe-details-nutrients li {
     background-color: transparent;
     display: flex;
     justify-content: space-between;
@@ -244,7 +248,7 @@
     padding: 1rem;
 }
 
-.recipeDetailsNutrients li:nth-child(odd) {
+.recipe-details-nutrients li:nth-child(odd) {
     background-color: var(--background-color);
 }
 
@@ -252,37 +256,37 @@
     font-weight: 700;
 }
 
-.descriptionNutrient {
+.description-nutrient {
     width: 18vw;
 }
 
-.descriptionQuantity {
+.description-quantity {
     width: 10vw;
 }
 
-.descriptionDaily {
+.description-daily {
     width: 10vw;
 }
 
-.nutrientLabel {
+.nutrient-label {
     width: 18vw;
 }
 
-.nutrientQuantity {
+.nutrient-quantity {
     width: 10vw;
 }
 
-.dailyNutrient {
+.daily-nutrient {
     width: 10vw;
 }
 
-.recipeDetailsDontDisplay {
-    display: none;
-}
+
 
 .recipeDetailsNutrients li p:nth-child(n+2) {
     text-align: end;
 }
+
+
 
 
 

@@ -32,22 +32,25 @@ function Navigation () {
                         className={({ isActive }) => isActive ? 'active-menu-link menu-link' : 'default-menu-link menu-link'}
                         to="/recipes">Recipes</NavLink>
                 </li>
+
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? 'active-menu-link menu-link' : 'default-menu-link menu-link'}
                         to="/random">Random</NavLink>
                 </li>
+
+
             </ul>
 
             {isAuth
                 ? <div className='logged-in-navbar end-navbar'>
                     <li>
                         <NavLink
-                            className="accountNav"
+                            className="account-nav"
                             to="/profile">profile</NavLink>
                     </li>
                     <li>
-                        <button className='accountNav'
+                        <button className='account-nav'
                                 onClick={logout}><FontAwesomeIcon
                                 icon={faArrowRightFromBracket}
                                 className='logout-icon'/>

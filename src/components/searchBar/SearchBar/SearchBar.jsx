@@ -9,13 +9,13 @@ function SearchBar(props) {
         e.preventDefault()
 
         searchBarValue && props.fetchSearchedRecipes(searchBarValue)
-        searchBarValue && props.setClassnamePageButton("pageButton")
-        searchBarValue && props.setClassnameSortBy("sortOptions")
+        searchBarValue && props.setClassnamePageButton("page-button")
+        searchBarValue && props.setClassnameSortBy("sort-options")
 
     }
 
     return (
-        <div className="searchBar">
+        <div className="search-bar">
 
             <form onSubmit={handleSearch}>
                 <input
@@ -23,15 +23,15 @@ function SearchBar(props) {
                     value={searchBarValue}
                     onChange={(e) => setSearchBarValue(e.target.value)}
                     placeholder="search"
+                    className="search-input"
                 />
                 <button
-                    className="recipeSearchButton"
-
+                    className="recipe-search-button"
                 >go</button>
             </form>
 
             <button
-                className="recipeFilterButton"
+                className="recipe-filter-button"
                 onClick={() => { props.handleFilterButton()}}
             >Filters</button>
         </div>

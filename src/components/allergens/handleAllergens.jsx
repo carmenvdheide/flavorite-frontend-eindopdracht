@@ -21,8 +21,8 @@ import {useState} from "react";
 function HandleAllergens({data}) {
     const allergenArray = []
     const [size, setSize] = useState(7)
-    const [classnameMoreButton, setClassnameMoreButton] = useState('allergenButton')
-    const [classnameLessButton, setClassnameLessButton] = useState('dontShowButton')
+    const [classnameMoreButton, setClassnameMoreButton] = useState('allergen-button')
+    const [classnameLessButton, setClassnameLessButton] = useState('dont-show-button')
 
     const [obj, setObj] = useState({
         "alcoholFree" : alcoholFree,
@@ -67,7 +67,7 @@ function HandleAllergens({data}) {
            <>
                {data.recipe.healthLabels.includes("Alcohol-Free") &&
                    <div className="wrap">
-                       <img src={alcoholFree} className="allergenIcon" alt="alcohol free" aria-describedby="alcoholFree"/>
+                       <img src={alcoholFree} className="allergen-icon" alt="alcohol free" aria-describedby="alcoholFree"/>
                        <p role="tooltip" id="alcoholFree">Alcohol-free</p>
                    </div>
                }
@@ -75,7 +75,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Celery-Free") &&
                    <div className="wrap">
-                       <img src={celeryFree} className="allergenIcon" alt="celery free" aria-describedby="celeryFree"/>
+                       <img src={celeryFree} className="allergen-icon" alt="celery free" aria-describedby="celeryFree"/>
                        <p role="tooltip" id="celeryFree">Celery-free</p>
                    </div>
                }
@@ -83,7 +83,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Crustcean-Free") &&
                    <div className="wrap">
-                       <img src={crustceanFree} className="allergenIcon"alt="crustcean free" aria-describedby="crustceanFree"/>
+                       <img src={crustceanFree} className="allergen-icon"alt="crustcean free" aria-describedby="crustceanFree"/>
                        <p role="tooltip" id="crustceanFree">Crustcean-free</p>
                    </div>
                }
@@ -91,7 +91,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Dairy-Free") &&
                    <div className="wrap">
-                       <img src={dairyFree} className="allergenIcon" alt="dairy free" aria-describedby="dairyFree"/>
+                       <img src={dairyFree} className="allergen-icon" alt="dairy free" aria-describedby="dairyFree"/>
                        <p role="tooltip" id="dairyFree">Dairy-free</p>
                    </div>
 
@@ -99,7 +99,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Egg-Free") &&
                    <div className="wrap">
-                       <img src={eggFree} className="allergenIcon" alt="eggg free" aria-describedby="eggFree"/>
+                       <img src={eggFree} className="allergen-icon" alt="eggg free" aria-describedby="eggFree"/>
                        <p role="tooltip" id="eggFree">Egg-free</p>
                    </div>
 
@@ -107,7 +107,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Fish-Free") &&
                    <div className="wrap">
-                       <img src={fishFree} className="allergenIcon" alt="fish free"
+                       <img src={fishFree} className="allergen-icon" alt="fish free"
                             aria-describedby="fishFree"/>
                        <p role="tooltip" id="fishFree">Fish-free</p>
                    </div>
@@ -116,7 +116,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Gluten-Free") &&
                    <div className="wrap">
-                       <img src={glutenFree} className="allergenIcon" alt="gluten free"
+                       <img src={glutenFree} className="allergen-icon" alt="gluten free"
                             aria-describedby="glutenFree"/>
                        <p role="tooltip" id="glutenFree">Gluten-free</p>
                    </div>
@@ -125,7 +125,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Lupine-Free") &&
                    <div className="wrap">
-                       <img src={lupinFree} className="allergenIcon" alt="lupine free"
+                       <img src={lupinFree} className="allergen-icon" alt="lupine free"
                             aria-describedby="lupinFree"/>
                        <p role="tooltip" id="lupinFree">Lupin-free</p>
                    </div>
@@ -134,7 +134,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Mollusk-Free") &&
                    <div className="wrap">
-                       <img src={molluscFree} className="allergenIcon" alt="mollusc free"
+                       <img src={molluscFree} className="allergen-icon" alt="mollusc free"
                             aria-describedby="molluscFree"/>
                        <p role="tooltip" id="molluscFree">Mollusc-free</p>
                    </div>
@@ -143,7 +143,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Mustard-Free") &&
                    <div className="wrap">
-                       <img src={mustardFree} className="allergenIcon" alt="mustard free"
+                       <img src={mustardFree} className="allergen-icon" alt="mustard free"
                             aria-describedby="mustardFree"/>
                        <p role="tooltip" id="mustardFree">Mustard-free</p>
                    </div>
@@ -152,7 +152,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Peanut-Free") &&
                    <div className="wrap">
-                       <img src={peanutFree} className="allergenIcon" alt="peanut free" aria-describedby="peanutFree"/>
+                       <img src={peanutFree} className="allergen-icon" alt="peanut free" aria-describedby="peanutFree"/>
                        <p role="tooltip" id="peanutFree">Peanut-free</p>
                    </div>
 
@@ -160,7 +160,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Sesame-Free") &&
                    <div className="wrap">
-                       <img src={sesameFree} className="allergenIcon" alt="sesame free"
+                       <img src={sesameFree} className="allergen-icon" alt="sesame free"
                             aria-describedby="sesameFree"/>
                        <p role="tooltip" id="sesameFree">Sesame-free</p>
                    </div>
@@ -168,7 +168,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Soy-Free") &&
                    <div className="wrap">
-                       <img src={soyFree} className="allergenIcon" alt="soy free" aria-describedby="soyFree"/>
+                       <img src={soyFree} className="allergen-icon" alt="soy free" aria-describedby="soyFree"/>
                        <p role="tooltip"id="soyFree">Soy-free</p>
                    </div>
 
@@ -176,7 +176,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Sulfite-Free") &&
                    <div className="wrap">
-                       <img src={sulfiteFree} className="allergenIcon" alt="sulfite free"
+                       <img src={sulfiteFree} className="allergen-icon" alt="sulfite free"
                             aria-describedby="sulfiteFree"/>
                        <p role="tooltip" id="sulfiteFree">Sulfite-free</p>
                    </div>
@@ -185,7 +185,7 @@ function HandleAllergens({data}) {
 
                {data.recipe.healthLabels.includes("Tree-Nut-Free") &&
                    <div className="wrap">
-                       <img src={treeNutFree} className="allergenIcon" alt="tree nut free" aria-describedby="treeNutFree"/>
+                       <img src={treeNutFree} className="allergen-icon" alt="tree nut free" aria-describedby="treeNutFree"/>
                        <p role="tooltip" id="treeNutFree">Tree-nut-free</p>
                    </div>
                }
@@ -210,7 +210,7 @@ function HandleAllergens({data}) {
                    return (
 
                        <div key={allergen} className="wrap">
-                           <img src={obj[allergen]} className="allergenIcon" alt={tooltipText} aria-describedby={allergen}/>
+                           <img src={obj[allergen]} className="allergen-icon" alt={tooltipText} aria-describedby={allergen}/>
                            <p role="tooltip" id={allergen}>{tooltipText}</p>
                        </div>
 
@@ -221,16 +221,16 @@ function HandleAllergens({data}) {
                <button
                    onClick={() => {
                        setSize(allergenArray.length)
-                       setClassnameMoreButton("dontShowButton")
-                       setClassnameLessButton("allergenButton")
+                       setClassnameMoreButton("dont-show-button")
+                       setClassnameLessButton("allergen-button")
                    }}
                    className={classnameMoreButton}
                >+</button>
                <button
                    onClick={() => {
                        setSize(6)
-                       setClassnameMoreButton("allergenButton")
-                       setClassnameLessButton("dontShowButton")
+                       setClassnameMoreButton("allergen-button")
+                       setClassnameLessButton("dont-show-button")
                    }}
                    className={classnameLessButton}
                >-</button>

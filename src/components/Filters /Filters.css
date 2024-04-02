@@ -1,6 +1,6 @@
 
 
-.checkboxWrap {
+.checkbox-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +11,8 @@
 
  }
 
- .checkboxWrap input {
- }
 
- .checkboxWrap label {
+ .checkbox-wrap label {
      background-color: transparent;
      font-family: "Montserrat", sans-serif;
      text-transform: capitalize;

@@ -37,20 +37,9 @@ function Home() {
 
     return (
         isLoading === "loading" ? <Loading/> :<main>
-            <section className='leftSide'>
+            <section className='left-side'>
                 <h1>flavorite</h1>
-                <div className="explore">
-                    <img src={line} alt="line"/>
-                    <button
-                        className='exploreButton'
-                        onClick={() => {
-                            navigate("/recipes")
-                        }}>
-                        explore
-                    </button>
-                    <img src={line}/>
 
-                </div>
 
 
 
@@ -60,10 +49,10 @@ function Home() {
                             <RecipeCard
                                 recipe={recipe}
                                 key={recipe.recipe.uri.split('_')[1]}
-                                classname="recipeCard"
-                                classnameText="recipeCardText"
-                                classnameIcons="recipeCardInfo"
-                                classnameAllergens="recipeCardAllergens"
+                                classname="recipe-card"
+                                classnameText="recipe-card-text"
+                                classnameIcons="recipe-card-info"
+                                classnameAllergens="recipe-card-allergens"
                                 classnameNavLink="recipe-link"
                                 navlink="home"
                                 backButton="/random"
@@ -78,27 +67,45 @@ function Home() {
 
             </section>
 
-            <div className='rightSide'>
-                <section className='categoriesHome'>
+            <div className='right-side'>
+                <section className='categories-home'>
+                <div className="surprise">
+                    <p>Not sure what you want to cook? Click the button and we'll decide for you</p>
+                    <button
+                        className="surprise-button"
+                        onClick={() => {
+                            navigate("/random")
+                        }}>
+                        surprise me
 
-                </section>
-                <section className='homeRightDown'>
-                    <div className='buttonContainer'>
+                    </button>
+                </div>
+
+
+                    <div className="explore">
+                        <p>Or would you rather browse through all recipes? </p>
+
+                        {/*<img src={line} alt="line"/>*/}
                         <button
-                            className="surpriseButton"
+                            className='explore-button'
                             onClick={() => {
-                                navigate("/random")
+                                navigate("/recipes")
                             }}>
-                            surprise me
+                            explore
                         </button>
+                        {/*<img src={line}/>*/}
+
                     </div>
 
-                    <div className='homeInfo'>
+                </section>
+
+
+                    <div className='home-info'>
                         <p>2M+ recipes</p>
                         <p>40+ diets/allergens</p>
                         <p>500+ nutrients</p>
                     </div>
-                </section>
+
 
             </div>
 

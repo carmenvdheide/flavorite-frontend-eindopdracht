@@ -1,5 +1,4 @@
 import React, {useEffect} from "react"
-import Button from "../../components/button/button.jsx";
 import { useState} from "react";
 // import axios from "axios";
 import './random-recipe.css'
@@ -36,10 +35,13 @@ function RandomRecipe() {
 
     const [ isLoading, setIsLoading ] = useState('')
 
+
+
     async function handleRandomButton() {
         try {
             setIsLoading('loading');
             await fetchRandom({ setIsLoading, allergenFilterParam, stateMealType, setRandomRecipeData });
+            console.log(stateMealType)
         } catch (error) {
             console.error('Error fetching recipes:', error);
         } finally {
@@ -87,21 +89,19 @@ function RandomRecipe() {
                 <div className="randomRecipeMealType">
                     <p>select a meal-type:</p>
                     <div>
-                        <Button
-                            text="breakfast"
-                            // className={breakfast}
+                        <button
                             onClick={handleMealType}
-                            value="Breakfast"/>
-                        <Button
-                            text="lunch"
-                            // className={lunch}
+                            value="Breakfast"
+                        className={stateMealType === "Breakfast" ? "clicked-meal-type" : "unclicked-meal-type"}>Breakfast</button>
+
+                        <button
                             onClick={handleMealType}
-                            value="Lunch"/>
-                        <Button
-                            text="dinner"
-                            // className={dinner}
+                            value="Lunch"
+                            className={stateMealType === "Lunch" ? "clicked-meal-type" : "unclicked-meal-type"}>Lunch</button>
+                        <button
                             onClick={handleMealType}
-                            value="Dinner"/>
+                            value="Dinner"
+                            className={stateMealType === "Dinner" ? "clicked-meal-type" : "unclicked-meal-type"}>Dinner</button>
                     </div>
 
 
@@ -139,7 +139,6 @@ function RandomRecipe() {
                     classnameAllergens="randomRecipeAllergens"
                     classnameNavLink="randomRecipeLink"
                     navlink="random"
-                    // backButton="/random"
                 />
 
             }

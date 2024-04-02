@@ -3,7 +3,7 @@ import "./Filters.css"
 
 function Filters({label, isChecked, checkHandler}) {
     return (
-        <div className="checkboxWrap">
+        <div className="checkbox-wrap">
             <input
                 type="checkbox"
                 id={`${label}Filter`}
