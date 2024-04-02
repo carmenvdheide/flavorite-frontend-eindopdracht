@@ -311,7 +311,7 @@ function AllRecipes() {
                 </select>
 
                 <div className={filtersDisplay}>
-                    <div className="filterCategory">
+                    <div className="filter-category">
                         <p>Habits</p>
                         <div>
                             {eatingHabitFilters.map((filter, index) => (
@@ -327,7 +327,7 @@ function AllRecipes() {
                         </div>
 
                     </div>
-                    <div className="filterCategory">
+                    <div className="filter-category">
                         <p>Allergens</p>
                         <div>
                             {allergenFilters.map((filter, index) => (
@@ -344,7 +344,7 @@ function AllRecipes() {
 
                     </div>
 
-                    <div className="filterCategory">
+                    <div className="filter-category">
                         <p>Diets</p>
                         <div>
                             {dietFilters.map((filter, index) => (
@@ -360,7 +360,7 @@ function AllRecipes() {
 
                     </div>
 
-                    <div className="filterCategory">
+                    <div className="filter-category">
                         <p>Meal Types</p>
                         <div>
                             {mealTypeFilters.map((filter, index) => (

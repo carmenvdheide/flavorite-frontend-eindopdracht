@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import './home.css'
 import {useNavigate} from "react-router-dom";
-import line from "../../assets/thinline.jpeg"
 import {fetchRecipes} from "../../helpers/apiFetch.js";
 import Loading from "../../components/loading/loading.jsx";
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
@@ -36,7 +35,7 @@ function Home() {
     }, [data]);
 
     return (
-        isLoading === "loading" ? <Loading/> :<main>
+        isLoading === "loading" ? <Loading/> :<main className="home-container">
             <section className='left-side'>
                 <h1>flavorite</h1>
 
@@ -70,6 +69,7 @@ function Home() {
             <div className='right-side'>
                 <section className='categories-home'>
                 <div className="surprise">
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                     <p>Not sure what you want to cook? Click the button and we'll decide for you</p>
                     <button
                         className="surprise-button"

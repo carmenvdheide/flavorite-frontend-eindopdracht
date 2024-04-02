@@ -85,8 +85,8 @@ function RandomRecipe() {
 
     return (
         <>
-            <section className="randomRecipeFilters">
-                <div className="randomRecipeMealType">
+            <section className="random-recipe-filters">
+                <div className="random-recipe-meal-type">
                     <p>select a meal-type:</p>
                     <div>
                         <button
@@ -107,9 +107,9 @@ function RandomRecipe() {
 
                 </div>
 
-                <div className="randomRecipeAllergensFilter">
+                <div className="random-recipe-allergens-filter">
                     <p>select allergens:</p>
-                    <div className="checkboxAllergensRandom">
+                    <div className="checkbox-allergens-random">
                         {allergenFilters.map((filter, index) => (
                             <Filters
                                 key={filter.name}
@@ -124,7 +124,7 @@ function RandomRecipe() {
                 </div>
 
                 <button
-                    className='surpriseButton'
+                    className='surprise-button'
                     onClick={handleRandomButton}
                 >surprise me</button>
 
@@ -133,11 +133,11 @@ function RandomRecipe() {
             {isLoading === 'loading' ? <Loading/> : randomRecipeData &&
                 <RecipeCard
                     recipe={randomRecipeData}
-                    classname="randomRecipeCard"
-                    classnameText="randomRecipeCardText"
-                    classnameIcons="randomRecipeInfo"
-                    classnameAllergens="randomRecipeAllergens"
-                    classnameNavLink="randomRecipeLink"
+                    classname="random-recipe-card"
+                    classnameText="random-recipe-card-text"
+                    classnameIcons="random-recipe-info"
+                    classnameAllergens="random-recipe-allergens"
+                    classnameNavLink="random-recipe-link"
                     navlink="random"
                 />
 
