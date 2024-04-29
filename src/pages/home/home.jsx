@@ -70,7 +70,7 @@ function Home() {
                 <section className='categories-home'>
                 <div className="surprise">
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    <p>Not sure what you want to cook? Click the button and we'll decide for you</p>
+                    <p>Not sure what cook today? Click the button and we'll decide for you</p>
                     <button
                         className="surprise-button"
                         onClick={() => {
@@ -83,7 +83,7 @@ function Home() {
 
 
                     <div className="explore">
-                        <p>Or would you rather browse through all recipes? </p>
+                        <p>Rather browse through all recipes? </p>
 
                         {/*<img src={line} alt="line"/>*/}
                         <button

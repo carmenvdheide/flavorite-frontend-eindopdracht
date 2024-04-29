@@ -27,7 +27,7 @@ function SearchBar(props) {
                 />
                 <button
                     className="recipe-search-button"
-                >go</button>
+                >Go</button>
             </form>
 
             <button

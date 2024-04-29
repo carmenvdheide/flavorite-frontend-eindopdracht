@@ -286,6 +286,8 @@ function AllRecipes() {
 
     }
 
+    ///////////////////////// RETURN
+
 
     return ( isLoading === 'loading' ? <Loading/> :
 
@@ -392,6 +394,18 @@ function AllRecipes() {
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
+                <div className="button-wrap-mobile">
+                    <button
+                        onClick={handlePreviousPage}
+                        className={classnamePageButton}
+                    ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
+                    <button
+                        onClick={() => handleNextPage(nextPage)}
+                        className={classnamePageButton}
+                    > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                </div>
+
+
 
 
 
@@ -422,6 +436,17 @@ function AllRecipes() {
                         onClick={() => handleNextPage(nextPage)}
                         className={classnamePageButton}
                     >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                </div>
+
+                <div className="button-wrap-mobile">
+                    <button
+                        onClick={handlePreviousPage}
+                        className={classnamePageButton}
+                    ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
+                    <button
+                        onClick={() => handleNextPage(nextPage)}
+                        className={classnamePageButton}
+                    > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
             </section>
 

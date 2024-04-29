@@ -1,6 +1,8 @@
 .search-bar {
     display: flex;
     margin: 0.8rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .search-bar form {
@@ -16,12 +18,11 @@
 
 
 .search-bar button {
-    padding: 0.5rem 0.9rem;
+    padding: 0.5em 0.9em;
     height: 3rem;
     border-radius: 0.8rem;
     margin-left: 0.5rem;
     border: none;
-
 }
 
 
@@ -31,4 +32,10 @@
 
 .recipe-filter-button {
     background-color: var(--orange-color);
+}
+
+@media only screen and (max-width: 768px) {
+    .search-bar button {
+        font-size: 0.9rem;
+    }
 }
