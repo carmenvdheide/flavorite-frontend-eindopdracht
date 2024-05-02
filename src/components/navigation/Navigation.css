@@ -17,8 +17,8 @@
     align-items: center;
     padding: 0 1rem;
     background-color: var(--background-color);
-    position: sticky;
-    top: 0;
+    /*position: sticky;*/
+    /*top: 0;*/
 }
 
 .nav-bar span {
