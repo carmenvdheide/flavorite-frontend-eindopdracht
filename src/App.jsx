@@ -11,6 +11,7 @@ import AllRecipeDetails from "./components/all-recipe-details/AllRecipeDetails.j
 import Register from "./pages/RegisterForm/Register.jsx";
 import Profile from "./pages/profile/profile.jsx";
 import HomeRecipeDetails from "./components/home-recipe-details/HomeRecipeDetails.jsx";
+import Footer from "./components/footer/footer.jsx";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="home/:id" element={<HomeRecipeDetails/>}/>
 
         </Routes>
+        <Footer/>
     </>
   )
 }

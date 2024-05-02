@@ -109,3 +109,13 @@ label, form {
     background-color: transparent;
 }
 
+@media only screen and (max-width: 768px) {
+    .image-wrap-login {
+        display: none;
+    }
+
+    .login-card {
+        width: 80vw;
+    }
+}
+

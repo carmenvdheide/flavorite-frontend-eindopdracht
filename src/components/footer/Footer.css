@@ -1,0 +1,26 @@
+.footer {
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+}
+
+.footer p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        height: 7vh;
+        background-color: var(--purple-color);
+        width: 100vw;
+        gap: 1.5rem;
+        position: sticky;
+        bottom: 0
+    }
+}

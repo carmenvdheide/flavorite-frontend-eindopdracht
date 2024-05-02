@@ -43,7 +43,7 @@ function Home() {
 
 
                 <section className="random-recipes-home">
-                    {data && data.slice(0, 3).map((recipe) => {
+                    {data && data.slice(0, 6).map((recipe) => {
                         return (
                             <RecipeCard
                                 recipe={recipe}
@@ -100,11 +100,11 @@ function Home() {
                 </section>
 
 
-                    <div className='home-info'>
-                        <p>2M+ recipes</p>
-                        <p>40+ diets/allergens</p>
-                        <p>500+ nutrients</p>
-                    </div>
+                    {/*<div className='home-info'>*/}
+                    {/*    <p>2M+ recipes</p>*/}
+                    {/*    <p>40+ diets/allergens</p>*/}
+                    {/*    <p>500+ nutrients</p>*/}
+                    {/*</div>*/}
 
 
             </div>
