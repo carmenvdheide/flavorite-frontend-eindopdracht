@@ -2,7 +2,7 @@
     background-color: white;
 }
 
-.login-card {
+.login-card, .register-card {
     display: flex;
     justify-content: space-between;
     width: 60rem;
@@ -29,7 +29,7 @@
     border: 3px solid white;
 }
 
-.login-form-wrap {
+.login-form-wrap, .register-form-wrap {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -49,22 +49,24 @@
     top: 0;
 }
 
-.login-form-wrap h2 {
+.login-form-wrap h2, .register-form-wrap h2{
     background-color: var(--background-color);
     font-size: 2rem;
     /*margin-left: 1rem;*/
 }
 
-.login-form-wrap div {
+.login-form-wrap div, .register-form-wrap div{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: 22px;
+    background-color: transparent;
 }
-.login-form-wrap div p {
+.login-form-wrap div p, .register-form-wrap div p {
     color: var(--orange-color);
 }
 
-.login-form {
+.login-form, .register-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -84,7 +86,7 @@ label, form {
     background-color: var(--background-color);
 }
 
-.login-form button {
+.login-form button, .register-form button {
     width: 100%;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -104,51 +106,82 @@ label, form {
     /*color: #F17300;*/
 }
 
-.login-form-wrap div {
-    height: 22px;
-    background-color: transparent;
-}
 
 @media only screen and (max-width: 768px) {
     .image-wrap-login {
         display: none;
     }
 
-    .login-card {
+    .login-card, .register-card {
         width: 80vw;
-        height: 70vh;
-        margin: 10vh auto 17vh auto;
+        /*margin: 10vh auto 17vh auto;*/
         display: flex;
         justify-content: center;
     }
 
-    .login-form-wrap {
-        width: 80%;
-        /*border: 2px dotted purple;*/
-
+    .login-card {
+        height: 70vh;
     }
 
-    .login-form {
+    .register-card {
+        height: 75vh;
+    }
+
+    .login-form-wrap, .register-form-wrap  {
+        width: 80%;
+        gap: 2rem;
+        /*border: 2px dotted pink;*/
+    }
+
+    .register-form-wrap
+
+    .login-form, .register-form {
         display: flex;
         flex-direction: column;
         align-items: center;
-        /*border: 2px dotted pink;*/
+
         width: 100%;
     }
 
-    .login-form button {
+    .login-form button, .register-form button {
         width: 40vw;
         background-color: var(--purple-color);
         border: none;
     }
 
-    .login-form input {
+    .login-form input, .register-form input{
         width: 10px;
+    }
+
+    .login-form label, .register-form label{
+        align-self: flex-start;
     }
 
     #username, #password {
         width: 100%;
     }
+
+    .register-form-wrap {
+        height: 70vh;
+    }
+
+    /*.login-form-wrap h2 {*/
+    /*    margin-top: 2rem;*/
+    /*}*/
+
+    .login-form-wrap p:nth-child(-n + 2) {
+        /*border: 1px dotted red;*/
+        text-align: end;
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+
+
+
 
 }
 

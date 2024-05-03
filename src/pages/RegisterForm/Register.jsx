@@ -63,20 +63,20 @@ function Register() {
 
     return  (
 
-        <>
 
-            <section className="login-card">
+
+            <section className="register-card">
                 <div className='image-wrap-login'>
                     <ImgLogin/>
                 </div>
 
 
-                <div className='login-form-wrap'>
+                <div className='register-form-wrap'>
                      {/*eslint-disable-next-line react/no-unescaped-entities */}
                     <p className='register-login-form'>Go back to <a className='register-login-form-link' href='/login'>login page</a></p>
                     <h2>Create account</h2>
 
-                    <form className='login-form' onSubmit={handleSubmit}>
+                    <form className='register-form' onSubmit={handleSubmit}>
                         <label htmlFor="username">Username:</label>
                         <input type="text" id="username" name="username" onChange={handleOnChange}/>
 
@@ -91,10 +91,11 @@ function Register() {
 
                         <button type="submit" >Register</button>
                     </form>
+
                 </div>
 
+
             </section>
-        </>
 
         )
 
