@@ -1,4 +1,4 @@
-.profile-container{
+.profile-container {
     border: 1px solid black;
     width: 60vw;
     margin: 3rem auto;
@@ -139,4 +139,72 @@
     height: 1.8rem;
 }
 
+@media only screen and (max-width: 768px) {
 
+
+    .profile-container {
+        border: none;
+        width: 100vw;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .profile-container-top {
+        border-radius: 0;
+    }
+
+    .user-information-container {
+        border: 1px dotted black;
+        padding: 0.5rem 2rem;
+    }
+
+
+
+    .user-information >p:first-of-type {
+        width: 6rem;
+        text-transform: capitalize;
+
+    }
+
+    .user-information p{
+        font-size: 0.9rem;
+    }
+
+    .favorite-section {
+        /*border-top: 2px solid black;*/
+        padding: 2rem ;
+        border-radius: 0 0 1rem 1rem;
+        background-color: white;
+        min-height: 60vh;
+    }
+    .favorite-list-item {
+        width: 85vw;
+
+    }
+    .favorite-list-item-navlink {
+        font-weight: 300;
+        background-color: transparent;
+    }
+
+    .favorite-list-item img {
+        width: 25vw;
+    }
+
+    .favorite-list-item p {
+        font-size: 0.8rem;
+
+    }
+
+    .favorite-list-item button {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 0.3rem;
+        margin-left: 1rem;
+        background-color: #a7a5a5;
+    }
+
+    .icon-delete-favorite {
+        width: 1.1rem;
+
+    }
+}

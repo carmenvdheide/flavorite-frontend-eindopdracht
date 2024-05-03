@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
 import './profile.css'
 import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
@@ -15,6 +15,13 @@ const Profile = () => {
     const {user} = useContext(AuthContext)
 
     const {deleteFavoriteRecipe} = useContext(FavoriteRecipeContext)
+
+    useEffect(() => {
+
+        recipe.map((recipe) => {
+            console.log(recipe.image)
+        })
+    }, []);
 
 
 
