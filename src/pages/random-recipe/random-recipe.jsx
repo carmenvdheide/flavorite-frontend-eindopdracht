@@ -84,7 +84,7 @@ function RandomRecipe() {
 
 
     return (
-        <>
+        <section className="random-recipes">
             <section className="random-recipe-filters">
                 <div className="random-recipe-meal-type">
                     <p>select a meal-type:</p>
@@ -130,21 +130,41 @@ function RandomRecipe() {
 
             </section>
 
-            {isLoading === 'loading' ? <Loading/> : randomRecipeData &&
-                <RecipeCard
-                    recipe={randomRecipeData}
-                    classname="random-recipe-card"
-                    classnameText="random-recipe-card-text"
-                    classnameIcons="random-recipe-info"
-                    classnameAllergens="random-recipe-allergens"
-                    classnameNavLink="random-recipe-link"
-                    navlink="random"
-                />
+            <div className="random-recipe-desktop">
+                {isLoading === 'loading' ? <Loading/> : randomRecipeData &&
+                    <RecipeCard
+                        recipe={randomRecipeData}
+                        classname="random-recipe-card"
+                        classnameText="random-recipe-card-text"
+                        classnameIcons="random-recipe-info"
+                        classnameAllergens="random-recipe-allergens"
+                        classnameNavLink="random-recipe-link"
+                        navlink="random"
+                    />
+                }
+            </div>
 
-            }
+            <div className="random-recipe-mobile">
+                {isLoading === 'loading' ? <Loading/> : randomRecipeData &&
+                    <RecipeCard
+                        recipe={randomRecipeData}
+                        key={randomRecipeData.recipe.uri.split('_')[1]}
+                        classname="recipe-card"
+                        classnameText="recipe-card-text"
+                        classnameIcons="recipe-card-info"
+                        classnameAllergens="recipe-card-allergens"
+                        classnameNavLink="recipe-link"
+                        navlink="recipes"
+                        backButton="/recipes"
+
+                    />
+                }
+            </div>
 
 
-        </>
+
+
+        </section>
     )
 }
 

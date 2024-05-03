@@ -19,11 +19,11 @@
      font-family: "Montserrat", sans-serif;
      text-transform: capitalize;
      width: 8rem;
-     border: 1px solid yellow;
  }
 
 @media only screen and (max-width: 768px) {
     .checkbox-wrap {
-        width: 50vw;
+        width: 29vw;
+        gap: 0.3rem;
     }
 }

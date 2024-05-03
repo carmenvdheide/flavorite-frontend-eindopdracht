@@ -48,10 +48,11 @@
 .random-recipe-allergens-filter {
     height: 10rem;
     background-color: var(--purple-color);
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 
 
 }
@@ -63,6 +64,7 @@
     flex-wrap: wrap;
     max-width: 50vw;
     height: 8rem;
+
 }
 
 input[type="checkbox"] {
@@ -109,6 +111,8 @@ input[type="checkbox"]:checked::before {
     align-self: center;
     border: var(--orange-color) 2px solid;
 }
+
+/********************************* recipe card */
 
 .random-recipe-card {
     border: 1px solid black;
@@ -182,6 +186,130 @@ input[type="checkbox"]:checked::before {
     border-radius: 0;
 }
 
+.random-recipe-mobile {
+    display: none;
+}
 
+@media only screen and (max-width: 768px) {
+    .random-recipes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .random-recipe-desktop {
+        display: none;
+    }
+
+    .random-recipe-mobile {
+        display: flex;
+        margin: 3rem auto;
+
+    }
+    .random-recipe-filters {
+        flex-direction: column;
+        height: 65vh;
+        padding: 0;
+        width: 100vw;
+        background-color: var(--background-color);
+    }
+
+
+    .random-recipe-meal-type {
+        margin: 1rem auto;
+        /*border: 1px dashed darkslategrey;*/
+        height: 5vh;
+    }
+
+    .random-recipe-meal-type div {
+        flex-direction: row;
+        gap: 1rem;
+        height: 6vh;
+
+    }
+
+    .random-recipe-meal-type div button {
+        height: 6vh;
+        width: 23vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2rem;
+        border: 2px solid var(--purple-color);
+    }
+
+    .clicked-meal-type {
+        background-color: var(--purple-color);
+    }
+
+    .random-recipe-allergens-filter {
+        height: 30vh;
+        background-color: transparent;
+    }
+
+
+
+    input[type="checkbox"]::before {
+        color: var(--purple-color);
+    }
+
+    input[type="checkbox"]:checked {
+        border-color: var(--purple-color);
+    }
+
+    .checkbox-allergens-random {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        min-width: 90vw;
+        height: 100%;
+        margin: auto;
+    }
+
+    .checkbox-allergens-random label {
+        font-size: 0.7rem;
+    }
+
+
+    .surprise-button {
+        width: 60vw;
+        height: 7vh;
+        border-radius: 2rem;
+        color: white;
+        border: none;
+        margin-bottom: 1.3rem;
+    }
+
+    .random-recipe-card {
+        border: none;
+        width: 80vw;
+        min-height: 20vh;
+    }
+
+    .random-recipe-allergens {
+        height: 50vh;
+    }
+
+    .checkbox-allergens-random {
+        flex-wrap: wrap;
+    }
+
+    .random-recipe-allergens {
+        display: none;
+    }
+
+    .random-recipe-card-text {
+        border: none;
+    }
+
+    .random-recipe-card-text {
+
+        gap: 2rem;
+        width: auto;
+
+    }
+
+}
 
 
