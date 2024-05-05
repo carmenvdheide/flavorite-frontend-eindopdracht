@@ -125,10 +125,15 @@
     .recipe-link, .random-recipe-link{
         display: flex;
         width: 600px;
-        /*border: #F17300 2px solid;*/
     }
 
     .recipe-card-allergens {
         display: none;
     }
+
+
+
+
+
+
 }
