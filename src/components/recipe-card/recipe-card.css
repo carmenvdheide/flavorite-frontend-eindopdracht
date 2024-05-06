@@ -77,16 +77,16 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        border-radius: 3px;
+        border-radius: 0;
         border: none;
         max-width: 85vw;
-        box-shadow: #33281b 2px 2px 6px;
+        box-shadow: #33281b 1px 1px 6px;
+        height: fit-content;
 
     }
 
     .recipe-page-name {
         font-size: 1rem;
-        /*margin-bottom: 0;*/
         min-height: 0;
         height: 3.5rem;
     }
@@ -97,17 +97,22 @@
         border-radius: 0;
     }
 
+    .recipe-card-info {
+        padding-bottom: 0.5rem;
+        gap: 1rem;
+    }
+
+
     .recipe-card-info, .random-recipe-link {
         display: flex;
         justify-content: center;
-
     }
 
     .recipe-card-text, .random-recipe-card-text {
         width: 70%;
     }
 
-    .recipe-card-info div, random-recipe-info div {
+    .recipe-card-info div, .random-recipe-info div {
         display: flex;
         justify-content: center;
         align-items: center;

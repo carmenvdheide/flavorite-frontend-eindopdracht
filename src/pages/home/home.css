@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 
 
@@ -211,22 +212,42 @@ button:hover {
         background-color: var(--background-color);
         height: 50vh;
         padding: 0;
-        /*margin-bottom: 2rem;*/
     }
 
     .surprise, .explore {
         background-color: white;
-        gap: 1.2rem;
+        gap: 0.8rem;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        /*width: 75vw;*/
-        height: 17vh;
+        height: 12vh;
+
+    }
+
+    .surprise p, .explore p {
+        font-family: "Indie Flower", cursive;
     }
 
     .surprise {
         flex-direction: row;
     }
+
+    .surprise button, .explore-button {
+        height: 10vh;
+        width: 10vh;
+        border-radius: 5rem;
+        font-family: "Indie Flower", cursive;
+        color: #1d131d;
+        font-size: 0.8rem;
+        margin: 0;
+        background-color: var(--orange-color);
+        box-shadow: #33281b 2px 2px 6px;
+
+
+
+    }
+
+
     .home-info {
         width: 100vw;
         height: 12vh;
@@ -234,7 +255,6 @@ button:hover {
 
     .home-info p {
         font-size: 1rem;
-
     }
 
 

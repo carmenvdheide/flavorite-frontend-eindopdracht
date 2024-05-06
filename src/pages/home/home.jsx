@@ -70,7 +70,7 @@ function Home() {
                 <section className='categories-home'>
                 <div className="surprise">
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    <p>Not sure what cook today? Click the button and we'll decide for you</p>
+                    <p>Click the button and we'll decide what to cook</p>
                     <button
                         className="surprise-button"
                         onClick={() => {

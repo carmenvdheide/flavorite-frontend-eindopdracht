@@ -16,7 +16,7 @@
 
 @media only screen and (max-width: 768px) {
     .footer {
-        height: 7vh;
+        height: 5vh;
         background-color: var(--purple-color);
         width: 100vw;
         gap: 1.5rem;

@@ -34,7 +34,6 @@ const Profile = () => {
                         <span className="user-information"><p>username:</p><p>{user.username}</p></span>
                         <span className="user-information"><p>email:</p><p>{user.email}</p></span>
                     </div>
-                    <button className='profile-button' >change info</button>
                 </section>
             </div>
 
