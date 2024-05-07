@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons/faClock";
 import {faFireFlameCurved} from "@fortawesome/free-solid-svg-icons/faFireFlameCurved";
@@ -8,6 +8,9 @@ import {NavLink} from "react-router-dom";
 import './recipe-card.css'
 
 function RecipeCard({recipe, classname, classnameText, classnameAllergens, classnameNavLink, navlink, classnameIcons}) {
+
+    const [ isLoading, setIsLoading ] = useState('')
+
 
     const recipeID = recipe.recipe.uri.split('_')[1]
 

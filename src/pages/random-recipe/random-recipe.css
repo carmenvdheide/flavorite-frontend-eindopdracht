@@ -2,7 +2,6 @@
     background-color: var(--purple-color);
     display: flex;
     justify-content: space-around;
-    /*width: 100%;*/
     padding: 2rem 5rem;
     height: 14rem;
 }
@@ -64,7 +63,6 @@
     flex-wrap: wrap;
     max-width: 50vw;
     height: 8rem;
-
 }
 
 input[type="checkbox"] {
@@ -180,10 +178,6 @@ input[type="checkbox"]:checked::before {
 
 .random-recipe-card img {
     border-radius: 0.8rem 0 0 0.8rem;
-}
-
-.random-recipe-allergens img {
-    border-radius: 0;
 }
 
 .random-recipe-mobile {
@@ -306,13 +300,10 @@ input[type="checkbox"]:checked::before {
 
     .random-recipe-card-text {
         border: none;
-    }
-
-    .random-recipe-card-text {
         gap: 2rem;
         width: auto;
-
     }
+
 
 }
 

@@ -100,12 +100,6 @@ function Home() {
                 </section>
 
 
-                    {/*<div className='home-info'>*/}
-                    {/*    <p>2M+ recipes</p>*/}
-                    {/*    <p>40+ diets/allergens</p>*/}
-                    {/*    <p>500+ nutrients</p>*/}
-                    {/*</div>*/}
-
 
             </div>
 

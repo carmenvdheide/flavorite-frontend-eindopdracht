@@ -1,5 +1,5 @@
 import './all-recipes.css'
-import React, {useEffect, useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
 import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
@@ -8,6 +8,7 @@ import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-soli
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Loading from "../../components/loading/loading.jsx";
 import {fetchRecipes} from "../../helpers/apiFetch.js";
+import {SearchedRecipesContext} from "../../context/SearchedRecipesProvider.jsx";
 
 
 function AllRecipes() {
@@ -68,12 +69,27 @@ function AllRecipes() {
     const [ filtersDisplay, setFiltersDisplay ] = useState('dont-display-filters')
 
     const [ nextPage, setNextPage ] = useState("")
-    const [ pageData, setPageData ] = useState([])
-    const [ pageCount, setPageCount ] = useState(1)
 
     const [ sortBy, setSortBy ] = useState('')
     const [ classnamePageButton, setClassnamePageButton ] = useState('dont-display-page-button')
     const [ classnameSortBy, setClassnameSortBy ] = useState('dont-display-page-button')
+
+    const { setSearchedRecipesData } = useContext(SearchedRecipesContext)
+
+    const { recipeData } = useContext(SearchedRecipesContext)
+
+    const { setNextPageSearchedRecipes } = useContext(SearchedRecipesContext)
+
+    const { nextPageSearched } = useContext(SearchedRecipesContext)
+
+    const { setPageDataSearched } = useContext(SearchedRecipesContext)
+
+    const { pageDataSearched } = useContext(SearchedRecipesContext)
+
+    const { pageCountSearched } = useContext(SearchedRecipesContext)
+
+    const { setPageCountSearched } = useContext(SearchedRecipesContext)
+
 
     //////////////////////////////////////////////////////////////////////////////////////////// useEffects
 
@@ -99,7 +115,7 @@ function AllRecipes() {
         let eatingHabit = eatingHabitArray.length > 0 ? "&health=" + eatingHabitArray.join('&health=') : ''
         setEatingHabitFilterParam(eatingHabit)
 
-        console.log(allergens, diets, mealType, eatingHabit)
+        // console.log(allergens, diets, mealType, eatingHabit)
 
     }, [allergenFilters, dietFilters, mealTypeFilters, eatingHabitFilters])
 
@@ -108,18 +124,35 @@ function AllRecipes() {
         sortData()
     }, [sortBy, data])
 
+    function displayPreviousData () {
+        setData(recipeData)
+
+
+
+
+        setNextPage(nextPageSearched)
+        // setSearchedRecipesData(recipeData)
+        setClassnamePageButton("page-button")
+        setClassnameSortBy("sort-options")
+        console.log(recipeData.length)
+    }
 
     useEffect(() => {
-        void fetchData()
+        console.log(nextPage)
+    }, [nextPage]);
+
+
+    useEffect(() => {
+        recipeData.length > 0 ? displayPreviousData() : void fetchData()
+        console.log(recipeData)
     }, [])
 
-    useEffect(() => {
-        console.log(pageData)
-    }, [pageData])
+
+
 
     useEffect(() => {
-        console.log(pageCount)
-    }, [pageCount])
+        setSearchedRecipesData(data)
+    }, [data]);
 
     //////////////////////////////////////////////////////////////////////////////////////////// fetch recipes
     async function fetchData() {
@@ -151,11 +184,15 @@ function AllRecipes() {
                         q: searchValue,
                     }})
             setData(result.data.hits)
-            setNextPage(result.data['_links'].next.href)
+            // setNextPage(result.data['_links'].next.href)
+            setNextPageSearchedRecipes(result.data['_links'].next.href)
+
             console.log(result.data)
             console.log(result.data['_links'].next.href)
-            setPageData(prevState => [...prevState, {page: 1, data: result.data}])
+            // setPageData(prevState => [...prevState, {page: 1, data: result.data}])
+            setPageDataSearched(prevState => [...prevState, {page: 1, data: result.data}])
             setIsLoading('done')
+
         } catch (e) {
             console.error(e)
             console.log('nope')
@@ -253,7 +290,9 @@ function AllRecipes() {
     async function handleNextPage(url) {
 
         try {
-            const dataNextPage = pageData.find((dataNext) => dataNext.page === pageCount + 1)
+
+
+            const dataNextPage = pageDataSearched.find((dataNext) => dataNext.page === pageCountSearched + 1)
 
 
             if (dataNextPage) {
@@ -261,12 +300,13 @@ function AllRecipes() {
             } else {const result = await axios.get(url)
 
                 setData(result.data.hits)
-                setNextPage(result.data['_links'].next.href)
-                setPageData(prevState => [...prevState, {page: pageCount + 1, data: result.data}])
+                // setNextPage(result.data['_links'].next.href)
+                setNextPageSearchedRecipes(result.data['_links'].next.href)
 
-                console.log(nextPage)
+                setPageDataSearched(prevState => [...prevState, {page: pageCountSearched + 1, data: result.data}])
+
                 console.log(result.data)}
-            setPageCount(pageCount + 1)
+            setPageCountSearched(pageCountSearched + 1)
 
 
         } catch (e) {
@@ -276,13 +316,13 @@ function AllRecipes() {
 
     async function handlePreviousPage() {
 
-        console.log(pageCount)
 
-        const dataPrevPage = pageData.find((dataPrev) => dataPrev.page === pageCount - 1)
+
+        const dataPrevPage = pageDataSearched.find((dataPrev) => dataPrev.page === pageCountSearched - 1)
 
         console.log(dataPrevPage.data.hits)
         dataPrevPage && setData(dataPrevPage.data.hits)
-        pageCount > 0 && setPageCount(pageCount - 1)
+        pageCountSearched > 0 && setPageCountSearched(pageCountSearched - 1)
 
     }
 
@@ -389,7 +429,7 @@ function AllRecipes() {
                         className={classnamePageButton}
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
-                        onClick={() => handleNextPage(nextPage)}
+                        onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
@@ -400,7 +440,7 @@ function AllRecipes() {
                         className={classnamePageButton}
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
-                        onClick={() => handleNextPage(nextPage)}
+                        onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
@@ -433,18 +473,17 @@ function AllRecipes() {
                         className={classnamePageButton}
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
-                        onClick={() => handleNextPage(nextPage)}
+                        onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
-                    >next page<FontAwesomeIcon icon={faCircleChevronRight} /></button>
+                    >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
-
                 <div className="button-wrap-mobile">
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
-                        onClick={() => handleNextPage(nextPage)}
+                        onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>

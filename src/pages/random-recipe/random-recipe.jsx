@@ -154,8 +154,7 @@ function RandomRecipe() {
                         classnameIcons="recipe-card-info"
                         classnameAllergens="recipe-card-allergens"
                         classnameNavLink="recipe-link"
-                        navlink="recipes"
-                        backButton="/recipes"
+                        navlink="random"
 
                     />
                 }
