@@ -1,5 +1,4 @@
-import React, {createContext, useEffect, useState} from "react"
-import { useLocation } from "react-router-dom";
+import React, {createContext, useState} from "react"
 
 
 export const SearchedRecipesContext = createContext(null)
@@ -20,22 +19,6 @@ function SearchedRecipesProvider({children}) {
     function setNextPageSearchedRecipes(link) {
         setNextPageSearched(link)
     }
-
-    useEffect(() => {
-        console.log(recipeData)
-    }, [recipeData]);
-
-    useEffect(() => {
-        console.log(nextPageSearched)
-    }, [nextPageSearched]);
-
-    useEffect(() => {
-        console.log(pageDataSearched)
-    }, [pageDataSearched]);
-
-    useEffect(() => {
-        console.log(pageCountSearched)
-    }, [pageCountSearched])
 
     const contextData = {
         setSearchedRecipesData: setSearchedRecipesData,

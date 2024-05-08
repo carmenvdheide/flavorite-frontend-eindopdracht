@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AuthContextProvider from "./context/AuthContextProvider.jsx";
 import FavoriteRecipesProvider from "./context/FavoriteRecipesProvider.jsx";
 import SearchedRecipesProvider from "./context/SearchedRecipesProvider.jsx"
+import PreviousPageProvider from "./context/PreviousPageProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthContextProvider>
             <FavoriteRecipesProvider>
                 <SearchedRecipesProvider>
-                    <App />
+                    <PreviousPageProvider>
+                        <App />
+                    </PreviousPageProvider>
                 </SearchedRecipesProvider>
             </FavoriteRecipesProvider>
         </AuthContextProvider>

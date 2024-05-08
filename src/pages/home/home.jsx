@@ -54,7 +54,7 @@ function Home() {
                                 classnameAllergens="recipe-card-allergens"
                                 classnameNavLink="recipe-link"
                                 navlink="home"
-                                backButton="/random"
+                                backButton="/"
 
                             />
                         )

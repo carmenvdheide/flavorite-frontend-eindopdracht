@@ -9,6 +9,7 @@ import {faAnglesLeft, faStar} from "@fortawesome/free-solid-svg-icons";
 
 import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
+import {PreviousPageContext} from "../../context/PreviousPageProvider.jsx";
 
 
 function RecipeDetails({backButton, backButtonText}) {
@@ -112,6 +113,8 @@ function RecipeDetails({backButton, backButtonText}) {
 
     const { isAuth } = useContext(AuthContext)
 
+    const { previousPage } = useContext(PreviousPageContext)
+
 
     return (
         <article className="recipe-details-container">
@@ -119,7 +122,10 @@ function RecipeDetails({backButton, backButtonText}) {
             <div>
                 <button
                     className="recipe-details-button-top"
-                    onClick={() => navigate(backButton)}>
+                    onClick={() => previousPage && navigate(previousPage)}
+
+
+                >
                     <FontAwesomeIcon className="back-icon" icon={faAnglesLeft} /><p>{backButtonText}</p>
                 </button>
 

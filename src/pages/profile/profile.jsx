@@ -1,12 +1,15 @@
-import React, {useContext, useEffect} from 'react';
-import {AuthContext} from "../../context/AuthContextProvider.jsx";
+import React, {useContext, useEffect} from 'react'
+import {AuthContext} from "../../context/AuthContextProvider.jsx"
 import './profile.css'
-import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx";
-import {faTrashCan} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {NavLink} from "react-router-dom";
+import {FavoriteRecipeContext} from "../../context/FavoriteRecipesProvider.jsx"
+import {faTrashCan} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {NavLink} from "react-router-dom"
+import {PreviousPageContext} from "../../context/PreviousPageProvider.jsx"
 
 const Profile = () => {
+
+
 
     const recipeString = localStorage.getItem('favorite')
     const recipe = JSON.parse(recipeString)
@@ -16,14 +19,14 @@ const Profile = () => {
 
     const {deleteFavoriteRecipe} = useContext(FavoriteRecipeContext)
 
+    const { setPreviousPageState } = useContext(PreviousPageContext)
+
     useEffect(() => {
 
         recipe.map((recipe) => {
             console.log(recipe.image)
         })
     }, []);
-
-
 
     return (
         <div className='profile-container'>
@@ -44,14 +47,17 @@ const Profile = () => {
                     return (
                         <li key={recipe.label}
                             className="favorite-list-item">
-                            {/*TO DO: when the user clicks on the back buttonon the detail-page, it goes back to the page with all recipes instead of the profile page*/}
+
                             <NavLink className="favorite-list-item-navlink"
-                                to={`/recipes/${recipe.uri.split('_')[1]}`}>
+                                to={`/recipes/${recipe.uri.split('_')[1]}`}
+                                onClick={() => setPreviousPageState('/profile')}>
                             <img src={recipe.image} alt="favorite recipe img"/>
                             <div>
                                 <p>{recipe.label}</p>
                             </div>
                             </NavLink>
+
+
 
                             <button onClick={() => deleteFavoriteRecipe(recipe.label)} aria-describedby='delete-favorite'>
                                 <FontAwesomeIcon
