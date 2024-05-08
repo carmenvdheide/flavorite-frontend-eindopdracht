@@ -12,6 +12,7 @@ import Register from "./pages/RegisterForm/Register.jsx";
 import Profile from "./pages/profile/profile.jsx";
 import HomeRecipeDetails from "./components/home-recipe-details/HomeRecipeDetails.jsx";
 import Footer from "./components/footer/footer.jsx";
+import Error from "./pages/error/error.jsx";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/recipes/:id" element={<AllRecipeDetails/>}/>
             <Route path="random/:id" element={<RandomRecipeDetails/>}/>
             <Route path="home/:id" element={<HomeRecipeDetails/>}/>
+            <Route path="*" element={<Error/>}/>
 
         </Routes>
         <Footer/>
