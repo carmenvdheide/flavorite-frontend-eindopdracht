@@ -117,7 +117,7 @@ input[type="checkbox"]:checked::before {
 
 }
 
-.surprise-button {
+.random-recipe-filters .surprise-button {
     border-radius: 50%;
     height: 12vw;
     width: 12vw;
