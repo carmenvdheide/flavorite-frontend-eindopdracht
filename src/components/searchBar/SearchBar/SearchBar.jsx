@@ -4,25 +4,21 @@ import "./SearchBar.css"
 import {SearchedRecipesContext} from "../../../context/SearchedRecipesProvider.jsx";
 
 function SearchBar(props) {
+
     const [searchBarValue, setSearchBarValue] = useState('')
     const { setSearched } = useContext(SearchedRecipesContext)
 
 
     function handleSearch(e) {
-
-
         e.preventDefault()
-
         searchBarValue && props.fetchSearchedRecipes(searchBarValue)
         searchBarValue && props.setClassnamePageButton("page-button")
         searchBarValue && props.setClassnameSortBy("sort-options")
         searchBarValue && setSearched(true)
-
     }
 
     return (
         <div className="search-bar">
-
             <form onSubmit={handleSearch}>
                 <input
                     type="text"

@@ -96,10 +96,17 @@ select:focus {
     align-items: center;
     gap: 2rem;
     background-color: var(--background-color);
-    padding: 4rem 5.5rem;
-
-
+    padding: 4rem 2rem;
 }
+
+.all-recipes-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem 1rem;
+    background-color: var(--background-color);
+}
+
 .button-wrap {
     display: flex;
     background-color: transparent;
@@ -142,13 +149,7 @@ select:focus {
 }
 
 
-.all-recipes-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem 2rem;
-    background-color: var(--background-color);
-}
+
 
 
 @media only screen and (max-width: 768px) {

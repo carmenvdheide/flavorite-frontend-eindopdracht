@@ -1,17 +1,20 @@
 import './all-recipes.css'
+import axios from "axios";
 import React, {useContext, useEffect, useState} from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
-import axios from "axios";
 import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
-import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Loading from "../../components/loading/loading.jsx";
 import {fetchRecipes} from "../../helpers/apiFetch.js";
 import {SearchedRecipesContext} from "../../context/SearchedRecipesProvider.jsx";
+import { faCircleChevronLeft, faCircleChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function AllRecipes() {
+
+    //////////////////////////////////////////////////////////////////////////////// useState
+
 
 
     const [ isLoading, setIsLoading ] = useState('')
@@ -76,7 +79,7 @@ function AllRecipes() {
     const [ classnameSortBy, setClassnameSortBy ] = useState('dont-display-page-button')
 
 
-    ////////////////////////////////////////////////////////////////////////////////useContext
+    //////////////////////////////////////////////////////////////////////////////// useContext
 
     const { setSearchedRecipesData } = useContext(SearchedRecipesContext)
 
@@ -98,7 +101,7 @@ function AllRecipes() {
 
 
 
-    //////////////////////////////////////////////////////////////////////////////////////////// useEffects
+    //////////////////////////////////////////////////////////////////////////////// useEffect
 
 
     useEffect(() => {
@@ -122,7 +125,6 @@ function AllRecipes() {
         let eatingHabit = eatingHabitArray.length > 0 ? "&health=" + eatingHabitArray.join('&health=') : ''
         setEatingHabitFilterParam(eatingHabit)
 
-        // console.log(allergens, diets, mealType, eatingHabit)
 
     }, [allergenFilters, dietFilters, mealTypeFilters, eatingHabitFilters])
 
@@ -132,15 +134,6 @@ function AllRecipes() {
     }, [sortBy, data])
 
 
-    function displayPreviousData () {
-        setData(recipeData)
-
-
-        setNextPage(nextPageSearched)
-        searched && setClassnameSortBy("sort-options")
-        searched && setClassnamePageButton("page-button")
-        console.log(recipeData.length)
-    }
 
     useEffect(() => {
         console.log(nextPage)
@@ -160,6 +153,8 @@ function AllRecipes() {
     }, [data]);
 
     //////////////////////////////////////////////////////////////////////////////////////////// fetch recipes
+
+
     async function fetchData() {
         try {
             setIsLoading('loading');
@@ -319,6 +314,8 @@ function AllRecipes() {
         }
     }
 
+
+
     async function handlePreviousPage() {
 
 
@@ -329,6 +326,17 @@ function AllRecipes() {
         dataPrevPage && setData(dataPrevPage.data.hits)
         pageCountSearched > 0 && setPageCountSearched(pageCountSearched - 1)
 
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////// saving data
+
+
+    function displayPreviousData () {
+        setData(recipeData)
+        setNextPage(nextPageSearched)
+        searched && setClassnameSortBy("sort-options")
+        searched && setClassnamePageButton("page-button")
+        console.log(recipeData.length)
     }
 
     ///////////////////////// RETURN
@@ -449,9 +457,6 @@ function AllRecipes() {
                         className={classnamePageButton}
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
-
-
-
 
 
                 <ul className="all-recipes-list">
