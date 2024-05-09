@@ -89,7 +89,7 @@
 .favorite-list-item {
     list-style: none;
     display: flex;
-    width: 35rem;
+    max-width: 35rem;
     border-radius: 1rem;
     box-shadow: #c5b7af 1px 1px 10px ;
     border: none;
@@ -139,7 +139,7 @@
     height: 1.8rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
 
 
     .profile-container {
@@ -204,6 +204,5 @@
 
     .icon-delete-favorite {
         width: 1.1rem;
-
     }
 }

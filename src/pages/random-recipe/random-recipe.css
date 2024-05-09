@@ -175,11 +175,12 @@ input[type="checkbox"]:checked::before {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 0.8rem;
-}
-
-.random-recipe-allergens img {
     border-radius: 0;
 }
+
+
+
+
 
 .random-recipe-link {
  background-color: transparent;
@@ -191,7 +192,8 @@ input[type="checkbox"]:checked::before {
 }
 
 
-.random-recipe-card img {
+
+.random-recipe-desktop .recipe-page-image {
     border-radius: 0.8rem 0 0 0.8rem;
 }
 
@@ -234,6 +236,8 @@ input[type="checkbox"]:checked::before {
         flex-direction: row;
         gap: 1rem;
         height: 6vh;
+        /*width: 40vw;*/
+        margin: 1rem auto;
 
     }
 
@@ -260,7 +264,8 @@ input[type="checkbox"]:checked::before {
         height: 30vh;
         background-color: transparent;
         gap: 1rem;
-        margin: 0 2rem;
+        margin: 0 auto;
+
     }
 
     .random-recipe-allergens-filter p {
@@ -279,11 +284,13 @@ input[type="checkbox"]:checked::before {
         background-color: transparent;
         display: flex;
         flex-direction: column;
+        align-items: center;
         flex-wrap: wrap;
-        min-width: 75vw;
+        /*min-width: 75vw;*/
         height: 100%;
         margin: auto;
-
+        /*border: 1px solid red;*/
+        width: 40vw;
     }
 
     .checkbox-allergens-random label {
@@ -291,7 +298,8 @@ input[type="checkbox"]:checked::before {
     }
 
 
-    .surprise-button {
+
+    .random-recipe-filters .surprise-button {
         width: 60vw;
         height: 7vh;
         border-radius: 2rem;
@@ -321,5 +329,24 @@ input[type="checkbox"]:checked::before {
 
 
 }
+
+@media only screen and (max-width: 768px) {
+    .checkbox-allergens-random, .random-recipe-meal-type {
+        min-width: 60vw;
+        margin: 0 auto;
+    }
+
+    .random-recipe-meal-type div {
+        width: 70vw;
+    }
+
+
+    .surprise-button {
+        font-size: 1rem;
+    }
+
+
+}
+
 
 

@@ -273,7 +273,7 @@
     text-align: end;
 }
 
-@media  only screen and (max-width: 768px) {
+@media  only screen and (max-width: 992px) {
     .recipe-details-container {
         width: 90vw;
         margin: 1rem auto;
