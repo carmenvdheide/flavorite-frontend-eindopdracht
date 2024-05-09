@@ -11,6 +11,9 @@ function SearchedRecipesProvider({children}) {
 
     const [pageCountSearched, setPageCountSearched] = useState(1)
 
+    const [ searched, setSearched ] = useState(false)
+
+
 
     function setSearchedRecipesData(data) {
         setRecipeData(data)
@@ -29,6 +32,8 @@ function SearchedRecipesProvider({children}) {
         setPageDataSearched: setPageDataSearched,
         pageCountSearched: pageCountSearched,
         setPageCountSearched: setPageCountSearched,
+        setSearched: setSearched,
+        searched: searched,
 
     }
 

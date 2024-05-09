@@ -13,6 +13,7 @@ import {SearchedRecipesContext} from "../../context/SearchedRecipesProvider.jsx"
 
 function AllRecipes() {
 
+
     const [ isLoading, setIsLoading ] = useState('')
     const [ data, setData ] = useState([])
     const [ allergenFilters, setAllergenFilters ] = useState([
@@ -74,6 +75,9 @@ function AllRecipes() {
     const [ classnamePageButton, setClassnamePageButton ] = useState('dont-display-page-button')
     const [ classnameSortBy, setClassnameSortBy ] = useState('dont-display-page-button')
 
+
+    ////////////////////////////////////////////////////////////////////////////////useContext
+
     const { setSearchedRecipesData } = useContext(SearchedRecipesContext)
 
     const { recipeData } = useContext(SearchedRecipesContext)
@@ -89,6 +93,9 @@ function AllRecipes() {
     const { pageCountSearched } = useContext(SearchedRecipesContext)
 
     const { setPageCountSearched } = useContext(SearchedRecipesContext)
+
+    const { searched } = useContext(SearchedRecipesContext)
+
 
 
     //////////////////////////////////////////////////////////////////////////////////////////// useEffects
@@ -124,16 +131,14 @@ function AllRecipes() {
         sortData()
     }, [sortBy, data])
 
+
     function displayPreviousData () {
         setData(recipeData)
 
 
-
-
         setNextPage(nextPageSearched)
-        // setSearchedRecipesData(recipeData)
-        setClassnamePageButton("page-button")
-        setClassnameSortBy("sort-options")
+        searched && setClassnameSortBy("sort-options")
+        searched && setClassnamePageButton("page-button")
         console.log(recipeData.length)
     }
 

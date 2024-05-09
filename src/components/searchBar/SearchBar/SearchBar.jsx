@@ -1,16 +1,22 @@
-import React from "react"
+import React, {useContext} from "react"
 import {useState} from "react";
 import "./SearchBar.css"
+import {SearchedRecipesContext} from "../../../context/SearchedRecipesProvider.jsx";
 
 function SearchBar(props) {
     const [searchBarValue, setSearchBarValue] = useState('')
+    const { setSearched } = useContext(SearchedRecipesContext)
+
 
     function handleSearch(e) {
+
+
         e.preventDefault()
 
         searchBarValue && props.fetchSearchedRecipes(searchBarValue)
         searchBarValue && props.setClassnamePageButton("page-button")
         searchBarValue && props.setClassnameSortBy("sort-options")
+        searchBarValue && setSearched(true)
 
     }
 
