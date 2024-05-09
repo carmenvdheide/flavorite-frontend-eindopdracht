@@ -71,7 +71,7 @@
 .allergen-icon-wrapper {
     position: relative;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
 
     .recipe-card, .random-recipe-card {
         display: flex;
