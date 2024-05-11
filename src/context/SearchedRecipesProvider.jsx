@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react"
+import React, {createContext, useEffect, useState} from "react"
 
 
 export const SearchedRecipesContext = createContext(null)
@@ -13,11 +13,17 @@ function SearchedRecipesProvider({children}) {
 
     const [ searched, setSearched ] = useState(false)
 
+    const [ searchValue, setSearchValue ] = useState('search')
+
 
 
     function setSearchedRecipesData(data) {
         setRecipeData(data)
     }
+
+    useEffect(() => {
+        console.log(searchValue)
+    }, [searchValue]);
 
     function setNextPageSearchedRecipes(link) {
         setNextPageSearched(link)
@@ -34,6 +40,8 @@ function SearchedRecipesProvider({children}) {
         setPageCountSearched: setPageCountSearched,
         setSearched: setSearched,
         searched: searched,
+        searchValue: searchValue,
+        setSearchValue: setSearchValue,
 
     }
 

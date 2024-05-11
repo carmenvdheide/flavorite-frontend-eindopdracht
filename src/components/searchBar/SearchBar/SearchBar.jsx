@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {useState} from "react";
 import "./SearchBar.css"
 import {SearchedRecipesContext} from "../../../context/SearchedRecipesProvider.jsx";
@@ -15,7 +15,14 @@ function SearchBar(props) {
         searchBarValue && props.setClassnamePageButton("page-button")
         searchBarValue && props.setClassnameSortBy("sort-options")
         searchBarValue && setSearched(true)
+        setSearchValue(searchBarValue)
+
     }
+
+    const { searchValue } = useContext(SearchedRecipesContext)
+    const { setSearchValue } = useContext(SearchedRecipesContext)
+
+
 
     return (
         <div className="search-bar">
@@ -24,7 +31,8 @@ function SearchBar(props) {
                     type="text"
                     value={searchBarValue}
                     onChange={(e) => setSearchBarValue(e.target.value)}
-                    placeholder="search"
+                    // placeholder="search"
+                    placeholder={searchValue}
                     className="search-input"
                 />
                 <button
