@@ -2,7 +2,7 @@ import './all-recipes.css'
 import axios from "axios";
 import React, {useContext, useEffect, useState} from "react"
 import RecipeCard from "../../components/recipe-card/recipe-card.jsx";
-import SearchBar from "../../components/searchBar/SearchBar/SearchBar.jsx";
+import SearchBar from "../../components/searchBar/SearchBar.jsx";
 import Filters from "../../components/Filters /Filters.jsx";
 import Loading from "../../components/loading/loading.jsx";
 import {fetchRecipes} from "../../helpers/apiFetch.js";
@@ -300,7 +300,6 @@ function AllRecipes() {
             } else {const result = await axios.get(url)
 
                 setData(result.data.hits)
-                // setNextPage(result.data['_links'].next.href)
                 setNextPageSearchedRecipes(result.data['_links'].next.href)
 
                 setPageDataSearched(prevState => [...prevState, {page: pageCountSearched + 1, data: result.data}])

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from "react"
 import {useState} from "react";
 import "./SearchBar.css"
-import {SearchedRecipesContext} from "../../../context/SearchedRecipesProvider.jsx";
+import {SearchedRecipesContext} from "../../context/SearchedRecipesProvider.jsx";
 
 function SearchBar(props) {
 

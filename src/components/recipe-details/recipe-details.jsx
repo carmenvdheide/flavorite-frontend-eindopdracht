@@ -12,7 +12,7 @@ import {AuthContext} from "../../context/AuthContextProvider.jsx";
 import {PreviousPageContext} from "../../context/PreviousPageProvider.jsx";
 
 
-function RecipeDetails({backButton, backButtonText}) {
+function RecipeDetails({ backButtonText}) {
     const { id } = useParams()
     const [ recipeDetails, setRecipeDetails ] = useState([])
     const [ ingredientsClassname, setIngrdientsClassname ] = useState('recipe-details-ingredients')
