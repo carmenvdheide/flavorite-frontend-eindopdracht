@@ -439,10 +439,12 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
@@ -450,10 +452,12 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
@@ -480,20 +484,24 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
                 <div className="button-wrap-mobile">
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
             </section>

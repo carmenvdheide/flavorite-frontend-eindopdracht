@@ -123,7 +123,7 @@ function RecipeDetails({ backButtonText}) {
                 <button
                     className="recipe-details-button-top"
                     onClick={() => previousPage && navigate(previousPage)}
-
+                    type="button"
 
                 >
                     <FontAwesomeIcon className="back-icon" icon={faAnglesLeft} /><p>{backButtonText}</p>
@@ -133,6 +133,7 @@ function RecipeDetails({ backButtonText}) {
                     <button
                         className='favorite-button'
                         onClick={handleButtonClick}
+                        type="button"
                     ><FontAwesomeIcon icon={faStar} className={favoriteState.classname}/>
                     </button>}
 
@@ -172,20 +173,24 @@ function RecipeDetails({ backButtonText}) {
                         className="recipe-details-button"
                         value="ingredients"
                         onClick={handleIngredientButton}
+                        type="button"
                     >Ingredients</button>
                     <button
                         className="recipe-details-button"
                         value="allergens"
                         onClick={handleAllergenButton}
+                        type="button"
                     >Health labels</button>
                     <button
                         className="recipe-details-button"
                         value="nutrients"
                         onClick={handleNutrientButton}
+                        type="button"
                     >Nutrients</button>
                     <button
                         className="recipe-details-button"
                         onClick={handleDirectionsLink}
+                        type="button"
                     >Directions</button>
                 </div>
             </section>

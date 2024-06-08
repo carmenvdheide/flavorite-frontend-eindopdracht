@@ -37,6 +37,7 @@ function SearchBar(props) {
                 />
                 <button
                     className="recipe-search-button"
+                    type="submit"
                 >Go</button>
             </form>
 

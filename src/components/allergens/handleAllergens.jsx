@@ -225,6 +225,7 @@ function HandleAllergens({data}) {
                        setClassnameLessButton("allergen-button")
                    }}
                    className={classnameMoreButton}
+                   type="button"
                >+</button>
                <button
                    onClick={() => {
@@ -233,6 +234,7 @@ function HandleAllergens({data}) {
                        setClassnameLessButton("dont-show-button")
                    }}
                    className={classnameLessButton}
+                   type="button"
                >-</button>
            </>
        )

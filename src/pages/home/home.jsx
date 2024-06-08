@@ -77,7 +77,8 @@ function Home() {
                         className="surprise-button"
                         onClick={() => {
                             navigate("/random")
-                        }}>
+                        }}
+                        type="button">
                         surprise me
 
                     </button>
@@ -92,7 +93,8 @@ function Home() {
                             className='explore-button'
                             onClick={() => {
                                 navigate("/recipes")
-                            }}>
+                            }}
+                            type="button">
                             explore
                         </button>
                         {/*<img src={line}/>*/}
