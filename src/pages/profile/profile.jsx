@@ -30,7 +30,7 @@ const Profile = () => {
 
     return (
         <div className='profile-container'>
-            <div className="profile-container-top">
+            <header className="profile-container-top">
                 <h2 className='welcome-user'>Welcome {user.username}!</h2>
                 <section className="user-information-container">
                     <div className="user-data">
@@ -38,7 +38,7 @@ const Profile = () => {
                         <span className="user-information"><p>email:</p><p>{user.email}</p></span>
                     </div>
                 </section>
-            </div>
+            </header>
 
             <section className='favorite-section'>
                 <h3>Favorite recipes ({recipe.length})</h3>

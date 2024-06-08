@@ -37,7 +37,9 @@ function Home() {
     return (
         isLoading === "loading" ? <Loading/> :<main className="home-container">
             <section className='left-side'>
-                <h1>flavorite</h1>
+                <header>
+                    <h1>Flavorite</h1>
+                </header>
 
 
 

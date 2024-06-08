@@ -85,7 +85,7 @@ function RandomRecipe() {
 
     return (
         <section className="random-recipes">
-            <section className="random-recipe-filters">
+            <header className="random-recipe-filters">
                 <div className="random-recipe-meal-type">
                     <p>select a meal-type:</p>
                     <div>
@@ -128,7 +128,7 @@ function RandomRecipe() {
                     onClick={handleRandomButton}
                 >surprise me</button>
 
-            </section>
+            </header>
 
             <div className="random-recipe-desktop">
                 {isLoading === 'loading' ? <Loading/> : randomRecipeData &&

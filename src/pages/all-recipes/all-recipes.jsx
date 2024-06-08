@@ -344,7 +344,7 @@ function AllRecipes() {
     return ( isLoading === 'loading' ? <Loading/> :
 
         <>
-            <section className="search-container">
+            <header className="search-container">
                     <SearchBar
                         fetchSearchedRecipes={fetchSearchedRecipes}
                         fetchRecipes={fetchRecipes}
@@ -430,7 +430,7 @@ function AllRecipes() {
                     </div>
 
                 </div>
-            </section>
+            </header>
 
             <section className="all-recipes-container">
 
