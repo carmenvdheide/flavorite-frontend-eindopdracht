@@ -88,7 +88,6 @@ function Home() {
                     <div className="explore">
                         <p>Rather browse through all recipes? </p>
 
-                        {/*<img src={line} alt="line"/>*/}
                         <button
                             className='explore-button'
                             onClick={() => {
@@ -97,7 +96,6 @@ function Home() {
                             type="button">
                             explore
                         </button>
-                        {/*<img src={line}/>*/}
 
                     </div>
 

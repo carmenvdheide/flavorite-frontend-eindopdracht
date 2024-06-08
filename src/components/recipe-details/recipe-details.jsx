@@ -144,6 +144,7 @@ function RecipeDetails({ backButtonText}) {
                     <img
                         src={recipeDetails.image}
                         className="detail-page-img"
+                        alt="recipe image"
                     />
                 <div className="recipe-details-info">
                     <h2>{recipeDetails.label}</h2>
@@ -200,7 +201,7 @@ function RecipeDetails({ backButtonText}) {
                     { recipeDetails.ingredients && recipeDetails.ingredients.map((ingredient) =>{
                         return (
                                 <li key={ingredient.food}>
-                                    <img src={ingredient.image}/>
+                                    <img src={ingredient.image} alt={"image of " + ingredient.food} />
                                     <p>{ingredient.food}</p>
                                     <p className="ingredient-amount">
                                         {ingredient.quantity !== 0

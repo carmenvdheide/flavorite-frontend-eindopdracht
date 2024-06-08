@@ -29,7 +29,8 @@ function RecipeCard({recipe, classname, classnameText, classnameAllergens, class
 
                 <img
                     className="recipe-page-image"
-                    src={recipe.recipe.image}/>
+                    src={recipe.recipe.image}
+                alt="recipe image"/>
 
                 <div className={classnameText}>
                     <h3 className="recipe-page-name">{recipe.recipe.label}</h3>

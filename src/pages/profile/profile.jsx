@@ -51,7 +51,7 @@ const Profile = () => {
                             <NavLink className="favorite-list-item-navlink"
                                 to={`/recipes/${recipe.uri.split('_')[1]}`}
                                 onClick={() => setPreviousPageState('/profile')}>
-                            <img src={recipe.image} alt="favorite recipe img"/>
+                            <img src={recipe.image} alt={"image of " + recipe.label}/>
                             <div>
                                 <p>{recipe.label}</p>
                             </div>
