@@ -9,7 +9,6 @@
 
 .error-page a {
     color: var(--purple-color);
-    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
 }

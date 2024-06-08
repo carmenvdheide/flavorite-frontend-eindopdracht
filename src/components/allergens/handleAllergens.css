@@ -1,15 +1,13 @@
 .wrap {
     position: relative;
-    background-color: transparent;
-
 }
 
 [role="tooltip"],
 .hidetooltip.hidetooltip.hidetooltip + [role="tooltip"] {
     visibility: hidden;
     position: absolute;
-    top: 1rem;
-    left: 2rem;
+    top: -2rem;
+    left: -1rem;
     background: lightgray;
     color: black;
     width: 5rem;
@@ -34,11 +32,11 @@
     background-color: lightgray;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     text-align: center;
-    padding: 0;
     justify-self: end;
     grid-column-start: 4;
+    border: none;
 }
 
 .dont-show-button {

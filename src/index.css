@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p, label, li, h2, h3, input, button, a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+}
+
+button:hover {
+    cursor: pointer;
+}

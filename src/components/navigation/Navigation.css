@@ -1,14 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-}
+
 
 .nav-bar {
     font-family: 'Roboto Flex', sans-serif;
-    font-weight: 300;
     height: 6vh;
     min-height: 2.5rem;
     border-bottom: 2px black solid;
@@ -53,8 +48,6 @@
     margin-right: 3rem;
 }
 
-
-
 .account-nav {
     text-decoration: none;
     color: white;
@@ -63,6 +56,7 @@
     padding: 0.3rem 0.6rem;
     background-color: black;
     text-transform: uppercase;
+    height: 2.1rem;
 
 }
 .menu-link {
@@ -92,15 +86,7 @@
 
 }
 
-.logged-in-navbar {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    list-style: none;
-    gap: 2rem;
-    text-transform: uppercase;
 
-}
 
 .login-button {
     width: 5rem;
@@ -127,8 +113,7 @@
     }
 
     .end-navbar {
-        margin: 0 0 0 1.2rem;
-
+        margin-right:1.2rem;
     }
 
 }

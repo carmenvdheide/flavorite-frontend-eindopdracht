@@ -8,7 +8,7 @@
 
 .profile-container-top {
     border-radius: 1rem;
-    padding: 1rem;;
+    padding: 1rem;
     background-color: var(--purple-color);
 }
 
@@ -71,10 +71,13 @@
 /************************************************************ FAVORITE LIST */
 
 .favorite-section {
-    /*border-top: 2px solid black;*/
     padding: 2rem ;
     border-radius: 0 0 1rem 1rem;
     background-color: var(--background-color);
+}
+
+.favorite-section h3 {
+    background-color: transparent;
 }
 
 .favorite-list {
@@ -140,8 +143,6 @@
 }
 
 @media only screen and (max-width: 992px) {
-
-
     .profile-container {
         border: none;
         width: 100vw;
@@ -157,12 +158,9 @@
         padding: 0.5rem 2rem;
     }
 
-
-
     .user-information >p:first-of-type {
         width: 6rem;
         text-transform: capitalize;
-
     }
 
     .user-information p{
@@ -170,7 +168,6 @@
     }
 
     .favorite-section {
-        /*border-top: 2px solid black;*/
         padding: 2rem ;
         border-radius: 0 0 1rem 1rem;
         background-color: white;
@@ -191,7 +188,6 @@
 
     .favorite-list-item p {
         font-size: 0.8rem;
-
     }
 
     .favorite-list-item button {

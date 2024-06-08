@@ -15,7 +15,7 @@
 }
 
 .recipe-page-name {
-    margin: 0.5rem 0.5rem;
+    margin: 0.5rem;
     min-height: 5.5rem;
     text-align: center;
     text-transform: lowercase;
@@ -85,8 +85,6 @@
     }
 
     .recipe-page-name {
-        font-size: 1rem;
-        min-height: 0;
         height: 3.5rem;
     }
 

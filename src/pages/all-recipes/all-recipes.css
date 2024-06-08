@@ -5,16 +5,9 @@
     background-color: var(--background-color);
 }
 p {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
     background-color: transparent;
 }
 
-h3 {
-    background-color: transparent;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.2rem;
-}
 
 /********************************************************** search/filter section */
 
@@ -154,13 +147,10 @@ select:focus {
 
 @media only screen and (max-width: 768px) {
     .search-container {
-        /*width: 12rem;*/
-        /*border: 1px solid red;*/
         margin: auto;
     }
 
     .search-bar {
-        /*border: 1px dotted green;*/
         width: 75vw;
     }
 

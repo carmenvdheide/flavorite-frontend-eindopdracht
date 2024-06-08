@@ -10,7 +10,6 @@
     margin: 4rem auto;
     background-color: var(--background-color);
     border-radius: 2rem;
-    font-family: "Montserrat", sans-serif;
 }
 
 .img-login {
@@ -52,7 +51,6 @@
 .login-form-wrap h2, .register-form-wrap h2{
     background-color: var(--background-color);
     font-size: 2rem;
-    /*margin-left: 1rem;*/
 }
 
 .login-form-wrap div, .register-form-wrap div{
@@ -103,7 +101,6 @@ label, form {
 .successful-message {
     font-weight: bold;
     font-size: 1.5rem;
-    /*color: #F17300;*/
 }
 
 
@@ -114,7 +111,6 @@ label, form {
 
     .login-card, .register-card {
         width: 80vw;
-        /*margin: 10vh auto 17vh auto;*/
         display: flex;
         justify-content: center;
     }
@@ -130,7 +126,6 @@ label, form {
     .login-form-wrap, .register-form-wrap  {
         width: 80%;
         gap: 2rem;
-        /*border: 2px dotted pink;*/
     }
 
     .register-form-wrap
