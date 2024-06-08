@@ -85,23 +85,30 @@ function RandomRecipe() {
 
     return (
         <section className="random-recipes">
-            <section className="random-recipe-filters">
+            <header className="random-recipe-filters">
                 <div className="random-recipe-meal-type">
                     <p>select a meal-type:</p>
                     <div>
                         <button
                             onClick={handleMealType}
                             value="Breakfast"
-                        className={stateMealType === "Breakfast" ? "clicked-meal-type" : "unclicked-meal-type"}>Breakfast</button>
+                            className={stateMealType === "Breakfast" ? "clicked-meal-type" : "unclicked-meal-type"}
+                            type="button"
+                        >Breakfast</button>
 
                         <button
                             onClick={handleMealType}
                             value="Lunch"
-                            className={stateMealType === "Lunch" ? "clicked-meal-type" : "unclicked-meal-type"}>Lunch</button>
+                            className={stateMealType === "Lunch" ? "clicked-meal-type" : "unclicked-meal-type"}
+                            type="button"
+                        >Lunch</button>
+
                         <button
                             onClick={handleMealType}
                             value="Dinner"
-                            className={stateMealType === "Dinner" ? "clicked-meal-type" : "unclicked-meal-type"}>Dinner</button>
+                            className={stateMealType === "Dinner" ? "clicked-meal-type" : "unclicked-meal-type"}
+                            type="button"
+                        >Dinner</button>
                     </div>
 
 
@@ -126,9 +133,10 @@ function RandomRecipe() {
                 <button
                     className='surprise-button'
                     onClick={handleRandomButton}
+                    type="button"
                 >surprise me</button>
 
-            </section>
+            </header>
 
             <div className="random-recipe-desktop">
                 {isLoading === 'loading' ? <Loading/> : randomRecipeData &&

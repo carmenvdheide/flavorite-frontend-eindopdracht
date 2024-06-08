@@ -30,7 +30,7 @@ const Profile = () => {
 
     return (
         <div className='profile-container'>
-            <div className="profile-container-top">
+            <header className="profile-container-top">
                 <h2 className='welcome-user'>Welcome {user.username}!</h2>
                 <section className="user-information-container">
                     <div className="user-data">
@@ -38,7 +38,7 @@ const Profile = () => {
                         <span className="user-information"><p>email:</p><p>{user.email}</p></span>
                     </div>
                 </section>
-            </div>
+            </header>
 
             <section className='favorite-section'>
                 <h3>Favorite recipes ({recipe.length})</h3>
@@ -51,7 +51,7 @@ const Profile = () => {
                             <NavLink className="favorite-list-item-navlink"
                                 to={`/recipes/${recipe.uri.split('_')[1]}`}
                                 onClick={() => setPreviousPageState('/profile')}>
-                            <img src={recipe.image} alt="favorite recipe img"/>
+                            <img src={recipe.image} alt={"image of " + recipe.label}/>
                             <div>
                                 <p>{recipe.label}</p>
                             </div>
@@ -59,7 +59,10 @@ const Profile = () => {
 
 
 
-                            <button onClick={() => deleteFavoriteRecipe(recipe.label)} aria-describedby='delete-favorite'>
+                            <button
+                                onClick={() => deleteFavoriteRecipe(recipe.label)}
+                                aria-describedby='delete-favorite'
+                                type="button">
                                 <FontAwesomeIcon
                                     className='icon-delete-favorite'
                                     icon={faTrashCan} />

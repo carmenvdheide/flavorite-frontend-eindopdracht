@@ -50,10 +50,11 @@ function Navigation () {
                             to="/profile">profile</NavLink>
                     </li>
                     <li>
-                        <button className='account-nav'
-                                onClick={logout}><FontAwesomeIcon
-                                icon={faArrowRightFromBracket}
-                                className='logout-icon'/>
+                        <button
+                            className='account-nav'
+                            onClick={logout}
+                            type="button"
+                        ><FontAwesomeIcon icon={faArrowRightFromBracket} className='logout-icon'/>
                         </button>
                     </li>
                 </div>

@@ -37,7 +37,9 @@ function Home() {
     return (
         isLoading === "loading" ? <Loading/> :<main className="home-container">
             <section className='left-side'>
-                <h1>flavorite</h1>
+                <header>
+                    <h1>Flavorite</h1>
+                </header>
 
 
 
@@ -75,7 +77,8 @@ function Home() {
                         className="surprise-button"
                         onClick={() => {
                             navigate("/random")
-                        }}>
+                        }}
+                        type="button">
                         surprise me
 
                     </button>
@@ -85,15 +88,14 @@ function Home() {
                     <div className="explore">
                         <p>Rather browse through all recipes? </p>
 
-                        {/*<img src={line} alt="line"/>*/}
                         <button
                             className='explore-button'
                             onClick={() => {
                                 navigate("/recipes")
-                            }}>
+                            }}
+                            type="button">
                             explore
                         </button>
-                        {/*<img src={line}/>*/}
 
                     </div>
 

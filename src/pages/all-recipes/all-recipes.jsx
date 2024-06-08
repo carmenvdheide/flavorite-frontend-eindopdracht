@@ -344,7 +344,7 @@ function AllRecipes() {
     return ( isLoading === 'loading' ? <Loading/> :
 
         <>
-            <section className="search-container">
+            <header className="search-container">
                     <SearchBar
                         fetchSearchedRecipes={fetchSearchedRecipes}
                         fetchRecipes={fetchRecipes}
@@ -430,7 +430,7 @@ function AllRecipes() {
                     </div>
 
                 </div>
-            </section>
+            </header>
 
             <section className="all-recipes-container">
 
@@ -439,10 +439,12 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
@@ -450,10 +452,12 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
 
@@ -480,20 +484,24 @@ function AllRecipes() {
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} />previous page</button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     >next page <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
                 <div className="button-wrap-mobile">
                     <button
                         onClick={handlePreviousPage}
                         className={classnamePageButton}
+                        type="button"
                     ><FontAwesomeIcon icon={faCircleChevronLeft} /></button>
                     <button
                         onClick={() => handleNextPage(nextPageSearched)}
                         className={classnamePageButton}
+                        type="button"
                     > <FontAwesomeIcon icon={faCircleChevronRight} /></button>
                 </div>
             </section>
